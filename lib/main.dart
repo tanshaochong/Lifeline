@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solutionchallenge/learning.dart';
+import 'instructions.dart';
 
 void main() {
   runApp(const MyApp());
