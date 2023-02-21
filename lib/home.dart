@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'learning.dart';
+import 'emergency.dart';
+import 'instructions.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -9,6 +12,15 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final _controller = PageController(
+    initialPage: 0,
+  );
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,35 +87,41 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(9, 0, 9, 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(
-              height: 25,
-            ),
-            TopWidget(),
-            Row(
-              // ignore: prefer_const_literals_to_create_immutables
+      body: PageView(
+        controller: _controller,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(9, 0, 9, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                MediumWidget(),
-                MediumWidget(),
+                const SizedBox(
+                  height: 25,
+                ),
+                TopWidget(),
+                Row(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    MediumWidget(),
+                    MediumWidget(),
+                  ],
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      Expanded(
+                        child: EmergencyWidget(),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  Expanded(
-                    child: EmergencyWidget(),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+          LearningPage(),
+        ]
       ),
     );
   }
@@ -115,21 +133,30 @@ class EmergencyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Card(
-        elevation: 10,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        color: Color.fromARGB(255, 255, 67, 67),
-        margin: EdgeInsets.all(8),
-        child: Center(
-            child: Text(
-          'Emergency',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24.0,
+      child: TextButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Emergency(isSwiped: true)));
+        },
+        child: Card(
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
           ),
-        )),
+          color: Color.fromARGB(255, 255, 67, 67),
+          margin: EdgeInsets.all(8),
+          child: Center(
+              child: Text(
+            'Emergency',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24.0,
+            ),
+          )),
+        ),
       ),
     );
   }
@@ -188,19 +215,28 @@ class _MediumWidgetState extends State<MediumWidget> {
     return Expanded(
       child: Container(
         height: 150,
-        child: Card(
-          elevation: 10,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          color: Colors.red,
-          child: Center(
-            child: Text('Medium',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                )),
+        child: TextButton(
+          onPressed: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        InstructionsPage()));
+          },
+          child: Card(
+            elevation: 10,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            color: Colors.red,
+            child: Center(
+              child: Text('Medium',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  )),
+            ),
+            margin: EdgeInsets.all(8),
           ),
-          margin: EdgeInsets.all(8),
         ),
       ),
     );
