@@ -1,15 +1,16 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:io';
+import 'home.dart';
 import 'package:flutter/material.dart';
 import 'package:solutionchallenge/learning.dart';
 import 'instructions.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
