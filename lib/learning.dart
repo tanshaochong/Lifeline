@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'topic.dart';
 
 var rand = Random();
 
@@ -179,6 +180,12 @@ class _LearningPageState extends State<LearningPage> {
                         setState(() {
                           currentIndex = index;
                         });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const TopicPage()));
+
                       },
                     ),
                   ),

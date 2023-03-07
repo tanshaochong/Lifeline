@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:solutionchallenge/map_page.dart';
+import 'package:solutionchallenge/map_widget.dart';
 import 'learning.dart';
 import 'emergency.dart';
 import 'instructions.dart';
@@ -83,6 +85,14 @@ class _HomeViewState extends State<HomeView> {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.map),
+              title: const Text('Map'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MapPage()));
+              },
             ),
             ListTile(
               leading: const Icon(Icons.settings),
@@ -197,23 +207,13 @@ class _TopWidgetState extends State<TopWidget> {
       child: Card(
         semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: (Image.network(
-          'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg',
-          fit: BoxFit.fill,
-        )),
         elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
         color: Colors.white,
-        // child: Padding(
-        //   padding: const EdgeInsets.fromLTRB(8, 20, 8, 20),
-        // child: Container(
-        //   height: 20,
-        //   width: 20,
-        //   child: (Image.network(
-        //       'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg')),
-        // ),
+        // child: const MapWidget(),
+        child: const Placeholder(),
       ),
     );
   }
