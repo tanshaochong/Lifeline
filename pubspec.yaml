@@ -40,6 +40,10 @@ dependencies:
     smooth_page_indicator: ^1.0.1
     firebase_core: ^2.7.0
     toggle_list: ^0.3.0
+    google_maps_flutter: ^2.2.3
+    flutter_polyline_points: ^1.0.0
+    location: ^4.2.0
+    sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
     flutter_test:
@@ -65,6 +69,9 @@ flutter:
     # To add assets to your application, add an assets section, like this:
     assets:
         - assets/content.json
+        - assets/map_style.txt
+        - assets/outline_emergency_black_24dp.png
+        - assets/outline_trip_origin_black_24dp.png
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware
