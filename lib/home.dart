@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:solutionchallenge/map_page.dart';
 import 'package:solutionchallenge/map_widget.dart';
 import 'learning.dart';
 import 'emergency.dart';
 import 'instructions.dart';
+import 'auth.dart';
+import 'profile.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -18,6 +21,13 @@ class _HomeViewState extends State<HomeView> {
   final _controller = PageController(
     initialPage: 0,
   );
+
+  final User? user = Auth().currentUser;
+
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -46,7 +56,12 @@ class _HomeViewState extends State<HomeView> {
           ]),
           IconButton(
             icon: const Icon(Icons.person),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Emergency(isSwiped: true)));
+            },
           ),
         ],
       ),
@@ -56,10 +71,10 @@ class _HomeViewState extends State<HomeView> {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.red,
               ),
               child: Text(
-                'SwiftAid',
+                'FAKit',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -94,6 +109,13 @@ class _HomeViewState extends State<HomeView> {
               title: const Text('About'),
               onTap: () {},
             ),
+            ListTile(
+              leading: const Icon(Icons.logout_outlined),
+              title: const Text('Sign out'),
+              onTap: () {
+                signOut();
+              },
+            ),
           ],
         ),
       ),
@@ -110,8 +132,8 @@ class _HomeViewState extends State<HomeView> {
               Row(
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  MediumWidget(),
-                  MediumWidget(),
+                  aedWidget(),
+                  cprWidget(),
                 ],
               ),
               Expanded(
@@ -152,7 +174,7 @@ class EmergencyWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          color: Color.fromARGB(255, 255, 67, 67),
+          color: Colors.red,
           margin: EdgeInsets.all(8),
           child: Center(
               child: Text(
@@ -197,15 +219,15 @@ class _TopWidgetState extends State<TopWidget> {
   }
 }
 
-class MediumWidget extends StatefulWidget {
-  const MediumWidget({super.key});
+class aedWidget extends StatefulWidget {
+  const aedWidget({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _MediumWidgetState createState() => _MediumWidgetState();
+  _aedWidgetState createState() => _aedWidgetState();
 }
 
-class _MediumWidgetState extends State<MediumWidget> {
+class _aedWidgetState extends State<aedWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -220,15 +242,96 @@ class _MediumWidgetState extends State<MediumWidget> {
             elevation: 10,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0)),
-            color: Colors.red,
-            child: Center(
-              child: Text('Medium',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                  )),
+            color: Colors.white,
+            // ignore: sort_child_properties_last
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const SizedBox(width: 15),
+                const Icon(Icons.favorite,
+                    size: 40, color: Colors.red), //heart attack icon
+                const SizedBox(width: 15), //spacing between icon and text
+                Column(
+                  children: const [
+                    SizedBox(height: 35),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'AED',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Emergency',
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    )
+                  ],
+                )
+              ],
             ),
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class cprWidget extends StatefulWidget {
+  const cprWidget({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _cprWidgetState createState() => _cprWidgetState();
+}
+
+class _cprWidgetState extends State<cprWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 150,
+        child: TextButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => InstructionsPage()));
+          },
+          child: Card(
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            color: Colors.white,
+            // ignore: sort_child_properties_last
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const SizedBox(width: 15),
+                const Icon(Icons.handshake,
+                    size: 40, color: Colors.red), //heart attack icon
+                const SizedBox(width: 15), //spacing between icon and text
+                Column(
+                  children: const [
+                    SizedBox(height: 35),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'CPR',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Emergency',
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    )
+                  ],
+                )
+              ],
+            ),
+            margin: const EdgeInsets.all(8),
           ),
         ),
       ),
