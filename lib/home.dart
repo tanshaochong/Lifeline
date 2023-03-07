@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:solutionchallenge/map_page.dart';
+import 'package:solutionchallenge/map_widget.dart';
 import 'learning.dart';
 import 'emergency.dart';
 import 'instructions.dart';
@@ -70,6 +72,14 @@ class _HomeViewState extends State<HomeView> {
               onTap: () {},
             ),
             ListTile(
+              leading: const Icon(Icons.map),
+              title: const Text('Map'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MapPage()));
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {},
@@ -87,42 +97,39 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-      body: PageView(
-        controller: _controller,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(9, 0, 9, 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const SizedBox(
-                  height: 25,
-                ),
-                TopWidget(),
-                Row(
+      body: PageView(controller: _controller, children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(9, 0, 9, 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(
+                height: 25,
+              ),
+              TopWidget(),
+              Row(
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  MediumWidget(),
+                  MediumWidget(),
+                ],
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    MediumWidget(),
-                    MediumWidget(),
+                    Expanded(
+                      child: EmergencyWidget(),
+                    ),
                   ],
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      Expanded(
-                        child: EmergencyWidget(),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          LearningPage(),
-        ]
-      ),
+        ),
+        LearningPage(),
+      ]),
     );
   }
 }
@@ -138,8 +145,7 @@ class EmergencyWidget extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      Emergency(isSwiped: true)));
+                  builder: (context) => Emergency(isSwiped: true)));
         },
         child: Card(
           elevation: 10,
@@ -179,23 +185,13 @@ class _TopWidgetState extends State<TopWidget> {
       child: Card(
         semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: (Image.network(
-          'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg',
-          fit: BoxFit.fill,
-        )),
         elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
         color: Colors.white,
-        // child: Padding(
-        //   padding: const EdgeInsets.fromLTRB(8, 20, 8, 20),
-        // child: Container(
-        //   height: 20,
-        //   width: 20,
-        //   child: (Image.network(
-        //       'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg')),
-        // ),
+        // child: const MapWidget(),
+        child: const Placeholder(),
       ),
     );
   }
@@ -216,17 +212,14 @@ class _MediumWidgetState extends State<MediumWidget> {
       child: Container(
         height: 150,
         child: TextButton(
-          onPressed: (){
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        InstructionsPage()));
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => InstructionsPage()));
           },
           child: Card(
             elevation: 10,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
             color: Colors.red,
             child: Center(
               child: Text('Medium',
