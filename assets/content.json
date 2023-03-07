@@ -1,0 +1,129 @@
+{
+  "category":[
+    {
+      "name": "Essentials",
+      "topics": [
+        {
+          "title": "Basic First Aid Techniques",
+          "subtopics": [
+            {
+              "title": "Overview",
+              "content": "This section provides a brief introduction to the basic principles of first aid, including the importance of quick and appropriate action in emergency situations.",
+              "completed": false
+            },
+            {
+              "title": "Emergency Situations",
+              "content": "This section outlines the steps to follow in an emergency situation, including how to call for help and how to stay calm and focused.",
+              "completed": false
+            },
+            {
+              "title": "Primary Assessment",
+              "content": "This section provides an overview of the primary assessment process, which is used to determine the nature of the injury or illness and the appropriate course of action.",
+              "completed": false
+            },
+            {
+              "title": "ABCs of First Aid",
+              "content": "This section explains the importance of the ABCs of first aid, which stands for Airway, Breathing, and Circulation, and provides instructions on how to perform these life-saving techniques.",
+              "completed": false
+            },
+            {
+              "title": "Treating Injuries",
+              "content": "This section covers the basics of how to administer first aid for different types of injuries, such as cuts, burns, fractures, and sprains, including how to recognize and respond to each type of injury.",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "CPR and AED Training",
+          "subtopics": [
+            {
+              "title": "Introduction to CPR",
+              "content": "This section provides an overview of what CPR is and why it is important in emergency situations.",
+              "completed": false
+            },
+            {
+              "title": "Chest Compressions and Rescue Breaths",
+              "content": "This section provides step-by-step instructions on how to perform chest compressions and rescue breaths in CPR.",
+              "completed": false
+            },
+            {
+              "title": "Using an AED",
+              "content": "This section explains when and how to use an automated external defibrillator (AED) in CPR.",
+              "completed": false
+            },
+            {
+              "title": "CPR on Infants and Children",
+              "content": "This section explains how to perform CPR on infants and children, including the differences from adult CPR.",
+              "completed": false
+            },
+            {
+              "title": "Recognizing Cardiac Arrest",
+              "content": "This section explains how to recognize the signs of cardiac arrest and how to respond appropriately.",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Common Medical Emergencies",
+          "subtopics": [
+            {
+              "title": "Overview",
+              "content": "This section provides an overview of the most common medical emergencies and how to recognize them.",
+              "completed": false
+            },
+            {
+              "title": "Heart Attack, Stroke, and Diabetic Emergency",
+              "content": "This section covers how to respond to a heart attack, stroke, or diabetic emergency, including what to do before medical help arrives.",
+              "completed": false
+            },
+            {
+              "title": "Seizure and Allergic Reaction",
+              "content": "This section covers how to recognize and respond to a seizure or allergic reaction, including administering first aid and seeking medical help if necessary.",
+              "completed": false
+            },
+            {
+              "title": "Panic Attack and Fainting",
+              "content": "This section covers what to do if someone is experiencing a panic attack or fainting, including how to provide comfort and support.",
+              "completed": false
+            },
+            {
+              "title": "Heat Exhaustion and Hypothermia",
+              "content": "This section covers how to recognize the signs of heat exhaustion or hypothermia and how to respond appropriately, including first aid techniques and seeking medical attention.",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "How to Treat Burns and Cuts",
+          "subtopics": [
+            {
+              "title": "Recognizing Burns and Cuts",
+              "content": "Learn to differentiate between first-degree, second-degree, and third-degree burns and how to identify different types of cuts",
+              "completed": false
+            },
+            {
+              "title": "Immediate Care",
+              "content": "Understand the immediate care steps to be taken after experiencing a burn or a cut, such as stopping the bleeding, cleaning the wound, and covering it to prevent infection",
+              "completed": false
+            },
+            {
+              "title": "Medical Attention",
+              "content": "Know when it is necessary to seek medical attention for burns or cuts and how to find medical help if required",
+              "completed": false
+            },
+            {
+              "title": "Preventing Infection and Promoting Healing",
+              "content": "Learn how to prevent infection and promote healing in burns and cuts by using over-the-counter treatments or natural remedies",
+              "completed": false
+            },
+            {
+              "title": "Controlling Bleeding",
+              "content": "Discover how to use a tourniquet or apply pressure to control bleeding in serious cuts or wounds",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

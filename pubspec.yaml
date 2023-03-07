@@ -39,6 +39,7 @@ dependencies:
     carousel_slider: ^4.2.1
     smooth_page_indicator: ^1.0.1
     firebase_core: ^2.7.0
+    toggle_list: ^0.3.0
     google_maps_flutter: ^2.2.3
     flutter_polyline_points: ^1.0.0
     location: ^4.2.0
@@ -67,6 +68,7 @@ flutter:
 
     # To add assets to your application, add an assets section, like this:
     assets:
+        - assets/content.json
         - assets/map_style.txt
         - assets/outline_emergency_black_24dp.png
         - assets/outline_trip_origin_black_24dp.png
