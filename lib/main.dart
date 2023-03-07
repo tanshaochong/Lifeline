@@ -26,3 +26,5 @@ class MyApp extends StatelessWidget {
         home: const HomeView());
   }
 }
+
+// "AIzaSyBzCUkxMWFZ1Jz3sobOSkBoqH24T8pilcY"
