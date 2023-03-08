@@ -119,39 +119,43 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-      body: PageView(controller: _controller, children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(9, 0, 9, 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(
-                height: 25,
-              ),
-              TopWidget(),
-              Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  aedWidget(),
-                  cprWidget(),
-                ],
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: PageView(
+        physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast, parent: AlwaysScrollableScrollPhysics()),
+        controller: _controller,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(9, 0, 9, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(
+                  height: 25,
+                ),
+                TopWidget(),
+                Row(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    Expanded(
-                      child: EmergencyWidget(),
-                    ),
+                    aedWidget(),
+                    cprWidget(),
                   ],
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      Expanded(
+                        child: EmergencyWidget(),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        LearningPage(),
-      ]),
+          LearningPage(),
+        ]
+      ),
     );
   }
 }
