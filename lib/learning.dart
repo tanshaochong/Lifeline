@@ -36,7 +36,7 @@ class _LearningPageState extends State<LearningPage> {
                 height: 200,
                 child: Card(
                   color: Theme.of(context).secondaryHeaderColor,
-                  margin: const EdgeInsets.all(16.0),
+                  margin: const EdgeInsets.fromLTRB(20, 16, 20, 10),
                   elevation: 3,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
@@ -134,6 +134,7 @@ class _LearningPageState extends State<LearningPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: ListView.separated(
+                    physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast, parent: AlwaysScrollableScrollPhysics()),
                     itemCount: _contentList.length + 1,
                     itemBuilder: (context, index) {
                       if (index == _contentList.length){
