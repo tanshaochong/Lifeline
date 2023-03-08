@@ -76,6 +76,8 @@ flutter:
         - assets/map_style.txt
         - assets/outline_emergency_black_24dp.png
         - assets/outline_trip_origin_black_24dp.png
+        - assets/google.png
+        - assets/firstaid1.png
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware
