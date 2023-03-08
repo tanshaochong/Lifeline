@@ -1,204 +1,93 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:toggle_list/toggle_list.dart';
-
-const Color appColor = Colors.blue;
+import 'learning.dart';
 
 class TopicPage extends StatefulWidget {
-  const TopicPage({Key? key}) : super(key: key);
+  final List<Topic> topicList;
+  final String title;
+
+  const TopicPage({super.key, required this.title, required this.topicList});
+
   @override
-  _TopicPage createState() => _TopicPage();
+  State<TopicPage> createState() => _TopicPage();
 }
 
 class _TopicPage extends State<TopicPage> {
-  List<bool> _isOpenList = List.generate(5, (_) => false);
-
-  late List<Category> _contentList = [];
+  late List<bool> _isOpenList;
+  late List<Topic> _topicList;
+  late String _title;
 
   @override
   void initState() {
     super.initState();
-    _loadLearning();
-  }
-
-  Future<void> _loadLearning() async {
-    final categories = await readJson();
-    setState(() {
-      _contentList = categories;
-    });
+    _title = widget.title;
+    _topicList = widget.topicList;
+    _isOpenList = List.generate(_topicList.length, (_) => false);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Essentials'),
-          foregroundColor: Colors.white,
-          backgroundColor: appColor,
+          title: Text(_title),
         ),
-        body: _contentList.length != 0
-            ? Padding(
-                padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),
-                child: ToggleList(
-                  divider: const SizedBox(height: 10),
-                  toggleAnimationDuration: const Duration(milliseconds: 300),
-                  scrollPosition: AutoScrollPosition.begin,
-                  trailing: const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Icon(Icons.expand_more),
-                  ),
-                  children: List.generate(
-                    _contentList[0].topics.length,
-                    (index) => ToggleListItem(
-                      leading: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
-                        // child: Icon(Icons.circle_outlined),
-                        child: Text(
-                          "Topic ${index + 1}:",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(fontSize: 17),
-                        ),
-                      ),
-                      title: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              _contentList[0].topics[index].title,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(fontSize: 17),
-                            ),
-                          ],
-                        ),
-                      ),
-                      content: Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.vertical(
-                            bottom: Radius.circular(20),
-                          ),
-                          color: appColor.withOpacity(0.15),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: List.generate(
-                            _contentList[0].topics[index].subtopics.length,
-                            (innerIndex) => Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ListTile(
-                                    minLeadingWidth: 5,
-                                    title: Text(_contentList[0]
-                                        .topics[index]
-                                        .subtopics[innerIndex]
-                                        .title),
-                                    leading: _contentList[0]
-                                            .topics[index]
-                                            .subtopics[innerIndex]
-                                            .completed
-                                        ? Icon(Icons.check_box)
-                                        : Icon(Icons.check_box_outline_blank),
-                                    onTap: () {
-                                      setState(() {
-                                        // navigate to content page
-                                        _contentList[0]
-                                            .topics[index]
-                                            .subtopics[innerIndex]
-                                            .completed = true;
-                                      });
-                                    },
-                                  ),
-                                  const SizedBox(
-                                    width: double.infinity,
-                                  ),
-                                ],
-                              ),
-                            ),
+        body: SingleChildScrollView(
+            child: Column(
+              children: _topicList.asMap().entries.map((entry) {
+                int index = entry.key;
+                Topic topic = entry.value;
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 3, 10, 0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Theme(
+                      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                      child: ExpansionTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
+                          // child: Icon(Icons.circle_outlined),
+                          child: Text(
+                            "Topic ${index + 1}:",
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontSize: 17),
                           ),
                         ),
-                      ),
-                      isInitiallyExpanded: false,
-                      onExpansionChanged: _expansionChangedCallback,
-                      // onExpansionChanged: (){print("object");},
-                      headerDecoration: BoxDecoration(
-                        color: Colors.blue.shade50,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      expandedHeaderDecoration: BoxDecoration(
-                        color: appColor.withOpacity(0.50),
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(20),
-                        ),
+                        title: Text(topic.title),
+                        onExpansionChanged: (isExpanded) {
+                          setState(() {
+                            _isOpenList[index] = isExpanded;
+                          });
+                        },
+                        initiallyExpanded: _isOpenList[index],
+                        children: topic.subtopics.map((subtopic) {
+                          return ListTile(
+                            minLeadingWidth: 5,
+                            title: Text(subtopic.title),
+                            leading: Padding(
+                              padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: subtopic.completed
+                                  ? Icon(Icons.check_box, color: Colors.green.shade300,)
+                                  : const Icon(Icons.check_box_outline_blank),
+                            ),
+                            onTap: () {
+                              setState(() {
+                                // navigate to content page (POST completion to database)
+                                subtopic.completed = true;
+                              });
+                            },
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
-                ),
-              )
-            : CircularProgressIndicator());
+                );
+              }).toList(),
+            )
+        )
+    );
   }
-
-  void _expansionChangedCallback(int index, bool newValue) {
-    _isOpenList[index] = newValue;
-    print(
-        'Changed expansion status of item  no.${index + 1} to ${newValue ? "expanded" : "shrunk"}.');
-  }
-}
-
-class Category {
-  final String name;
-  final List<Topic> topics;
-
-  Category({required this.name, required this.topics});
-}
-
-class Topic {
-  final String title;
-  final List<Subtopic> subtopics;
-
-  Topic({required this.title, required this.subtopics});
-}
-
-class Subtopic {
-  final String title;
-  final String description;
-  bool completed;
-
-  Subtopic(
-      {required this.title,
-      required this.description,
-      required this.completed});
-}
-
-Future<List<Category>> readJson() async {
-  final jsonContent = await rootBundle.loadString('assets/content.json');
-  final data = json.decode(jsonContent);
-
-  List<Category> categoryList = [];
-  for (var category in data['category']) {
-    List<Topic> topicList = [];
-    for (var topic in category['topics']) {
-      List<Subtopic> subtopicsList = [];
-      for (var subtopic in topic['subtopics']) {
-        subtopicsList.add(Subtopic(
-            title: subtopic['title'],
-            description: subtopic['content'],
-            completed: subtopic['completed']));
-      }
-      topicList.add(Topic(title: topic['title'], subtopics: subtopicsList));
-    }
-    categoryList.add(Category(name: category['name'], topics: topicList));
-  }
-
-  return categoryList;
 }
