@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:convert';
 import 'dart:math';
 import 'topic.dart';
 
@@ -14,7 +13,6 @@ class LearningPage extends StatefulWidget {
 }
 
 class _LearningPageState extends State<LearningPage> {
-
   late List<Category> _contentList;
 
   Future<List<Category>> _loadLearning() async {
@@ -43,16 +41,7 @@ class _LearningPageState extends State<LearningPage> {
                   ),
                   child: InkWell(
                     onTap: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  TopicPage(
-                                      title: _contentList[currentIndex].name,
-                                      topicList: _contentList[currentIndex].topics
-                                  )
-                          )
-                      );
+                      Navigator.of(context).push(_topicRoute(_contentList[currentIndex]));
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -86,7 +75,6 @@ class _LearningPageState extends State<LearningPage> {
                                   ),
                                   Text(
                                     _contentList[currentIndex].name,
-                                    // courses[currentIndex].title,
                                     style: const TextStyle(
                                       fontSize: 16,
                                     ),
@@ -187,16 +175,7 @@ class _LearningPageState extends State<LearningPage> {
                               setState(() {
                                 currentIndex = index;
                               });
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          TopicPage(
-                                              title: course.name,
-                                              topicList: course.topics
-                                          )
-                                  )
-                              );
+                              Navigator.of(context).push(_topicRoute(course));
                             },
                           ),
                         ),
@@ -224,6 +203,28 @@ class _LearningPageState extends State<LearningPage> {
   }
 }
 
+// Routing animation
+
+Route _topicRoute(Category course) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => TopicPage(title: course.name, topicList: course.topics),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = const Offset(1.0, 0.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end).chain(
+            CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
+  );
+}
+
+
 // Helper Functions and Classes
 
 class Category {
@@ -240,6 +241,7 @@ class Category {
 class Topic {
   final String title;
   final List<Subtopic> subtopics;
+  double subtopicProgress = 0.0;
 
   Topic({required this.title, required this.subtopics});
 }
@@ -247,9 +249,10 @@ class Topic {
 class Subtopic {
   final String title;
   final String description;
+  final String videoLink;
   bool completed;
 
-  Subtopic({required this.title, required this.description, required this.completed});
+  Subtopic({required this.title, required this.description, required this.videoLink, required this.completed});
 }
 
 double getAverageProgress(List<Category> content) {
@@ -267,14 +270,30 @@ Future<List<Category>> readJson() async {
   List<Category> categoryList = [];
   for(var category in data['category']) {
     List<Topic> topicList = [];
+    double totalSubtopicCount = 0, totalCompletionCount = 0;
     for(var topic in category['topics']){
       List<Subtopic> subtopicsList = [];
+      double subtopicCount = 0, subtopicCompletionCount = 0;
       for(var subtopic in topic['subtopics']){
-        subtopicsList.add(Subtopic(title: subtopic['title'], description: subtopic['content'], completed: subtopic['completed']));
+        subtopicsList.add(Subtopic(title: subtopic['title'], description: subtopic['content'], videoLink: subtopic['video'], completed: subtopic['completed']));
+
+        if(subtopic['completed'] == true){
+          subtopicCompletionCount++;
+        }
+        subtopicCount++;
       }
-      topicList.add(Topic(title: topic['title'], subtopics: subtopicsList));
+      Topic loadedTopic = Topic(title: topic['title'], subtopics: subtopicsList);
+      loadedTopic.subtopicProgress = subtopicCompletionCount / (subtopicCount == 0 ? 1 : subtopicCount);
+      topicList.add(loadedTopic);
+
+      totalSubtopicCount += subtopicCount;
+      totalCompletionCount += subtopicCompletionCount;
     }
-    categoryList.add(Category(name: category['name'], description: category['description'], topics: topicList));
+
+    Category loadedCategory = Category(name: category['name'], description: category['description'], topics: topicList);
+    // logic for loading completion
+    // loadedCategory.progress = totalCompletionCount / (totalSubtopicCount == 0 ? 1 : totalSubtopicCount);
+    categoryList.add(loadedCategory);
   }
 
   return categoryList;

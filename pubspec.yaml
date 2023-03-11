@@ -48,6 +48,7 @@ dependencies:
     flutter_polyline_points: ^1.0.0
     location: ^4.2.0
     sliding_up_panel: ^2.0.0+1
+    youtube_player_flutter: 8.1.2
 
 dev_dependencies:
     flutter_test:
