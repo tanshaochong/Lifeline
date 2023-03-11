@@ -2,6 +2,7 @@ import 'package:solutionchallenge/Widget_Tree.dart';
 
 import 'home.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'auth.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'First Aid App',
       theme: ThemeData(
         primarySwatch: Colors.red,
+        fontFamily: GoogleFonts.openSans().fontFamily,
       ),
       // home: const HomeView());
       home: const WidgetTree(),
