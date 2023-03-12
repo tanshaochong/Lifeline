@@ -23,16 +23,15 @@ class Emergency extends StatelessWidget {
             Expanded(child: ListView.builder(itemBuilder: (context, index) {
               return Card(
                   child: ListTile(
-                    onTap: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  InstructionsPage()));
-                    },
-                  // leading: FlutterLogo(),
-                  title: Text('Lorem Ipsum'),
-                  trailing: Icon(Icons.more_vert),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const InstructionsPage()));
+                },
+                // leading: FlutterLogo(),
+                title: const Text('Lorem Ipsum'),
+                trailing: const Icon(Icons.more_vert),
               ));
             })),
             Container(
