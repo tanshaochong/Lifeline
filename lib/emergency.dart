@@ -14,7 +14,10 @@ class Emergency extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Emergency'),
+        title: const Text(
+          'Emergency',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Stack(children: [
         Column(
@@ -38,7 +41,10 @@ class Emergency extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.bottomCenter,
-          child: EmergencySwipeToCall(isSwiped: isSwiped),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: EmergencySwipeToCall(isSwiped: isSwiped),
+          ),
         ),
       ]),
     );
@@ -56,7 +62,7 @@ class EmergencySwipeToCall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(8),
+      // margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
       height: 75,
       width: double.infinity,
@@ -72,7 +78,7 @@ class EmergencySwipeToCall extends StatelessWidget {
               innerColor: Colors.white,
               outerColor: Colors.red,
               sliderButtonIcon: const Icon(Icons.call),
-              text: "            Swipe to call emergency services",
+              text: "Swipe to call \n emergency services",
               textStyle: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
