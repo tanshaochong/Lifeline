@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'auth.dart';
+import 'auth/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfilePage extends StatelessWidget {
