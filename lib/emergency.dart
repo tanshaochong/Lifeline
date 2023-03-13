@@ -14,10 +14,13 @@ class Emergency extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Emergency'),
+        title: const Text(
+          'Emergency',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
-      body: Center(
-        child: Column(
+      body: Stack(children: [
+        Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             const ModeBanner(),
@@ -28,61 +31,68 @@ class Emergency extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => InstructionsPage()));
+                          builder: (context) => const InstructionsPage()));
                 },
                 // leading: FlutterLogo(),
                 title: const Text('Lorem Ipsum'),
-                trailing: const Icon(Icons.more_vert),
+                trailing: Icon(Icons.more_vert),
               ));
             })),
-            Container(
-              height: 80,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.red,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(4),
-                child: isSwiped
-                    ? SlideAction(
-                        borderRadius: 12,
-                        elevation: 0,
-                        animationDuration: const Duration(milliseconds: 0),
-                        innerColor: Colors.white,
-                        outerColor: Colors.red,
-                        sliderButtonIcon: const Icon(Icons.call),
-                        text: "Swipe to call \n for help",
-                        textStyle:
-                            const TextStyle(fontSize: 20, color: Colors.white),
-                        sliderRotate: false,
-                        onSubmit: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Nature of Emergency"),
-                              content: Text(
-                                  "Are you calling help for yourself or someone else?"),
-                              actions: [
-                                TextButton(
-                                    onPressed: () =>
-                                        {Navigator.of(context).pop()},
-                                    child: Text("No, someone else needs help")),
-                                TextButton(
-                                    onPressed: () =>
-                                        {Navigator.of(context).pop()},
-                                    child: Text("Yes, I need help")),
-                              ],
-                            ),
-                            // barrierDismissible: false
-                          );
-                        },
-                      )
-                    : const Text("hello"),
-              ),
-            ),
           ],
         ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: EmergencySwipeToCall(isSwiped: isSwiped),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
+class EmergencySwipeToCall extends StatelessWidget {
+  const EmergencySwipeToCall({
+    super.key,
+    required this.isSwiped,
+  });
+
+  final bool isSwiped;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // margin: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
+      height: 75,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.red,
+        borderRadius: BorderRadius.circular(50.0),
       ),
+      child: isSwiped
+          ? SlideAction(
+              borderRadius: 50,
+              elevation: 0,
+              animationDuration: const Duration(milliseconds: 0),
+              innerColor: Colors.white,
+              outerColor: Colors.red,
+              sliderButtonIcon: const Icon(Icons.call),
+              text: "Swipe to call \n emergency services",
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              sliderRotate: false,
+              onSubmit: () {
+                // setState(() {
+                //   isSwiped = false;
+                // });
+              },
+            )
+          : const Text("hello"),
     );
   }
 }

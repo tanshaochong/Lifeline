@@ -1,7 +1,11 @@
-import 'home.dart';
+import 'package:solutionchallenge/login.dart';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:solutionchallenge/profile.dart';
 import 'firebase_options.dart';
+import 'profile.dart';
 
 // ...
 
@@ -19,11 +23,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'First Aid App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const HomeView());
+      title: 'First Aid App',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        fontFamily: GoogleFonts.openSans().fontFamily,
+      ),
+      // home: const HomeView());
+      home: const login_tree(),
+    );
   }
 }
 
