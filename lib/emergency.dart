@@ -20,19 +20,19 @@ class Emergency extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
+            const ModeBanner(),
             Expanded(child: ListView.builder(itemBuilder: (context, index) {
               return Card(
                   child: ListTile(
-                    onTap: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  InstructionsPage()));
-                    },
-                  // leading: FlutterLogo(),
-                  title: Text('Lorem Ipsum'),
-                  trailing: Icon(Icons.more_vert),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => InstructionsPage()));
+                },
+                // leading: FlutterLogo(),
+                title: const Text('Lorem Ipsum'),
+                trailing: const Icon(Icons.more_vert),
               ));
             })),
             Container(
@@ -51,14 +51,30 @@ class Emergency extends StatelessWidget {
                         innerColor: Colors.white,
                         outerColor: Colors.red,
                         sliderButtonIcon: const Icon(Icons.call),
-                        text: "Swipe to call \n emergency services",
+                        text: "Swipe to call \n for help",
                         textStyle:
                             const TextStyle(fontSize: 20, color: Colors.white),
                         sliderRotate: false,
                         onSubmit: () {
-                          // setState(() {
-                          //   isSwiped = false;
-                          // });
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text("Nature of Emergency"),
+                              content: Text(
+                                  "Are you calling help for yourself or someone else?"),
+                              actions: [
+                                TextButton(
+                                    onPressed: () =>
+                                        {Navigator.of(context).pop()},
+                                    child: Text("No, someone else needs help")),
+                                TextButton(
+                                    onPressed: () =>
+                                        {Navigator.of(context).pop()},
+                                    child: Text("Yes, I need help")),
+                              ],
+                            ),
+                            // barrierDismissible: false
+                          );
                         },
                       )
                     : const Text("hello"),
@@ -67,6 +83,30 @@ class Emergency extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ModeBanner extends StatelessWidget {
+  const ModeBanner({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        MaterialBanner(
+            leading: const Icon(
+              Icons.health_and_safety_outlined,
+              color: Colors.red,
+            ),
+            content: const Text("Requesting help for yourself"),
+            actions: [
+              TextButton(onPressed: () => {}, child: const Text("Change"))
+            ]),
+        const Divider(thickness: 2, height: 2, color: Colors.red),
+      ],
     );
   }
 }
