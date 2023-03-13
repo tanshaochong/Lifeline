@@ -1,12 +1,11 @@
-import 'package:solutionchallenge/Widget_Tree.dart';
+import 'package:solutionchallenge/login.dart';
 
-import 'home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:solutionchallenge/profile.dart';
 import 'firebase_options.dart';
-import 'auth.dart';
-import 'Widget_Tree.dart';
+import 'profile.dart';
 
 // ...
 
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.openSans().fontFamily,
       ),
       // home: const HomeView());
-      home: const WidgetTree(),
+      home: const login_tree(),
     );
   }
 }
