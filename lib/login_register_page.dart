@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:solutionchallenge/auth_service.dart';
 import 'auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -20,7 +20,8 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> signInWithEmailandPassword() async {
     try {
       await Auth().signInWithEmailandPassword(
-          email: _controllerEmail.text, password: _controllerPassword.text);
+          email: _controllerEmail.text.trim(),
+          password: _controllerPassword.text.trim());
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -34,6 +35,16 @@ class _LoginPageState extends State<LoginPage> {
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        errorMessage = e.message;
+      });
+    }
+  }
+
+  Future signInWithGoogle() async {
+    try {
+      await AuthService().signInWithGoogle();
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -188,7 +199,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [_oAuth('assets/google.png')],
+                  children: [
+                    _oAuth('assets/google.png'),
+                  ],
                 ),
               ],
             )));

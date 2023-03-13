@@ -3,21 +3,22 @@ import 'home.dart';
 import 'login_register_page.dart';
 import 'package:flutter/material.dart';
 
-class WidgetTree extends StatefulWidget {
-  const WidgetTree({Key? key}) : super(key: key);
+// ignore: camel_case_types
+class login_tree extends StatefulWidget {
+  const login_tree({Key? key}) : super(key: key);
 
   @override
-  State<WidgetTree> createState() => _WidgetTreeState();
+  State<login_tree> createState() => _LoginTreeState();
 }
 
-class _WidgetTreeState extends State<WidgetTree> {
+class _LoginTreeState extends State<login_tree> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: Auth().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return HomeView();
+          return const HomeView();
         } else {
           return const LoginPage();
         }

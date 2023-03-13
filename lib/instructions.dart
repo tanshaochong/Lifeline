@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'emergency.dart';
+
 class InstructionsPage extends StatefulWidget {
   const InstructionsPage({super.key});
 
@@ -86,7 +88,7 @@ class _InstructionsPageState extends State<InstructionsPage> {
         elevation: 0,
       ),
       body: Container(
-        margin: const EdgeInsets.all(12),
+        margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(8),
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(color: Color(0xfffdaaaa)),
@@ -105,8 +107,9 @@ class _InstructionsPageState extends State<InstructionsPage> {
             ),
             buildButtons(),
             const SizedBox(
-              height: 48.0,
+              height: 24.0,
             ),
+            EmergencySwipeToCall(isSwiped: true),
           ],
         ),
       ),
@@ -154,7 +157,7 @@ class _InstructionsPageState extends State<InstructionsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Emergency | Step ${index + 1}',
+                'Cardiopulmonary Resuscitation | Step ${index + 1}',
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontStyle: FontStyle.italic,
