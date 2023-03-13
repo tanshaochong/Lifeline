@@ -1,7 +1,9 @@
 import 'auth.dart';
-import 'home.dart';
-import 'login_register_page.dart';
+import '../home.dart';
+import '../login_page.dart';
 import 'package:flutter/material.dart';
+
+import 'auth_page.dart';
 
 // ignore: camel_case_types
 class login_tree extends StatefulWidget {
@@ -20,7 +22,7 @@ class _LoginTreeState extends State<login_tree> {
         if (snapshot.hasData) {
           return const HomeView();
         } else {
-          return const LoginPage();
+          return const AuthPage();
         }
       },
     );

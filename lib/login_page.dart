@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:solutionchallenge/auth_service.dart';
-import 'auth.dart';
+import 'package:solutionchallenge/auth/auth_service.dart';
+import 'auth/auth.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final VoidCallback showRegisterPage;
+  const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -103,17 +104,16 @@ class _LoginPageState extends State<LoginPage> {
     //   child: Text(isLogin ? 'Login' : 'Register'),
     // );
     return GestureDetector(
-      onTap:
-          isLogin ? signInWithEmailandPassword : createUserWithEmailandPassword,
+      onTap: signInWithEmailandPassword,
       child: Container(
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
             color: Colors.blue, borderRadius: BorderRadius.circular(8)),
-        child: Center(
+        child: const Center(
           child: Text(
-            isLogin ? 'Login' : 'Register',
-            style: const TextStyle(
+            'Login',
+            style: TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           ),
         ),
@@ -124,13 +124,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget _loginOrRegisterButton() {
     return TextButton(
       onPressed: () {
-        setState(() {
-          isLogin = !isLogin;
-        });
+        widget.showRegisterPage;
       },
-      child: Text(
-        isLogin ? 'Register instead' : 'Login instead',
-        style: const TextStyle(color: Colors.blue),
+      child: const Text(
+        'Register instead',
+        style: TextStyle(color: Colors.blue),
       ),
     );
   }
@@ -170,39 +168,39 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 8,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: Divider(
-                        color: Colors.grey.shade400,
-                        thickness: 0.5,
-                      )),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Text(
-                          'or continue with',
-                          style: TextStyle(color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Expanded(
-                          child: Divider(
-                        color: Colors.grey.shade400,
-                        thickness: 0.5,
-                      )),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _oAuth('assets/google.png'),
-                  ],
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 25),
+                //   child: Row(
+                //     children: [
+                //       Expanded(
+                //           child: Divider(
+                //         color: Colors.grey.shade400,
+                //         thickness: 0.5,
+                //       )),
+                //       Padding(
+                //         padding: const EdgeInsets.symmetric(horizontal: 15),
+                //         child: Text(
+                //           'or continue with',
+                //           style: TextStyle(color: Colors.grey.shade500),
+                //         ),
+                //       ),
+                //       Expanded(
+                //           child: Divider(
+                //         color: Colors.grey.shade400,
+                //         thickness: 0.5,
+                //       )),
+                //     ],
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 25,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     _oAuth('assets/google.png'),
+                //   ],
+                // ),
               ],
             )));
   }

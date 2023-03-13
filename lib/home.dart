@@ -5,7 +5,7 @@ import 'package:solutionchallenge/profile.dart';
 import 'learning.dart';
 import 'emergency.dart';
 import 'instructions.dart';
-import 'auth.dart';
+import 'auth/auth.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
