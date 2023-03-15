@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -17,9 +19,14 @@ class _MapPageState extends State<MapPage> {
 
   final LatLng origin = const LatLng(1.3541, 103.6882);
   final LatLng destination = const LatLng(1.3489, 103.6895);
-  List<LatLng> polylineCoordinates = [];
+
   Location location = Location();
+  late bool _serviceEnabled;
+  late PermissionStatus _permissionGranted;
   LocationData? currentLocation;
+  StreamSubscription<LocationData>? _locationSubscription;
+
+  List<LatLng> polylineCoordinates = [];
 
   BitmapDescriptor emergencyIcon = BitmapDescriptor.defaultMarker;
   BitmapDescriptor currentLocationIcon = BitmapDescriptor.defaultMarker;
@@ -31,21 +38,43 @@ class _MapPageState extends State<MapPage> {
     mapController.setMapStyle(_mapStyle);
   }
 
-  void getCurrentLocation() {
+  void isServiceEnabled() async {
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+  }
+
+  void isPermissionGranted() async {
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+  }
+
+  void getCurrentLocation() async {
     location.getLocation().then((location) {
       currentLocation = location;
       getPolyPoints();
-      print("b");
     });
 
-    location.onLocationChanged.listen((newLocation) {
+    _locationSubscription = location.onLocationChanged.handleError((onError) {
+      print(onError);
+      _locationSubscription?.cancel();
+      setState(() {
+        _locationSubscription = null;
+      });
+    }).listen((newLocation) async {
       currentLocation = newLocation;
-      print("c");
-      // mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-      //     target: LatLng(newLocation.latitude!, newLocation.longitude!))));
-      setState(() {});
     });
   }
+//----------
 
   void getPolyPoints() async {
     PolylinePoints polylinePoints = PolylinePoints();
@@ -60,7 +89,6 @@ class _MapPageState extends State<MapPage> {
           polylineCoordinates.add(LatLng(point.latitude, point.longitude)));
       setState(() {});
     }
-    print("a");
   }
 
   void setCustomMarkerIcon() {
@@ -78,14 +106,23 @@ class _MapPageState extends State<MapPage> {
 
   @override
   void initState() {
+    // isServiceEnabled();
+    // isPermissionGranted();
+    location.changeSettings(distanceFilter: 5, accuracy: LocationAccuracy.high);
+    // location.enableBackgroundMode(enable: true);
     getCurrentLocation();
     setCustomMarkerIcon();
-    // getPolyPoints();
     super.initState();
 
     rootBundle.loadString('assets/map_style.txt').then((string) {
       _mapStyle = string;
     });
+  }
+
+  @override
+  void dispose() {
+    _locationSubscription?.cancel();
+    super.dispose();
   }
 
   @override

@@ -23,6 +23,7 @@ class Emergency extends StatelessWidget {
         Column(
           mainAxisSize: MainAxisSize.max,
           children: [
+            const ModeBanner(),
             Expanded(child: ListView.builder(itemBuilder: (context, index) {
               return Card(
                   child: ListTile(
@@ -92,6 +93,30 @@ class EmergencySwipeToCall extends StatelessWidget {
               },
             )
           : const Text("hello"),
+    );
+  }
+}
+
+class ModeBanner extends StatelessWidget {
+  const ModeBanner({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        MaterialBanner(
+            leading: const Icon(
+              Icons.health_and_safety_outlined,
+              color: Colors.red,
+            ),
+            content: const Text("Requesting help for yourself"),
+            actions: [
+              TextButton(onPressed: () => {}, child: const Text("Change"))
+            ]),
+        const Divider(thickness: 2, height: 2, color: Colors.red),
+      ],
     );
   }
 }
