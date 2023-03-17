@@ -66,7 +66,7 @@ class _LearningPageState extends State<LearningPage> {
                                   const Text(
                                     "Current Course",
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -136,7 +136,7 @@ class _LearningPageState extends State<LearningPage> {
                             borderRadius: BorderRadius.circular(15)
                         ),
                         child: SizedBox(
-                          height: 130,
+                          height: 110,
                           child: ListTile(
                             title: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -145,7 +145,7 @@ class _LearningPageState extends State<LearningPage> {
                                 Text(
                                   course.name,
                                   style: const TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -160,9 +160,10 @@ class _LearningPageState extends State<LearningPage> {
                                   ),
                                 ),
 
-                                const SizedBox(height: 40),
+                                const SizedBox(height: 20),
 
                                 LinearProgressIndicator(
+                                  minHeight: 3,
                                   valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow.shade600),
                                   value: course.progress,
                                   backgroundColor: Colors.grey[200],
