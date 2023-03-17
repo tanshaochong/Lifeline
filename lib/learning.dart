@@ -250,9 +250,10 @@ class Subtopic {
   final String title;
   final String description;
   final String videoLink;
+  final String videoDuration;
   bool completed;
 
-  Subtopic({required this.title, required this.description, required this.videoLink, required this.completed});
+  Subtopic({required this.title, required this.description, required this.videoLink, required this.videoDuration, required this.completed});
 }
 
 double getAverageProgress(List<Category> content) {
@@ -275,7 +276,15 @@ Future<List<Category>> readJson() async {
       List<Subtopic> subtopicsList = [];
       double subtopicCount = 0, subtopicCompletionCount = 0;
       for(var subtopic in topic['subtopics']){
-        subtopicsList.add(Subtopic(title: subtopic['title'], description: subtopic['content'], videoLink: subtopic['video'], completed: subtopic['completed']));
+        subtopicsList.add(
+            Subtopic(
+              title: subtopic['title'],
+              description: subtopic['content'],
+              videoLink: subtopic['video'],
+              videoDuration: subtopic['duration'],
+              completed: subtopic['completed']
+            )
+        );
 
         if(subtopic['completed'] == true){
           subtopicCompletionCount++;

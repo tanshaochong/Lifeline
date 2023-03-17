@@ -81,7 +81,7 @@ class _TopicPage extends State<TopicPage> {
                                   // navigate to content page (POST completion to database)
                                   subtopic.completed = true;
                                 });
-                                Navigator.of(context).push(_contentRoute(subtopic));
+                                Navigator.of(context).push(_openContentRoute(topic.subtopics, topic.subtopics.indexOf(subtopic)));
                               },
                             );
                           }).toList(),
@@ -99,13 +99,13 @@ class _TopicPage extends State<TopicPage> {
 
 // routing
 
-Route _contentRoute(Subtopic subtopic) {
+Route _openContentRoute(List<Subtopic> subtopicList, int subtopicIndex) {
   return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => ContentPage(subtopic: subtopic,),
+      pageBuilder: (context, animation, secondaryAnimation) => ContentPageView(subtopicList: subtopicList, subtopicIndex: subtopicIndex,),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = const Offset(1.0, 0.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
+        var curve = Curves.easeOutCubic;
+        Offset begin = const Offset(0, 1.0);
+        Offset end = Offset.zero;
 
         var tween = Tween(begin: begin, end: end).chain(
             CurveTween(curve: curve));
