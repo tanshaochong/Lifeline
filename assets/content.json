@@ -410,30 +410,30 @@
           "subtopics": [
             {
               "title": "Recognizing the difference between sprains and strains",
-              "content": "Learn the key differences between these two common injuries and how to identify them",
-              "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
+              "content": "<div class=\"topic\">\n  <p class=\"description\">Sports injuries are common, and sprains and strains are among the most frequently occurring types of injuries. Although the two terms are often used interchangeably, sprains and strains are different injuries that affect different parts of the body. Understanding the difference between sprains and strains can help you better recognize and manage these injuries.</p>\n  \n  <div class=\"section\">\n    <h3 class=\"subsection-title\">Sprains</h3>\n    <p class=\"subsection-description\">A sprain is an injury to a ligament, which is a strong band of connective tissue that connects bones to each other and provides stability to joints. Sprains typically occur when a joint is forced beyond its normal range of motion, causing the ligament to stretch or tear. Common sites for sprains include the ankle, knee, wrist, and thumb.</p>\n    <ul class=\"symptoms-list\">\n      <li>Pain</li>\n      <li>Swelling</li>\n      <li>Bruising</li>\n      <li>Difficulty moving the affected joint</li>\n      <li>In severe cases, joint instability or loss of function</li>\n    </ul>\n  </div>\n\n  <div class=\"section\">\n    <h3 class=\"subsection-title\">Strains</h3>\n    <p class=\"subsection-description\">A strain is an injury to a muscle or tendon, which is a fibrous tissue that connects muscle to bone. Strains typically occur when a muscle or tendon is stretched or torn due to overuse, fatigue, or sudden trauma. Common sites for strains include the back, neck, hamstring, and calf.</p>\n    <ul class=\"symptoms-list\">\n      <li>Pain</li>\n      <li>Tenderness</li>\n      <li>Swelling</li>\n      <li>Weakness</li>\n      <li>In severe cases, muscle or tendon rupture</li>\n    </ul>\n  </div>\n</div>",
+              "video": "https://youtu.be/FFyQeOQjO9o",
+              "duration": "2:39",
               "completed": false
             },
             {
-              "title": "Resting and elevating the affected area",
-              "content": "Understand the importance of rest and elevation in treating sprains and strains",
-              "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
-            },
-            {
-              "title": "Applying ice and compression",
-              "content": "Learn how to apply ice and compression to reduce swelling and relieve pain",
-              "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
+              "title": "RICE: Rest, Ice, Compress, Elevate",
+              "content": "<p>One of the most common methods for treating sprains and strains is the RICE method. RICE stands for Rest, Ice, Compress, and Elevate, and it is used to reduce pain and swelling, as well as promote healing. Here's how to apply the RICE method:</p>\n <ul>\n <li><strong>Rest:</strong> Avoid using the injured area as much as possible. This will help prevent further damage and allow the body to begin healing.</li>\n  <li><strong>Ice:</strong> Apply ice to the injured area for 20 minutes at a time, several times a day. This will help reduce pain and swelling by constricting blood vessels.</li>\n  <li><strong>Compress:</strong> Use a compression bandage to help reduce swelling and support the injured area. Be careful not to wrap the bandage too tightly, as this can interfere with circulation.</li>\n  <li><strong>Elevate:</strong> Keep the injured area elevated above the heart as much as possible. This will help reduce swelling by allowing fluids to drain away from the area.</li>\n</ul>\n<p>It's important to remember that the RICE method is only one part of treating sprains and strains. If you have a severe injury, or if your symptoms do not improve with home treatment, you should seek medical attention.</p>\n",
+              "video": "https://youtu.be/PxCac1HzoJ8",
+              "duration": "0:49",
               "completed": false
             },
             {
               "title": "Knowing when to seek medical help",
-              "content": "Understand the signs that your injury may require professional medical attention",
-              "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
+              "content": "<div><p>Sprains and strains are common injuries that can usually be treated at home with rest, ice, compression, and elevation (RICE). However, it's important to know when to seek medical attention if the injury is severe or if it's not healing properly. Some signs that you should see a doctor or other healthcare professional include:</p>\n  <ul>\n    <li>Severe pain or swelling that doesn't improve with RICE</li>\n    <li>Difficulty moving the affected area or putting weight on it</li>\n    <li>Numbness or tingling in the injured area</li>\n    <li>A popping sound or sensation at the time of injury</li>\n    <li>A deformity or unusual shape of the affected area</li>\n    <li>Fever, which could be a sign of an infection</li>\n  </ul>\n  <p>If you experience any of these symptoms, it's important to seek medical attention as soon as possible. Your healthcare provider can perform a physical exam, order imaging tests, and recommend a treatment plan that's appropriate for your injury.</p>\n</div>",
+              "video": "https://youtu.be/MK6Cw2emem4",
+              "duration": "5:33",
+              "completed": false
+            },
+            {
+              "title": "Exercises for Ankle Rehabilitation",
+              "content": "<p>After suffering from an ankle sprain or strain, it is important to take steps to rehabilitate the joint in order to regain its strength and flexibility. One of the most effective ways to do this is through exercises that specifically target the ankle joint.</p>\n\n<p>Exercises for ankle rehabilitation can help to:</p>\n\n<ul>\n  <li>Strengthen the muscles and ligaments around the ankle joint</li>\n  <li>Improve range of motion and flexibility</li>\n  <li>Reduce pain and inflammation</li>\n  <li>Prevent future injuries by improving stability and balance</li>\n</ul>\n\n<p>Some common exercises for ankle rehabilitation include:</p>\n\n<ul>\n  <li>Ankle circles: Rotate the ankle in a circular motion, both clockwise and counterclockwise, to improve flexibility and range of motion.</li>\n  <li>Ankle pumps: Move the ankle up and down, pointing the toes and then pulling them back towards the body, to improve circulation and reduce swelling.</li>\n  <li>Heel raises: Stand with the feet hip-width apart and lift the heels off the ground, then lower them back down. This exercise helps to strengthen the calf muscles, which are important for ankle stability.</li>\n  <li>Balance exercises: Stand on one foot and hold for 30 seconds, then switch to the other foot. This exercise helps to improve balance and stability, which can prevent future injuries.</li>\n</ul>\n\n<p>It is important to consult with a healthcare provider or physical therapist before beginning any exercise program for ankle rehabilitation, especially if you have a severe sprain or strain. They can provide guidance on which exercises are appropriate for your specific injury and how often you should do them.</p>\n",
+              "video": "https://youtu.be/W9lT3gfehC0",
+              "duration": "5:41",
               "completed": false
             }
           ]

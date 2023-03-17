@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:flutter/scheduler.dart';
 
 import 'learning.dart';
 
 
 class ContentPageView extends StatefulWidget {
+  final String topicTitle;
   final List<Subtopic> subtopicList;
   final int subtopicIndex;
 
-  const ContentPageView({super.key, required this.subtopicList, required this.subtopicIndex});
+  const ContentPageView({super.key, required this.subtopicList, required this.subtopicIndex, required this.topicTitle});
 
   @override
   State<ContentPageView> createState() => _ContentPageView();
 }
 
-class _ContentPageView extends State<ContentPageView> with AutomaticKeepAliveClientMixin{
+class _ContentPageView extends State<ContentPageView> {
+  late final String _topicTitle = widget.topicTitle;
   late final List<Subtopic> _subtopicList = widget.subtopicList;
   late int _subtopicIndex = widget.subtopicIndex;
 
@@ -26,16 +28,13 @@ class _ContentPageView extends State<ContentPageView> with AutomaticKeepAliveCli
   bool _isFullScreen = false;
 
   void updateScreenTilt(bool isFullScreen) {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        _isFullScreen = isFullScreen;
-      });
+    setState(() {
+      _isFullScreen = isFullScreen;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Scaffold(
       appBar: _isFullScreen ? null : AppBar(
         elevation: 0,
@@ -46,6 +45,8 @@ class _ContentPageView extends State<ContentPageView> with AutomaticKeepAliveCli
           },
           icon: const Icon(Icons.clear, color: Colors.grey,),
         ),
+        centerTitle: true,
+        title: Text(_topicTitle, style: const TextStyle(color: Colors.black, fontSize: 18),),
       ),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
@@ -59,7 +60,7 @@ class _ContentPageView extends State<ContentPageView> with AutomaticKeepAliveCli
         ).toList(),
       ),
       bottomNavigationBar: _isFullScreen ? null :Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        padding: const EdgeInsets.fromLTRB(14, 0, 14, 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -86,17 +87,14 @@ class _ContentPageView extends State<ContentPageView> with AutomaticKeepAliveCli
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
 
 class ContentPage extends StatefulWidget {
   final Subtopic subtopic;
-  final bool isFullScreen;
   final Function onScreenTilt;
+  final bool isFullScreen;
 
-  const ContentPage({super.key, required this.subtopic, required this.isFullScreen, required this.onScreenTilt});
+  const ContentPage({super.key, required this.subtopic, required this.onScreenTilt, required this.isFullScreen});
 
   @override
   State<ContentPage> createState() => _ContentPage();
@@ -105,12 +103,13 @@ class ContentPage extends StatefulWidget {
 class _ContentPage extends State<ContentPage> {
   late YoutubePlayerController _controller;
   late Subtopic _subtopic;
-  late bool _isFullScreen;
   late Function _onScreenTilt;
+  late bool _isFullScreen;
 
   @override
   void initState(){
     _subtopic = widget.subtopic;
+    _isFullScreen = widget.isFullScreen;
     _onScreenTilt = widget.onScreenTilt;
     final videoID = YoutubePlayer.convertUrlToId(_subtopic.videoLink);
     _controller = YoutubePlayerController(
@@ -125,40 +124,22 @@ class _ContentPage extends State<ContentPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.portraitUp,
+    ]);
+
     return OrientationBuilder(
       builder: (context, orientation) {
-        if (orientation == Orientation.landscape) {
-          // This will make the video go into full screen mode when the device is rotated to landscape.
-          // _isFullScreen = true;
-          _onScreenTilt(true);
-          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-        } else {
-          // This will restore the system UI overlays when the device is rotated to portrait.
-          // _isFullScreen = false;
-          _onScreenTilt(false);
-          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-        }
+        SchedulerBinding.instance.addPostFrameCallback((_) {
+          _onScreenTilt(_controller.value.isFullScreen);
+        });
         return YoutubePlayerBuilder(
           player: YoutubePlayer(
             controller: _controller,
             showVideoProgressIndicator: true,
-            onReady: () {
-              _controller.addListener(() {
-                if (_controller.value.isFullScreen != _isFullScreen) {
-                  setState(() {
-                    // _isFullScreen = _controller.value.isFullScreen;
-                    _onScreenTilt(_controller.value.isFullScreen);
-                  });
-                  if (_controller.value.isFullScreen) {
-                    // Go into full screen mode when the full screen button is pressed or the device is rotated to landscape.
-                    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-                  } else {
-                    // restore the system UI overlays when the full screen mode is exited or the device is rotated to portrait.
-                    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-                  }
-                }
-              });
-            },
             onEnded: (data) {
               Navigator.of(context).pop();
             },
@@ -176,6 +157,15 @@ class _ContentPage extends State<ContentPage> {
             ],
           ),
           builder: (context, player){
+            // SchedulerBinding.instance.addPostFrameCallback((_) {
+            //   if(MediaQuery.of(context).orientation == Orientation.landscape){
+            //     _onScreenTilt(true);
+            //   }
+            //   else{
+            //     _onScreenTilt(false);
+            //   }
+            // });
+
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -191,6 +181,9 @@ class _ContentPage extends State<ContentPage> {
 
   @override
   void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     _controller.dispose();
     super.dispose();
   }
@@ -206,49 +199,51 @@ class ContentBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(25,16,25,16),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0,0,0,12),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Text(
-                      _subtopic.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      softWrap: true,
-                      overflow: TextOverflow.visible,
-                    ),
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.topRight,
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(25,16,25,0),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,0,3),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 3,
                       child: Text(
-                        _subtopic.videoDuration,
-                        style: TextStyle(
+                        _subtopic.title,
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey.shade600,
+                        ),
+                        softWrap: true,
+                        overflow: TextOverflow.visible,
+                      ),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Text(
+                          _subtopic.videoDuration,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade600,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            HtmlWidget(
-              '<div><p>${_subtopic.description}</p></div>',
-            ),
-          ],
+              const Divider(),
+              HtmlWidget(_subtopic.description),
+            ],
+          ),
         ),
       ),
     );
