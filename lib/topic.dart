@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'learning.dart';
+import 'content.dart';
 
 class TopicPage extends StatefulWidget {
   final List<Topic> topicList;
@@ -80,6 +81,7 @@ class _TopicPage extends State<TopicPage> {
                                   // navigate to content page (POST completion to database)
                                   subtopic.completed = true;
                                 });
+                                Navigator.of(context).push(_openContentRoute(topic.title, topic.subtopics, topic.subtopics.indexOf(subtopic)));
                               },
                             );
                           }).toList(),
@@ -93,4 +95,25 @@ class _TopicPage extends State<TopicPage> {
         )
     );
   }
+}
+
+// routing
+
+Route _openContentRoute(String title, List<Subtopic> subtopicList, int subtopicIndex) {
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => ContentPageView(topicTitle: title, subtopicList: subtopicList, subtopicIndex: subtopicIndex,),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var curve = Curves.easeOutCubic;
+        Offset begin = const Offset(0, 1.0);
+        Offset end = Offset.zero;
+
+        var tween = Tween(begin: begin, end: end).chain(
+            CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
+  );
 }
