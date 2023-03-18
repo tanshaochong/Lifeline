@@ -70,6 +70,8 @@ class _ContentPageView extends State<ContentPageView> {
                 setState(() {
                   _subtopicIndex -= 1;
                   _controller.previousPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
+
+                  // navigate to content page (POST completion to database)
                 });
               },
             ),
@@ -79,6 +81,8 @@ class _ContentPageView extends State<ContentPageView> {
                 setState(() {
                   _subtopicIndex += 1;
                   _controller.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
+
+                  // navigate to content page (POST completion to database)
                 });
               },
             ),

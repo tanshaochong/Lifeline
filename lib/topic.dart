@@ -48,6 +48,7 @@ class _TopicPage extends State<TopicPage> {
                       child: Theme(
                         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
                         child: ExpansionTile(
+                          tilePadding: const EdgeInsets.all(10),
                           leading: Padding(
                             padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
                             child: Text(
@@ -69,7 +70,7 @@ class _TopicPage extends State<TopicPage> {
                           children: topic.subtopics.map((subtopic) {
                             return ListTile(
                               minLeadingWidth: 5,
-                              title: Text(subtopic.title),
+                              title: Text(subtopic.title,),
                               leading: Padding(
                                 padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                                 child: subtopic.completed

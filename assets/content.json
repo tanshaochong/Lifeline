@@ -399,7 +399,164 @@
     {
       "name": "Infant & Child First Aid",
       "description": "For parents and babysitters",
-      "topics": []
+      "topics": [
+        {
+          "title": "CPR and Choking",
+          "subtopics": [
+            {
+              "title": "Infant and Child CPR",
+              "content": "Performing CPR on an infant or child",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:41",
+              "completed": false
+            },
+            {
+              "title": "Choking Prevention and Response for Infants and Children",
+              "content": "Recognizing choking hazards and performing the Heimlich maneuver on infants and children",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:56",
+              "completed": false
+            },
+            {
+              "title": "Abdominal Thrusts on Infants and Children",
+              "content": "Performing abdominal thrusts (formerly known as the Heimlich maneuver) on infants and children",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:09",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Burns and Wounds",
+          "subtopics": [
+            {
+              "title": "First Aid for Burns in Infants and Children",
+              "content": "Treating first-degree, second-degree, and third-degree burns, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:10",
+              "completed": false
+            },
+            {
+              "title": "First Aid for Cuts and Scrapes in Infants and Children",
+              "content": "Cleaning and dressing minor cuts and scrapes, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:47",
+              "completed": false
+            },
+            {
+              "title": "Signs of Infection and When to Seek Medical Attention",
+              "content": "Recognizing signs of infection in wounds and burns, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:47",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Allergic Reactions and Anaphylaxis",
+          "subtopics": [
+            {
+              "title": "Allergic Reactions in Infants and Children",
+              "content": "Identifying common triggers and symptoms of allergic reactions, and how to respond",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05",
+              "completed": false
+            },
+            {
+              "title": "Using an EpiPen on Infants and Children",
+              "content": "Proper administration of an epinephrine auto-injector and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05",
+              "completed": false
+            },
+            {
+              "title": "Recognizing the Signs of Anaphylaxis and When to Seek Medical Attention",
+              "content": "Identifying the signs of anaphylaxis and when to seek emergency medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Fevers and Seizures",
+          "subtopics": [
+            {
+              "title": "Managing Fevers in Infants and Children",
+              "content": "How to take a temperature, when to use medication, and when to seek medical attention for a fever",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:32",
+              "completed": false
+            },
+            {
+              "title": "Recognizing and Responding to Febrile Seizures in Infants and Children",
+              "content": "Understanding what a febrile seizure is, how to respond to one, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05",
+              "completed": false
+            },
+            {
+              "title": "When to Seek Medical Attention for a Fever or Seizure",
+              "content": "Knowing when a fever or seizure is a medical emergency, and when to call for help",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Fractures and Head Injuries",
+          "subtopics": [
+            {
+              "title": "Recognizing and Responding to Fractures in Infants and Children",
+              "content": "Learn how to recognize signs of fractures in infants and children, and respond appropriately with first aid techniques to immobilize the affected area before seeking medical attention.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:02",
+              "completed": false
+            },
+            {
+              "title": "Stabilizing Limbs and Heads in Infants and Children",
+              "content": "Discover how to stabilize limbs and heads in infants and children with first aid techniques that prevent further injury while waiting for medical help to arrive.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:02",
+              "completed": false
+            },
+            {
+              "title": "When to Seek Medical Attention for a Fracture or Head Injury",
+              "content": "Learn when it is appropriate to seek medical attention for a fracture or head injury in infants and children, and what signs to look for to determine if immediate medical help is necessary.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:02",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Poisoning and Ingestion of Harmful Substances",
+          "subtopics": [
+            {
+              "title": "Recognizing and Responding to Poisoning in Infants and Children",
+              "content": "How to recognize the signs of poisoning in infants and children, and what steps to take in case of ingestion or exposure to harmful substances",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:23",
+              "completed": false
+            },
+            {
+              "title": "What to Do if a Child Swallows a Foreign Object",
+              "content": "How to recognize when a child has swallowed a foreign object and what steps to take to prevent choking or further injury",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:23",
+              "completed": false
+            },
+            {
+              "title": "When to Seek Medical Attention for Poisoning or Ingestion of Harmful Substances",
+              "content": "When it is necessary to seek medical attention for poisoning or ingestion of harmful substances, and how to prepare for the visit to the emergency department",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:23",
+              "completed": false
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Sports Injuries",
@@ -561,7 +718,176 @@
     {
       "name": "Mental Health Aid",
       "description": "Identify the signs and learn to respond",
-      "topics": []
+      "topics": [
+        {
+          "title": "Understanding Mental Health",
+          "subtopics": [
+            {
+              "title": "Common Mental Health Issues",
+              "content": "Overview of common mental health issues such as anxiety, depression, bipolar disorder, and schizophrenia",
+              "video": "https://youtu.be/6yIb6xzhcOA",
+              "duration": "3:10",
+              "completed": false
+            },
+            {
+              "title": "Stigma and Barriers to Mental Health Treatment",
+              "content": "Exploring the stigma associated with mental health issues and the barriers to seeking treatment",
+              "video": "https://youtu.be/6yIb6xzhcOA",
+              "duration": "2:45",
+              "completed": false
+            },
+            {
+              "title": "The Importance of Early Intervention",
+              "content": "Highlighting the importance of early intervention and the benefits of seeking mental health treatment early",
+              "video": "https://youtu.be/6yIb6xzhcOA",
+              "duration": "1:50",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Signs and Symptoms of Mental Health Issues",
+          "subtopics": [
+            {
+              "title": "Recognizing Signs of Depression",
+              "content": "Understanding the symptoms of depression, such as feelings of sadness or hopelessness, changes in appetite or sleep patterns, loss of interest in activities, and thoughts of self-harm or suicide.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:18",
+              "completed": false
+            },
+            {
+              "title": "Recognizing Signs of Anxiety",
+              "content": "Understanding the symptoms of anxiety, such as excessive worrying, restlessness, irritability, and physical symptoms like sweating, trembling, or a rapid heartbeat.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:10",
+              "completed": false
+            },
+            {
+              "title": "Recognizing Signs of PTSD",
+              "content": "Understanding the symptoms of post-traumatic stress disorder, such as intrusive thoughts or memories, nightmares, avoidance of triggers, negative changes in mood or cognition, and hyperarousal.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:08",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Crisis Intervention Techniques",
+          "subtopics": [
+            {
+              "title": "Calming Techniques for Individuals in Crisis",
+              "content": "Learn techniques for calming individuals experiencing crisis, including deep breathing, mindfulness exercises, and grounding techniques.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:34",
+              "completed": false
+            },
+            {
+              "title": "Suicide Prevention and Response",
+              "content": "Understand the risk factors and warning signs of suicide, as well as how to respond and provide support to individuals at risk of suicide.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:51",
+              "completed": false
+            },
+            {
+              "title": "De-escalation Techniques for Aggressive Behavior",
+              "content": "Learn de-escalation techniques for managing aggressive behavior in crisis situations, including active listening, empathy, and setting limits.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:16",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Supporting Individuals with Mental Health Issues",
+          "subtopics": [
+            {
+              "title": "Active Listening Skills",
+              "content": "Effective listening techniques for providing support to individuals with mental health issues",
+              "video": "https://youtu.be/9xTpnW2hUh0",
+              "duration": "1:45",
+              "completed": false
+            },
+            {
+              "title": "Providing Emotional Support",
+              "content": "Understanding how to provide emotional support and be present for someone with mental health issues",
+              "video": "https://youtu.be/9xTpnW2hUh0",
+              "duration": "1:45",
+              "completed": false
+            },
+            {
+              "title": "Understanding Boundaries and Referral Resources",
+              "content": "Knowing your limits as a support person and when to refer someone to professional help",
+              "video": "https://youtu.be/9xTpnW2hUh0",
+              "duration": "1:45",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "The Importance of Self-Care",
+          "subtopics": [
+            {
+              "title": "Understanding the importance of self-care",
+              "content": "Learning why self-care is essential for mental health responders to maintain their well-being and effectiveness.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:30",
+              "completed": false
+            },
+            {
+              "title": "Recognizing signs of burnout and compassion fatigue",
+              "content": "Learning about the symptoms and effects of burnout and compassion fatigue, and how to identify them in oneself.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:55",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Self-Care Techniques for Mental Health Responders",
+          "subtopics": [
+            {
+              "title": "Practicing mindfulness and meditation",
+              "content": "Learning about the benefits of mindfulness and meditation, and how to incorporate them into one's self-care routine.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "6:12",
+              "completed": false
+            },
+            {
+              "title": "Engaging in physical activity and exercise",
+              "content": "Learning about the importance of physical activity for mental health, and how to find enjoyable ways to stay active.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "5:20",
+              "completed": false
+            },
+            {
+              "title": "Taking breaks and engaging in hobbies",
+              "content": "Learning about the benefits of taking breaks and engaging in hobbies, and how to prioritize leisure time for self-care.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:45",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "title": "Compassion Fatigue and Burnout Prevention",
+          "subtopics": [
+            {
+              "title": "Setting boundaries and practicing self-compassion",
+              "content": "Learning how to set healthy boundaries and practice self-compassion to prevent compassion fatigue and burnout.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "5:38",
+              "completed": false
+            },
+            {
+              "title": "Building a support network",
+              "content": "Learning about the importance of building a support network and seeking help when needed to prevent burnout.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:50",
+              "completed": false
+            }
+          ]
+        }
+      ]
     }
   ]
 }
