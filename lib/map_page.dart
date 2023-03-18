@@ -28,9 +28,6 @@ class _MapPageState extends State<MapPage> {
 
   List<LatLng> polylineCoordinates = [];
 
-  BitmapDescriptor emergencyIcon = BitmapDescriptor.defaultMarker;
-  BitmapDescriptor currentLocationIcon = BitmapDescriptor.defaultMarker;
-
   late String _mapStyle;
 
   void _onMapCreated(GoogleMapController controller) {
@@ -91,19 +88,6 @@ class _MapPageState extends State<MapPage> {
     }
   }
 
-  void setCustomMarkerIcon() {
-    BitmapDescriptor.fromAssetImage(
-            ImageConfiguration.empty, "assets/outline_emergency_black_24dp.png")
-        .then((icon) {
-      emergencyIcon = icon;
-    });
-    BitmapDescriptor.fromAssetImage(ImageConfiguration.empty,
-            "assets/outline_trip_origin_black_24dp.png")
-        .then((icon) {
-      currentLocationIcon = icon;
-    });
-  }
-
   @override
   void initState() {
     // isServiceEnabled();
@@ -111,7 +95,7 @@ class _MapPageState extends State<MapPage> {
     location.changeSettings(distanceFilter: 5, accuracy: LocationAccuracy.high);
     // location.enableBackgroundMode(enable: true);
     getCurrentLocation();
-    setCustomMarkerIcon();
+
     super.initState();
 
     rootBundle.loadString('assets/map_style.txt').then((string) {
@@ -233,142 +217,59 @@ class _MapPageState extends State<MapPage> {
                     Text("Additional Information",
                         style: TextStyle(color: Colors.black.withOpacity(0.3))),
                     const SizedBox(
-                      height: 4,
+                      height: 8,
                     ),
-                    Card(
-                        margin: EdgeInsets.zero,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.black.withOpacity(0.2),
-                          ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1, color: Colors.black.withOpacity(0.2)),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(16)),
+                              const BorderRadius.all(Radius.circular(16))),
+                      child: const ListTile(
+                        title: Text("Age"),
+                        subtitle: Text("Middle-aged"),
+                        trailing: Icon(
+                          Icons.schedule_outlined,
+                          color: Colors.red,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: CircleAvatar(
-                                      radius: 24,
-                                      backgroundColor: Colors.red,
-                                      child: Text("A"),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Text(
-                                    "Paviru Uduwe Perera",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Row(
-                                children: [
-                                  Flexible(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1,
-                                              color: Colors.black
-                                                  .withOpacity(0.2)),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(16))),
-                                      child: const ListTile(
-                                        title: Text("Age"),
-                                        subtitle: Text("42"),
-                                        trailing: Icon(
-                                          Icons.calendar_month_outlined,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Flexible(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1,
-                                              color: Colors.black
-                                                  .withOpacity(0.2)),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(16))),
-                                      child: const ListTile(
-                                        title: Text("Weight"),
-                                        subtitle: Text("100 kg"),
-                                        trailing: Icon(
-                                          Icons.scale_outlined,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Row(
-                                children: [
-                                  Flexible(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1,
-                                              color: Colors.black
-                                                  .withOpacity(0.2)),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(16))),
-                                      child: const ListTile(
-                                        title: Text("Height"),
-                                        subtitle: Text("1.24 m"),
-                                        trailing: Icon(
-                                          Icons.height_outlined,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Flexible(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1,
-                                              color: Colors.black
-                                                  .withOpacity(0.2)),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(16))),
-                                      child: const ListTile(
-                                        title: Text("Blood Type"),
-                                        subtitle: Text("O+"),
-                                        trailing: Icon(
-                                          Icons.bloodtype_outlined,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1, color: Colors.black.withOpacity(0.2)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(16))),
+                      child: const ListTile(
+                        title: Text("Gender"),
+                        subtitle: Text("Male"),
+                        trailing: Icon(
+                          Icons.male_outlined,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1, color: Colors.black.withOpacity(0.2)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(16))),
+                      child: const ListTile(
+                        title: Text("Height"),
+                        subtitle: Text("Around 1.7 m"),
+                        trailing: Icon(
+                          Icons.height_outlined,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -394,19 +295,8 @@ class _MapPageState extends State<MapPage> {
                       ),
                     },
                     markers: {
-                      // Marker(
-                      //   markerId: const MarkerId("currentLocation"),
-                      //   icon: currentLocationIcon,
-                      //   position: LatLng(currentLocation?.latitude ?? 1.3547,
-                      //       currentLocation?.longitude ?? 103.6848),
-                      // ),
-                      // Marker(
-                      //   markerId: const MarkerId("user"),
-                      //   position: origin,
-                      // ),
                       Marker(
                         markerId: const MarkerId("destination"),
-                        // icon: emergencyIcon,
                         position: destination,
                       ),
                     }),

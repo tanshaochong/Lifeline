@@ -6,6 +6,7 @@ import 'learning.dart';
 import 'emergency.dart';
 import 'instructions.dart';
 import 'auth.dart';
+import 'map_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -94,10 +95,10 @@ class _HomeViewState extends State<HomeView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Container(),
                               const SizedBox(
-                                height: 25,
+                                height: 8,
                               ),
+                              NotificationBanner(),
                               const TopWidget(),
                               Row(
                                 // ignore: prefer_const_literals_to_create_immutables
@@ -180,20 +181,24 @@ class _TopWidgetState extends State<TopWidget> {
             context, MaterialPageRoute(builder: (context) => const MapPage()));
       },
       child: Container(
-        height: 250,
-        margin: const EdgeInsets.all(8),
-        child: Card(
-          semanticContainer: true,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          elevation: 10,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+          height: 250,
+          margin: const EdgeInsets.all(8),
+          child: const ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+            child: MapWidget(),
+          )
+          // Card(
+          //   semanticContainer: true,
+          //   clipBehavior: Clip.antiAliasWithSaveLayer,
+          //   elevation: 10,
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(20.0),
+          //   ),
+          //   color: Colors.white,
+          //   child: const MapWidget(),
+          //   // child: const Placeholder(),
+          // ),
           ),
-          color: Colors.white,
-          // child: const MapWidget(),
-          child: const Placeholder(),
-        ),
-      ),
     );
   }
 }
