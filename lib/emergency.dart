@@ -1,14 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'instructions.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
-class Emergency extends StatelessWidget {
+class EmergencyInstruction {
+  final String name;
+  final List<Instruction> instructions;
+
+  EmergencyInstruction({required this.name, required this.instructions});
+}
+
+class Instruction {
+  final String text;
+  final String url;
+
+  Instruction({required this.text, required this.url});
+}
+
+class Emergency extends StatefulWidget {
   const Emergency({
     super.key,
     required this.isSwiped,
   });
 
   final bool isSwiped;
+
+  @override
+  State<Emergency> createState() => _EmergencyState();
+}
+
+class _EmergencyState extends State<Emergency> {
+  Future<void> loadInstructions() async {
+    final instructionsJson =
+        await rootBundle.loadString('assets/instructions.json');
+
+    // Parse the JSON string into a Map
+    Map<String, dynamic> jsonData = json.decode(instructionsJson);
+
+    // Access the emergencies list from the Map
+    List<dynamic> emergenciesList = jsonData['emergencies'];
+
+    // Create a List of Emergency objects
+    List<EmergencyInstruction> emergencies =
+        emergenciesList.map((emergencyData) {
+      // Extract the name and instructions fields from the emergency data
+      String name = emergencyData['name'];
+      List<dynamic> instructionsList = emergencyData['instructions'];
+
+      // Create a List of Instruction objects
+      List<Instruction> instructions = instructionsList.map((instructionData) {
+        // Extract the text and pictureUrl fields from the instruction data
+        String text = instructionData['text'];
+        String url = instructionData['url'];
+
+        // Create a new Instruction object with the extracted fields
+        return Instruction(text: text, url: url);
+      }).toList();
+
+      // Create a new Emergency object with the extracted fields and List of Instruction objects
+      return EmergencyInstruction(name: name, instructions: instructions);
+    }).toList();
+
+    print(emergencies);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadInstructions();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,27 +85,30 @@ class Emergency extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             const ModeBanner(),
-            Expanded(child: ListView.builder(itemBuilder: (context, index) {
-              return Card(
+            Expanded(
+              child: ListView.builder(itemBuilder: (context, index) {
+                return Card(
                   child: ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const InstructionsPage()));
-                },
-                // leading: FlutterLogo(),
-                title: const Text('Lorem Ipsum'),
-                trailing: Icon(Icons.more_vert),
-              ));
-            })),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InstructionsPage()));
+                    },
+                    // leading: FlutterLogo(),
+                    title: const Text('Lorem Ipsum'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                );
+              }),
+            ),
           ],
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: EmergencySwipeToCall(isSwiped: isSwiped),
+            child: EmergencySwipeToCall(isSwiped: widget.isSwiped),
           ),
         ),
       ]),

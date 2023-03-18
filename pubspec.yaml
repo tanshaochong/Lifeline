@@ -77,6 +77,7 @@ flutter:
     # To add assets to your application, add an assets section, like this:
     assets:
         - assets/content.json
+        - assets/instructions.json
         - assets/map_style.txt
         - assets/outline_emergency_black_24dp.png
         - assets/outline_trip_origin_black_24dp.png
