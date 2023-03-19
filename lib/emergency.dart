@@ -4,11 +4,11 @@ import 'instructions.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
-class EmergencyInstruction {
+class Emergency {
   final String name;
   final List<Instruction> instructions;
 
-  EmergencyInstruction({required this.name, required this.instructions});
+  Emergency({required this.name, required this.instructions});
 }
 
 class Instruction {
@@ -18,8 +18,8 @@ class Instruction {
   Instruction({required this.text, required this.url});
 }
 
-class Emergency extends StatefulWidget {
-  const Emergency({
+class EmergencyPage extends StatefulWidget {
+  const EmergencyPage({
     super.key,
     required this.isSwiped,
   });
@@ -27,10 +27,12 @@ class Emergency extends StatefulWidget {
   final bool isSwiped;
 
   @override
-  State<Emergency> createState() => _EmergencyState();
+  State<EmergencyPage> createState() => _EmergencyPageState();
 }
 
-class _EmergencyState extends State<Emergency> {
+class _EmergencyPageState extends State<EmergencyPage> {
+  List<Emergency> emergencyList = [];
+
   Future<void> loadInstructions() async {
     final instructionsJson =
         await rootBundle.loadString('assets/instructions.json');
@@ -42,8 +44,7 @@ class _EmergencyState extends State<Emergency> {
     List<dynamic> emergenciesList = jsonData['emergencies'];
 
     // Create a List of Emergency objects
-    List<EmergencyInstruction> emergencies =
-        emergenciesList.map((emergencyData) {
+    List<Emergency> emergencies = emergenciesList.map((emergencyData) {
       // Extract the name and instructions fields from the emergency data
       String name = emergencyData['name'];
       List<dynamic> instructionsList = emergencyData['instructions'];
@@ -59,10 +60,12 @@ class _EmergencyState extends State<Emergency> {
       }).toList();
 
       // Create a new Emergency object with the extracted fields and List of Instruction objects
-      return EmergencyInstruction(name: name, instructions: instructions);
+      return Emergency(name: name, instructions: instructions);
     }).toList();
 
-    print(emergencies);
+    setState(() {
+      emergencyList = emergencies;
+    });
   }
 
   @override
@@ -73,6 +76,8 @@ class _EmergencyState extends State<Emergency> {
 
   @override
   Widget build(BuildContext context) {
+    print(emergencyList);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(

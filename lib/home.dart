@@ -141,7 +141,7 @@ class EmergencyWidget extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const Emergency(isSwiped: true)));
+                builder: (context) => const EmergencyPage(isSwiped: true)));
       },
       child: Card(
         elevation: 10,
