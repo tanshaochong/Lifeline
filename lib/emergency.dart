@@ -3,13 +3,37 @@ import 'package:slide_to_act/slide_to_act.dart';
 import 'package:solutionchallenge/map_page.dart';
 import 'instructions.dart';
 
-class Emergency extends StatelessWidget {
-  const Emergency({
+import 'utils/instruction_service.dart';
+
+class EmergencyPage extends StatefulWidget {
+  const EmergencyPage({
     super.key,
     required this.isSwiped,
   });
 
   final bool isSwiped;
+
+  @override
+  State<EmergencyPage> createState() => _EmergencyPageState();
+}
+
+class _EmergencyPageState extends State<EmergencyPage> {
+  List<Emergency> emergencyList = [];
+
+  Future<void> _loadInstructions() async {
+    List<Emergency> emergencies =
+        await InstructionService.getInstructions('assets/instructions.json');
+
+    setState(() {
+      emergencyList = emergencies;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInstructions();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +49,52 @@ class Emergency extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             const ModeBanner(),
-            Expanded(child: ListView.builder(itemBuilder: (context, index) {
-              return Card(
-                  child: ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const InstructionsPage()));
-                },
-                // leading: FlutterLogo(),
-                title: const Text('Lorem Ipsum'),
-                trailing: Icon(Icons.more_vert),
-              ));
-            })),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: emergencyList.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      color: Colors.grey.shade50,
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InstructionsPage(
+                                      name: emergencyList[index].name,
+                                      instructions:
+                                          emergencyList[index].instructions,
+                                    )),
+                          );
+                        },
+                        title: Text(
+                          emergencyList[index].name,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: Text(
+                            '${emergencyList[index].instructions.length} Steps'),
+                        trailing: const Icon(Icons.more_vert),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                      ),
+                    );
+                  }),
+            ),
           ],
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: EmergencySwipeToCall(isSwiped: isSwiped),
+            child: EmergencySwipeToCall(isSwiped: widget.isSwiped),
           ),
         ),
       ]),
