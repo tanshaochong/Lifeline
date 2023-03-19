@@ -76,8 +76,6 @@ class _EmergencyPageState extends State<EmergencyPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(emergencyList);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -91,21 +89,28 @@ class _EmergencyPageState extends State<EmergencyPage> {
           children: [
             const ModeBanner(),
             Expanded(
-              child: ListView.builder(itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const InstructionsPage()));
-                    },
-                    // leading: FlutterLogo(),
-                    title: const Text('Lorem Ipsum'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                );
-              }),
+              child: ListView.builder(
+                  itemCount: emergencyList.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InstructionsPage(
+                                      name: emergencyList[index].name,
+                                      instructions:
+                                          emergencyList[index].instructions,
+                                    )),
+                          );
+                        },
+                        // leading: FlutterLogo(),
+                        title: Text(emergencyList[index].name),
+                        trailing: const Icon(Icons.more_vert),
+                      ),
+                    );
+                  }),
             ),
           ],
         ),
