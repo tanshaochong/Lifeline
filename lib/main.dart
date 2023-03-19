@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'First Aid App',
       theme: ThemeData(
         primarySwatch: Colors.red,
-        fontFamily: GoogleFonts.openSans().fontFamily,
+        fontFamily: GoogleFonts.poppins().fontFamily,
       ),
       // home: const HomeView());
       home: const login_tree(),

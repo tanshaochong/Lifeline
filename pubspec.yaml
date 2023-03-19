@@ -78,6 +78,7 @@ flutter:
     assets:
         - assets/content.json
         - assets/instructions.json
+        - assets/instructions_homepage.json
         - assets/map_style.txt
         - assets/outline_emergency_black_24dp.png
         - assets/outline_trip_origin_black_24dp.png
