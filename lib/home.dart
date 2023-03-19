@@ -23,7 +23,7 @@ class _HomeViewState extends State<HomeView> {
 
   Future<void> _loadInstructions() async {
     List<Emergency> emergencies =
-        await InstructionService.getInstructions('assets/instructions.json');
+        await InstructionService.getInstructions('assets/instructions_homepage.json');
 
     setState(() {
       emergencyList = emergencies;

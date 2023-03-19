@@ -70,6 +70,11 @@ class _EmergencyPageState extends State<EmergencyPage> {
                                     )),
                           );
                         },
+                        leading: Icon(
+                          Icons.healing,
+                          size: 40,
+                          color: Colors.red.shade400,
+                        ),
                         title: Text(
                           emergencyList[index].name,
                           style: const TextStyle(
@@ -88,6 +93,9 @@ class _EmergencyPageState extends State<EmergencyPage> {
                     );
                   }),
             ),
+            const SizedBox(
+              height: 85,
+            )
           ],
         ),
         Align(

@@ -1,7 +1,7 @@
 {
     "emergencies": [
         {
-            "name": "CPR",
+            "name": "Cardiopulmonary Resuscitation",
             "instructions": [
                 {
                     "url": "https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80",
@@ -34,35 +34,250 @@
             ]
         },
         {
-            "name": "AED",
+            "name": "Automated External Defibrillator",
             "instructions": [
                 {
-                    "url": "https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80",
-                    "text": "Check for responsiveness: Shake the victim gently and shout, \"Are you okay?\""
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Call emergency services immediately, if not already done."
                 },
                 {
-                    "url": "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
-                    "text": "Call for help: If the victim is unresponsive, call for emergency medical services (EMS) or ask someone nearby to do so."
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Locate the nearest AED and bring it to the person in need."
                 },
                 {
-                    "url": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80",
-                    "text": "Open the airway: Tilt the victim's head back gently and lift the chin to open their airway."
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Turn on the AED and follow the voice prompts."
                 },
                 {
-                    "url": "https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80",
-                    "text": "Check for breathing: Look, listen, and feel for breaths. If the victim is not breathing or is only gasping, begin CPR."
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Remove any clothing or jewelry that may interfere with the AED pads."
                 },
                 {
-                    "url": "https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80",
-                    "text": "Perform chest compressions: Place the heel of one hand on the center of the victim's chest and the other hand on top of the first. Push down hard and fast, aiming for a rate of 100-120 compressions per minute."
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Attach the AED pads to the person's bare chest as indicated on the pads."
                 },
                 {
-                    "url": "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80",
-                    "text": "Give rescue breaths: Pinch the victim's nose closed and give two full breaths into their mouth, making sure the chest rises with each breath."
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Stand clear and let the AED analyze the person's heart rhythm."
                 },
                 {
-                    "url": "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80",
-                    "text": "Continue CPR: Alternate between chest compressions and rescue breaths, continuing until help arrives or the victim starts to breathe on their own."
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "If a shock is advised, make sure no one is touching the person and press the shock button as directed."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Immediately begin CPR after the shock is delivered, as instructed by the AED or emergency services."
+                }
+            ]
+        },
+        {
+            "name": "Heimlich Maneuver",
+            "instructions": [
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Stand behind the person and wrap your arms around their waist."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Make a fist with one hand and place it just above the person's belly button."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Grasp your fist with your other hand and press inward and upward into the person's abdomen with a quick upward thrust."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Repeat thrusts until the object blocking the person's airway is dislodged or they become unconscious."
+                }
+            ]
+        },
+        {
+            "name": "Wound Care",
+            "instructions": [
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Clean your hands with soap and water or use hand sanitizer."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Apply pressure with a clean cloth or bandage to stop any bleeding."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Clean the wound with mild soap and water or saline solution."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Gently pat the wound dry with a clean cloth."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Apply an antibiotic ointment to the wound."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Cover the wound with a sterile bandage or dressing."
+                }
+            ]
+        },
+        {
+            "name": "Burn Management",
+            "instructions": [
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Remove the source of heat or electricity."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Cool the burn with cool running water for at least 10-20 minutes."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Cover the burn with a sterile, non-adhesive dressing or clean cloth."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Elevate the affected area if possible."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Do not apply ice, ointments, or butter to the burn."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Seek medical attention if the burn is severe or covers a large area of the body."
+                }
+            ]
+        },
+        {
+            "name": "Shock Management",
+            "instructions": [
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Call for emergency medical services."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Have the person lie down and elevate their legs unless it causes pain or discomfort."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Cover the person with a blanket to keep them warm."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Monitor their breathing, pulse, and level of consciousness."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Do not give the person anything to eat or drink."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Stay with the person and reassure them until medical help arrives."
+                }
+            ]
+        },
+        {
+            "name": "Allergic Reactions",
+            "instructions": [
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Remove the source of the allergen if possible."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Call for emergency medical services."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Administer an epinephrine auto-injector if the person has one and is able to use it."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Have the person lie down and elevate their legs."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Monitor their breathing, pulse, and level of consciousness."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "If the person is vomiting, turn them on their side to prevent choking."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Do not give the person anything to eat or drink."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Stay with the person and reassure them until medical help arrives."
+                }
+            ]
+        },
+        {
+            "name": "Heatstroke",
+            "instructions": [
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Move the person to a cooler place."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Loosen or remove any tight clothing."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Cool the person down with cold compresses or by immersing them in cool water."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Fan the person to help with evaporation."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Offer the person fluids, such as water or a sports drink, but avoid alcohol or caffeine."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Monitor their temperature and continue cooling efforts until their temperature drops to 101°F (38.3°C)."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Seek medical attention immediately if the person's condition does not improve or worsens."
+                }
+            ]
+        },
+        {
+            "name": "Poison",
+            "instructions": [
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Call the poison control center or emergency services immediately."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Provide the name of the poison if known, the age and weight of the person affected, and any symptoms they may be experiencing."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Do not give the person anything to eat or drink unless instructed to do so by medical professionals."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "If the poison was inhaled, move the person to fresh air immediately."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "If the poison was ingested and the person is conscious, rinse their mouth with water and give them a small amount of water to drink."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "If the person is unconscious, not breathing, or having seizures, begin CPR or first aid as necessary while waiting for medical professionals to arrive."
+                },
+                {
+                    "url": "https://unsplash.com/photos/HPha3t0r4MU",
+                    "text": "Follow any additional instructions provided by the poison control center or emergency services."
                 }
             ]
         }
