@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'emergency.dart';
+import 'utils/instruction_service.dart';
 
 class InstructionsPage extends StatefulWidget {
   const InstructionsPage({

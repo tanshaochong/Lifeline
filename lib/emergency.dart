@@ -1,22 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'instructions.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 
-class Emergency {
-  final String name;
-  final List<Instruction> instructions;
-
-  Emergency({required this.name, required this.instructions});
-}
-
-class Instruction {
-  final String text;
-  final String url;
-
-  Instruction({required this.text, required this.url});
-}
+import 'utils/instruction_service.dart';
 
 class EmergencyPage extends StatefulWidget {
   const EmergencyPage({
@@ -33,35 +19,9 @@ class EmergencyPage extends StatefulWidget {
 class _EmergencyPageState extends State<EmergencyPage> {
   List<Emergency> emergencyList = [];
 
-  Future<void> loadInstructions() async {
-    final instructionsJson =
-        await rootBundle.loadString('assets/instructions.json');
-
-    // Parse the JSON string into a Map
-    Map<String, dynamic> jsonData = json.decode(instructionsJson);
-
-    // Access the emergencies list from the Map
-    List<dynamic> emergenciesList = jsonData['emergencies'];
-
-    // Create a List of Emergency objects
-    List<Emergency> emergencies = emergenciesList.map((emergencyData) {
-      // Extract the name and instructions fields from the emergency data
-      String name = emergencyData['name'];
-      List<dynamic> instructionsList = emergencyData['instructions'];
-
-      // Create a List of Instruction objects
-      List<Instruction> instructions = instructionsList.map((instructionData) {
-        // Extract the text and pictureUrl fields from the instruction data
-        String text = instructionData['text'];
-        String url = instructionData['url'];
-
-        // Create a new Instruction object with the extracted fields
-        return Instruction(text: text, url: url);
-      }).toList();
-
-      // Create a new Emergency object with the extracted fields and List of Instruction objects
-      return Emergency(name: name, instructions: instructions);
-    }).toList();
+  Future<void> _loadInstructions() async {
+    List<Emergency> emergencies =
+        await InstructionService.getInstructions('assets/instructions.json');
 
     setState(() {
       emergencyList = emergencies;
@@ -71,7 +31,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
   @override
   void initState() {
     super.initState();
-    loadInstructions();
+    _loadInstructions();
   }
 
   @override
