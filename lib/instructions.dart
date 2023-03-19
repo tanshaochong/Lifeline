@@ -25,7 +25,7 @@ class _InstructionsPageState extends State<InstructionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfffdaaaa),
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
         title: const Text(
           'Instructions',
@@ -44,7 +44,7 @@ class _InstructionsPageState extends State<InstructionsPage> {
         margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(8),
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(color: Color(0xfffdaaaa)),
+        decoration: BoxDecoration(color: Colors.grey.shade50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,

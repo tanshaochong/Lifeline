@@ -93,6 +93,10 @@ class _EmergencyPageState extends State<EmergencyPage> {
                   itemCount: emergencyList.length,
                   itemBuilder: (context, index) {
                     return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      color: Colors.grey.shade50,
                       child: ListTile(
                         onTap: () {
                           Navigator.push(
@@ -105,9 +109,20 @@ class _EmergencyPageState extends State<EmergencyPage> {
                                     )),
                           );
                         },
-                        // leading: FlutterLogo(),
-                        title: Text(emergencyList[index].name),
+                        title: Text(
+                          emergencyList[index].name,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: Text(
+                            '${emergencyList[index].instructions.length} Steps'),
                         trailing: const Icon(Icons.more_vert),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
                       ),
                     );
                   }),
