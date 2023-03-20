@@ -132,18 +132,15 @@ class _InstructionsPageState extends State<InstructionsPage> {
             ],
           ),
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  instruction.text,
-                  style: const TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
+            child: Center(
+              child: Text(
+                instruction.text,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],

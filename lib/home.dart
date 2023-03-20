@@ -8,6 +8,7 @@ import 'instructions.dart';
 import 'auth.dart';
 import 'map_widget.dart';
 import 'utils/instruction_service.dart';
+import 'package:flutter/services.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -22,8 +23,8 @@ class _HomeViewState extends State<HomeView> {
   List<Emergency> emergencyList = [];
 
   Future<void> _loadInstructions() async {
-    List<Emergency> emergencies =
-        await InstructionService.getInstructions('assets/instructions_homepage.json');
+    List<Emergency> emergencies = await InstructionService.getInstructions(
+        'assets/instructions_homepage.json');
 
     setState(() {
       emergencyList = emergencies;
@@ -54,6 +55,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -161,7 +166,8 @@ class TopWidget extends StatefulWidget {
   State<TopWidget> createState() => _TopWidgetState();
 }
 
-class _TopWidgetState extends State<TopWidget> with AutomaticKeepAliveClientMixin {
+class _TopWidgetState extends State<TopWidget>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
