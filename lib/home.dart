@@ -107,7 +107,7 @@ class _HomeViewState extends State<HomeView> {
                         parent: AlwaysScrollableScrollPhysics()),
                     children: [
                       HomeEmergencyPage(emergencyList: emergencyList),
-                      const LearningPage(),
+                      LearningPage(user: user),
                     ]),
               )
             ],

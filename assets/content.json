@@ -8,39 +8,39 @@
           "title": "Basic First Aid Techniques",
           "subtopics": [
             {
+              "topicID": "010101",
               "title": "Overview",
               "content": "This section provides a brief introduction to the basic principles of first aid, including the importance of quick and appropriate action in emergency situations.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration":"1:23",
-              "completed": false
+              "duration":"1:23"
             },
             {
+              "topicID": "010102",
               "title": "Emergency Situations",
               "content": "This section outlines the steps to follow in an emergency situation, including how to call for help and how to stay calm and focused.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010103",
               "title": "Primary Assessment",
               "content": "This section provides an overview of the primary assessment process, which is used to determine the nature of the injury or illness and the appropriate course of action.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010104",
               "title": "ABCs of First Aid",
               "content": "This section explains the importance of the ABCs of first aid, which stands for Airway, Breathing, and Circulation, and provides instructions on how to perform these life-saving techniques.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010105",
               "title": "Treating Injuries",
               "content": "This section covers the basics of how to administer first aid for different types of injuries, such as cuts, burns, fractures, and sprains, including how to recognize and respond to each type of injury.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -48,39 +48,39 @@
           "title": "CPR and AED Training",
           "subtopics": [
             {
+              "topicID": "010201",
               "title": "Introduction to CPR",
               "content": "This section provides an overview of what CPR is and why it is important in emergency situations.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010202",
               "title": "Chest Compressions and Rescue Breaths",
               "content": "This section provides step-by-step instructions on how to perform chest compressions and rescue breaths in CPR.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010203",
               "title": "Using an AED",
               "content": "This section explains when and how to use an automated external defibrillator (AED) in CPR.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010204",
               "title": "CPR on Infants and Children",
               "content": "This section explains how to perform CPR on infants and children, including the differences from adult CPR.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010205",
               "title": "Recognizing Cardiac Arrest",
               "content": "This section explains how to recognize the signs of cardiac arrest and how to respond appropriately.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -88,39 +88,39 @@
           "title": "Common Medical Emergencies",
           "subtopics": [
             {
+              "topicID": "010301",
               "title": "Overview",
               "content": "This section provides an overview of the most common medical emergencies and how to recognize them.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010302",
               "title": "Heart Attack, Stroke, and Diabetic Emergency",
               "content": "This section covers how to respond to a heart attack, stroke, or diabetic emergency, including what to do before medical help arrives.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010303",
               "title": "Seizure and Allergic Reaction",
               "content": "This section covers how to recognize and respond to a seizure or allergic reaction, including administering first aid and seeking medical help if necessary.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010304",
               "title": "Panic Attack and Fainting",
               "content": "This section covers what to do if someone is experiencing a panic attack or fainting, including how to provide comfort and support.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010305",
               "title": "Heat Exhaustion and Hypothermia",
               "content": "This section covers how to recognize the signs of heat exhaustion or hypothermia and how to respond appropriately, including first aid techniques and seeking medical attention.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -128,39 +128,39 @@
           "title": "How to Treat Burns and Cuts",
           "subtopics": [
             {
+              "topicID": "010401",
               "title": "Recognizing Burns and Cuts",
               "content": "Learn to differentiate between first-degree, second-degree, and third-degree burns and how to identify different types of cuts",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010402",
               "title": "Immediate Care",
               "content": "Understand the immediate care steps to be taken after experiencing a burn or a cut, such as stopping the bleeding, cleaning the wound, and covering it to prevent infection",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010403",
               "title": "Medical Attention",
               "content": "Know when it is necessary to seek medical attention for burns or cuts and how to find medical help if required",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010404",
               "title": "Preventing Infection and Promoting Healing",
               "content": "Learn how to prevent infection and promote healing in burns and cuts by using over-the-counter treatments or natural remedies",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "010405",
               "title": "Controlling Bleeding",
               "content": "Discover how to use a tourniquet or apply pressure to control bleeding in serious cuts or wounds",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         }
@@ -174,32 +174,32 @@
           "title": "Bleeding and Wound Care",
           "subtopics": [
             {
+              "topicID": "020101",
               "title": "Treating Minor Cuts and Scrapes",
               "content": "Clean the wound with soap and water, apply an antiseptic, and cover with a bandage.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020102",
               "title": "Applying Pressure to Stop Bleeding",
               "content": "Apply firm pressure to the wound with a clean cloth or bandage.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020103",
               "title": "Using a Tourniquet",
               "content": "Only use a tourniquet as a last resort to stop severe bleeding. Apply it 2-3 inches above the wound, tighten until the bleeding stops, and seek medical help immediately.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020104",
               "title": "Cleaning and Dressing Wounds",
               "content": "Clean the wound thoroughly with water and a mild soap, apply an antiseptic ointment, and cover with sterile gauze and tape.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -207,25 +207,25 @@
           "title": "Burns and Scalds",
           "subtopics": [
             {
+              "topicID": "020201",
               "title": "Identifying Different Types of Burns",
               "content": "First-degree burns only affect the top layer of skin and appear red and dry. Second-degree burns involve the first and second layers of skin and appear red, blistered, and painful. Third-degree burns are the most severe and involve all layers of skin and the underlying tissue.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020202",
               "title": "Cooling and Soothing Burned Skin",
               "content": "Run cool (not cold) water over the burn for several minutes, or apply a cool compress. Use aloe vera, hydrocortisone cream, or an antibiotic ointment to soothe the burn.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020203",
               "title": "Knowing When to Seek Medical Help",
               "content": "Seek medical help if the burn is larger than 3 inches, affects the face, hands, feet, or genitals, or if it is a third-degree burn.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -233,32 +233,32 @@
           "title": "Choking and Suffocation",
           "subtopics": [
             {
+              "topicID": "020301",
               "title": "Performing the Heimlich Maneuver on Yourself",
               "content": "Learn how to perform the Heimlich maneuver on yourself if you are choking and there is no one else around to help you.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020302",
               "title": "Clearing a Blocked Airway",
               "content": "Learn how to clear a blocked airway by performing back blows and abdominal thrusts.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020303",
               "title": "Recognizing the Signs of Suffocation",
               "content": "Learn how to recognize the signs of suffocation, which can include gasping for air, blue lips or face, and loss of consciousness.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020304",
               "title": "Avoiding Choking Hazards",
               "content": "Learn how to avoid choking hazards, such as small toys, foods, and objects that can easily become lodged in the throat.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -266,32 +266,32 @@
           "title": "Poisoning and Overdose",
           "subtopics": [
             {
+              "topicID": "020401",
               "title": "Knowing Common Household Poisons",
               "content": "Learn about the common household poisons and how to prevent poisoning.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020402",
               "title": "Recognizing the Symptoms of Poisoning",
               "content": "Learn how to recognize the symptoms of poisoning, which can include nausea, vomiting, abdominal pain, and difficulty breathing.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020403",
               "title": "Contacting Emergency Services",
               "content": "Learn how to contact emergency services in case of poisoning or overdose.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020404",
               "title": "Administering Medication for Overdose",
               "content": "Learn how to administer medication, such as naloxone, in case of overdose.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -299,32 +299,32 @@
           "title": "Sprains and Strains",
           "subtopics": [
             {
+              "topicID": "020501",
               "title": "Recognizing the Difference Between Sprains and Strains",
               "content": "Learn how to differentiate between sprains and strains and how to treat them.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020502",
               "title": "Resting and Elevating the Affected Area",
               "content": "Learn how to rest and elevate the affected area to reduce swelling and pain.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020503",
               "title": "Applying Ice and Compression",
               "content": "Learn how to apply ice and compression to the affected area to reduce swelling and pain.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020504",
               "title": "Knowing When to Seek Medical Help",
               "content": "Learn how to recognize when it is necessary to seek medical help for sprains and strains.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -332,32 +332,32 @@
           "title": "Heatstroke and Hypothermia",
           "subtopics": [
             {
+              "topicID": "020601",
               "title": "Recognizing the Symptoms of Heatstroke and Hypothermia",
               "content": "Learn how to recognize the symptoms of heatstroke and hypothermia, which can include fatigue, dizziness, nausea, and confusion.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020602",
               "title": "Taking Steps to Cool Down or Warm Up",
               "content": "Learn how to take appropriate steps to cool down or warm up the body depending on the condition.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020603",
               "title": "Avoiding Extreme Temperatures",
               "content": "Learn how to avoid extreme temperatures to prevent heatstroke and hypothermia.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020604",
               "title": "Knowing When to Seek Medical Help",
               "content": "Learn how to recognize when it is necessary to seek medical help for heatstroke and hypothermia.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -365,32 +365,32 @@
           "title": "Allergic Reactions",
           "subtopics": [
             {
+              "topicID": "020701",
               "title": "Recognizing the Signs of an Allergic Reaction",
               "content": "Learn how to recognize the signs of an allergic reaction, which can include hives, swelling, difficulty breathing, and anaphylaxis.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "2:23",
-              "completed": false
+              "duration": "2:23"
             },
             {
+              "topicID": "020702",
               "title": "Administering Self-Injectable Epinephrine",
               "content": "Learn how to administer self-injectable epinephrine in case of an allergic reaction.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020703",
               "title": "Taking Antihistamines or Other Medications",
               "content": "Learn how to take antihistamines or other medications to manage mild to moderate allergic reactions.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "020704",
               "title": "Avoiding Triggers and Allergens",
               "content": "Learn how to avoid triggers and allergens that can cause an allergic reaction.",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         }
@@ -399,7 +399,164 @@
     {
       "name": "Infant & Child First Aid",
       "description": "For parents and babysitters",
-      "topics": []
+      "topics": [
+        {
+          "title": "CPR and Choking",
+          "subtopics": [
+            {
+              "topicID": "030101",
+              "title": "Infant and Child CPR",
+              "content": "Performing CPR on an infant or child",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:41"
+            },
+            {
+              "topicID": "030102",
+              "title": "Choking Prevention and Response for Infants and Children",
+              "content": "Recognizing choking hazards and performing the Heimlich maneuver on infants and children",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:56"
+            },
+            {
+              "topicID": "030103",
+              "title": "Abdominal Thrusts on Infants and Children",
+              "content": "Performing abdominal thrusts (formerly known as the Heimlich maneuver) on infants and children",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:09"
+            }
+          ]
+        },
+        {
+          "title": "Burns and Wounds",
+          "subtopics": [
+            {
+              "topicID": "030201",
+              "title": "First Aid for Burns in Infants and Children",
+              "content": "Treating first-degree, second-degree, and third-degree burns, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:10"
+            },
+            {
+              "topicID": "030202",
+              "title": "First Aid for Cuts and Scrapes in Infants and Children",
+              "content": "Cleaning and dressing minor cuts and scrapes, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:47"
+            },
+            {
+              "topicID": "030203",
+              "title": "Signs of Infection and When to Seek Medical Attention",
+              "content": "Recognizing signs of infection in wounds and burns, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:47"
+            }
+          ]
+        },
+        {
+          "title": "Allergic Reactions and Anaphylaxis",
+          "subtopics": [
+            {
+              "topicID": "030301",
+              "title": "Allergic Reactions in Infants and Children",
+              "content": "Identifying common triggers and symptoms of allergic reactions, and how to respond",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05"
+            },
+            {
+              "topicID": "030302",
+              "title": "Using an EpiPen on Infants and Children",
+              "content": "Proper administration of an epinephrine auto-injector and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05"
+            },
+            {
+              "topicID": "030303",
+              "title": "Recognizing the Signs of Anaphylaxis and When to Seek Medical Attention",
+              "content": "Identifying the signs of anaphylaxis and when to seek emergency medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05"
+            }
+          ]
+        },
+        {
+          "title": "Fevers and Seizures",
+          "subtopics": [
+            {
+              "topicID": "030401",
+              "title": "Managing Fevers in Infants and Children",
+              "content": "How to take a temperature, when to use medication, and when to seek medical attention for a fever",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:32"
+            },
+            {
+              "topicID": "030402",
+              "title": "Recognizing and Responding to Febrile Seizures in Infants and Children",
+              "content": "Understanding what a febrile seizure is, how to respond to one, and when to seek medical attention",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05"
+            },
+            {
+              "topicID": "030403",
+              "title": "When to Seek Medical Attention for a Fever or Seizure",
+              "content": "Knowing when a fever or seizure is a medical emergency, and when to call for help",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:05"
+            }
+          ]
+        },
+        {
+          "title": "Fractures and Head Injuries",
+          "subtopics": [
+            {
+              "topicID": "030501",
+              "title": "Recognizing and Responding to Fractures in Infants and Children",
+              "content": "Learn how to recognize signs of fractures in infants and children, and respond appropriately with first aid techniques to immobilize the affected area before seeking medical attention.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:02"
+            },
+            {
+              "topicID": "030502",
+              "title": "Stabilizing Limbs and Heads in Infants and Children",
+              "content": "Discover how to stabilize limbs and heads in infants and children with first aid techniques that prevent further injury while waiting for medical help to arrive.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:02"
+            },
+            {
+              "topicID": "030503",
+              "title": "When to Seek Medical Attention for a Fracture or Head Injury",
+              "content": "Learn when it is appropriate to seek medical attention for a fracture or head injury in infants and children, and what signs to look for to determine if immediate medical help is necessary.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:02"
+            }
+          ]
+        },
+        {
+          "title": "Poisoning and Ingestion of Harmful Substances",
+          "subtopics": [
+            {
+              "topicID": "030601",
+              "title": "Recognizing and Responding to Poisoning in Infants and Children",
+              "content": "How to recognize the signs of poisoning in infants and children, and what steps to take in case of ingestion or exposure to harmful substances",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:23"
+            },
+            {
+              "topicID": "030602",
+              "title": "What to Do if a Child Swallows a Foreign Object",
+              "content": "How to recognize when a child has swallowed a foreign object and what steps to take to prevent choking or further injury",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:23"
+            },
+            {
+              "topicID": "030603",
+              "title": "When to Seek Medical Attention for Poisoning or Ingestion of Harmful Substances",
+              "content": "When it is necessary to seek medical attention for poisoning or ingestion of harmful substances, and how to prepare for the visit to the emergency department",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "1:23"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Sports Injuries",
@@ -409,32 +566,32 @@
           "title": "Sprains and Strains",
           "subtopics": [
             {
+              "topicID": "040101",
               "title": "Recognizing the difference between sprains and strains",
               "content": "<div class=\"topic\">\n  <p class=\"description\">Sports injuries are common, and sprains and strains are among the most frequently occurring types of injuries. Although the two terms are often used interchangeably, sprains and strains are different injuries that affect different parts of the body. Understanding the difference between sprains and strains can help you better recognize and manage these injuries.</p>\n  \n  <div class=\"section\">\n    <h3 class=\"subsection-title\">Sprains</h3>\n    <p class=\"subsection-description\">A sprain is an injury to a ligament, which is a strong band of connective tissue that connects bones to each other and provides stability to joints. Sprains typically occur when a joint is forced beyond its normal range of motion, causing the ligament to stretch or tear. Common sites for sprains include the ankle, knee, wrist, and thumb.</p>\n    <ul class=\"symptoms-list\">\n      <li>Pain</li>\n      <li>Swelling</li>\n      <li>Bruising</li>\n      <li>Difficulty moving the affected joint</li>\n      <li>In severe cases, joint instability or loss of function</li>\n    </ul>\n  </div>\n\n  <div class=\"section\">\n    <h3 class=\"subsection-title\">Strains</h3>\n    <p class=\"subsection-description\">A strain is an injury to a muscle or tendon, which is a fibrous tissue that connects muscle to bone. Strains typically occur when a muscle or tendon is stretched or torn due to overuse, fatigue, or sudden trauma. Common sites for strains include the back, neck, hamstring, and calf.</p>\n    <ul class=\"symptoms-list\">\n      <li>Pain</li>\n      <li>Tenderness</li>\n      <li>Swelling</li>\n      <li>Weakness</li>\n      <li>In severe cases, muscle or tendon rupture</li>\n    </ul>\n  </div>\n</div>",
               "video": "https://youtu.be/FFyQeOQjO9o",
-              "duration": "2:39",
-              "completed": false
+              "duration": "2:39"
             },
             {
+              "topicID": "040102",
               "title": "RICE: Rest, Ice, Compress, Elevate",
               "content": "<p>One of the most common methods for treating sprains and strains is the RICE method. RICE stands for Rest, Ice, Compress, and Elevate, and it is used to reduce pain and swelling, as well as promote healing. Here's how to apply the RICE method:</p>\n <ul>\n <li><strong>Rest:</strong> Avoid using the injured area as much as possible. This will help prevent further damage and allow the body to begin healing.</li>\n  <li><strong>Ice:</strong> Apply ice to the injured area for 20 minutes at a time, several times a day. This will help reduce pain and swelling by constricting blood vessels.</li>\n  <li><strong>Compress:</strong> Use a compression bandage to help reduce swelling and support the injured area. Be careful not to wrap the bandage too tightly, as this can interfere with circulation.</li>\n  <li><strong>Elevate:</strong> Keep the injured area elevated above the heart as much as possible. This will help reduce swelling by allowing fluids to drain away from the area.</li>\n</ul>\n<p>It's important to remember that the RICE method is only one part of treating sprains and strains. If you have a severe injury, or if your symptoms do not improve with home treatment, you should seek medical attention.</p>\n",
               "video": "https://youtu.be/PxCac1HzoJ8",
-              "duration": "0:49",
-              "completed": false
+              "duration": "0:49"
             },
             {
+              "topicID": "040103",
               "title": "Knowing when to seek medical help",
               "content": "<div><p>Sprains and strains are common injuries that can usually be treated at home with rest, ice, compression, and elevation (RICE). However, it's important to know when to seek medical attention if the injury is severe or if it's not healing properly. Some signs that you should see a doctor or other healthcare professional include:</p>\n  <ul>\n    <li>Severe pain or swelling that doesn't improve with RICE</li>\n    <li>Difficulty moving the affected area or putting weight on it</li>\n    <li>Numbness or tingling in the injured area</li>\n    <li>A popping sound or sensation at the time of injury</li>\n    <li>A deformity or unusual shape of the affected area</li>\n    <li>Fever, which could be a sign of an infection</li>\n  </ul>\n  <p>If you experience any of these symptoms, it's important to seek medical attention as soon as possible. Your healthcare provider can perform a physical exam, order imaging tests, and recommend a treatment plan that's appropriate for your injury.</p>\n</div>",
               "video": "https://youtu.be/MK6Cw2emem4",
-              "duration": "5:33",
-              "completed": false
+              "duration": "5:33"
             },
             {
+              "topicID": "040104",
               "title": "Exercises for Ankle Rehabilitation",
               "content": "<p>After suffering from an ankle sprain or strain, it is important to take steps to rehabilitate the joint in order to regain its strength and flexibility. One of the most effective ways to do this is through exercises that specifically target the ankle joint.</p>\n\n<p>Exercises for ankle rehabilitation can help to:</p>\n\n<ul>\n  <li>Strengthen the muscles and ligaments around the ankle joint</li>\n  <li>Improve range of motion and flexibility</li>\n  <li>Reduce pain and inflammation</li>\n  <li>Prevent future injuries by improving stability and balance</li>\n</ul>\n\n<p>Some common exercises for ankle rehabilitation include:</p>\n\n<ul>\n  <li>Ankle circles: Rotate the ankle in a circular motion, both clockwise and counterclockwise, to improve flexibility and range of motion.</li>\n  <li>Ankle pumps: Move the ankle up and down, pointing the toes and then pulling them back towards the body, to improve circulation and reduce swelling.</li>\n  <li>Heel raises: Stand with the feet hip-width apart and lift the heels off the ground, then lower them back down. This exercise helps to strengthen the calf muscles, which are important for ankle stability.</li>\n  <li>Balance exercises: Stand on one foot and hold for 30 seconds, then switch to the other foot. This exercise helps to improve balance and stability, which can prevent future injuries.</li>\n</ul>\n\n<p>It is important to consult with a healthcare provider or physical therapist before beginning any exercise program for ankle rehabilitation, especially if you have a severe sprain or strain. They can provide guidance on which exercises are appropriate for your specific injury and how often you should do them.</p>\n",
               "video": "https://youtu.be/W9lT3gfehC0",
-              "duration": "5:41",
-              "completed": false
+              "duration": "5:41"
             }
           ]
         },
@@ -442,32 +599,32 @@
           "title": "Fractures and Dislocations",
           "subtopics": [
             {
+              "topicID": "040201",
               "title": "Recognizing the signs of a fracture or dislocation",
               "content": "Learn the common signs of these injuries and how to identify them",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040202",
               "title": "Stabilizing the affected area",
               "content": "Understand how to immobilize the affected area to prevent further damage",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040203",
               "title": "Applying ice and compression",
               "content": "Learn how to apply ice and compression to reduce swelling and relieve pain",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040204",
               "title": "Knowing when to seek medical help",
               "content": "Understand the signs that your injury may require professional medical attention",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -475,32 +632,32 @@
           "title": "Concussions",
           "subtopics": [
             {
+              "topicID": "040301",
               "title": "Recognizing the signs of a concussion",
               "content": "Learn the common signs of a concussion and how to identify them",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040302",
               "title": "Resting and avoiding physical activity",
               "content": "Understand the importance of rest and avoiding physical activity in recovering from a concussion",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040303",
               "title": "Monitoring for worsening symptoms",
               "content": "Learn how to monitor your symptoms and when to seek medical attention",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040304",
               "title": "Knowing when to seek medical help",
               "content": "Understand the signs that your concussion may require professional medical attention",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -508,25 +665,25 @@
           "title": "Heat-Related Injuries",
           "subtopics": [
             {
+              "topicID": "040401",
               "title": "Understanding heat exhaustion and heatstroke",
               "content": "Recognizing the symptoms of heat exhaustion and heatstroke",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040402",
               "title": "Preventing heat-related injuries",
               "content": "Staying hydrated, wearing loose-fitting clothing, and avoiding strenuous activities during the hottest part of the day",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040403",
               "title": "Treating heat exhaustion and heatstroke",
               "content": "Moving to a cooler place, drinking water or sports drinks, and applying cool, wet cloths to the skin",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         },
@@ -534,25 +691,25 @@
           "title": "Cold-Related Injuries",
           "subtopics": [
             {
+              "topicID": "040501",
               "title": "Understanding hypothermia and frostbite",
               "content": "Recognizing the symptoms of hypothermia and frostbite",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040502",
               "title": "Preventing cold-related injuries",
               "content": "Dressing in layers, staying dry, and avoiding prolonged exposure to cold temperatures",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             },
             {
+              "topicID": "040503",
               "title": "Treating hypothermia and frostbite",
               "content": "Moving to a warmer place, removing wet clothing, and rewarming the affected area",
               "video": "https://youtu.be/ea1RJUOiNfQ",
-              "duration": "1:23",
-              "completed": false
+              "duration": "1:23"
             }
           ]
         }
@@ -561,7 +718,176 @@
     {
       "name": "Mental Health Aid",
       "description": "Identify the signs and learn to respond",
-      "topics": []
+      "topics": [
+        {
+          "title": "Understanding Mental Health",
+          "subtopics": [
+            {
+              "topicID": "050101",
+              "title": "Common Mental Health Issues",
+              "content": "Overview of common mental health issues such as anxiety, depression, bipolar disorder, and schizophrenia",
+              "video": "https://youtu.be/6yIb6xzhcOA",
+              "duration": "3:10"
+            },
+            {
+              "topicID": "050102",
+              "title": "Stigma and Barriers to Mental Health Treatment",
+              "content": "Exploring the stigma associated with mental health issues and the barriers to seeking treatment",
+              "video": "https://youtu.be/6yIb6xzhcOA",
+              "duration": "2:45"
+            },
+            {
+              "topicID": "050103",
+              "title": "The Importance of Early Intervention",
+              "content": "Highlighting the importance of early intervention and the benefits of seeking mental health treatment early",
+              "video": "https://youtu.be/6yIb6xzhcOA",
+              "duration": "1:50"
+            }
+          ]
+        },
+        {
+          "title": "Signs and Symptoms of Mental Health Issues",
+          "subtopics": [
+            {
+              "topicID": "050201",
+              "title": "Recognizing Signs of Depression",
+              "content": "Understanding the symptoms of depression, such as feelings of sadness or hopelessness, changes in appetite or sleep patterns, loss of interest in activities, and thoughts of self-harm or suicide.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:18"
+            },
+            {
+              "topicID": "050202",
+              "title": "Recognizing Signs of Anxiety",
+              "content": "Understanding the symptoms of anxiety, such as excessive worrying, restlessness, irritability, and physical symptoms like sweating, trembling, or a rapid heartbeat.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:10"
+            },
+            {
+              "topicID": "050203",
+              "title": "Recognizing Signs of PTSD",
+              "content": "Understanding the symptoms of post-traumatic stress disorder, such as intrusive thoughts or memories, nightmares, avoidance of triggers, negative changes in mood or cognition, and hyperarousal.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:08"
+            }
+          ]
+        },
+        {
+          "title": "Crisis Intervention Techniques",
+          "subtopics": [
+            {
+              "topicID": "050301",
+              "title": "Calming Techniques for Individuals in Crisis",
+              "content": "Learn techniques for calming individuals experiencing crisis, including deep breathing, mindfulness exercises, and grounding techniques.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "2:34"
+            },
+            {
+              "topicID": "050302",
+              "title": "Suicide Prevention and Response",
+              "content": "Understand the risk factors and warning signs of suicide, as well as how to respond and provide support to individuals at risk of suicide.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:51"
+            },
+            {
+              "topicID": "050303",
+              "title": "De-escalation Techniques for Aggressive Behavior",
+              "content": "Learn de-escalation techniques for managing aggressive behavior in crisis situations, including active listening, empathy, and setting limits.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:16"
+            }
+          ]
+        },
+        {
+          "title": "Supporting Individuals with Mental Health Issues",
+          "subtopics": [
+            {
+              "topicID": "050401",
+              "title": "Active Listening Skills",
+              "content": "Effective listening techniques for providing support to individuals with mental health issues",
+              "video": "https://youtu.be/9xTpnW2hUh0",
+              "duration": "1:45"
+            },
+            {
+              "topicID": "050402",
+              "title": "Providing Emotional Support",
+              "content": "Understanding how to provide emotional support and be present for someone with mental health issues",
+              "video": "https://youtu.be/9xTpnW2hUh0",
+              "duration": "1:45"
+            },
+            {
+              "topicID": "050403",
+              "title": "Understanding Boundaries and Referral Resources",
+              "content": "Knowing your limits as a support person and when to refer someone to professional help",
+              "video": "https://youtu.be/9xTpnW2hUh0",
+              "duration": "1:45"
+            }
+          ]
+        },
+        {
+          "title": "The Importance of Self-Care",
+          "subtopics": [
+            {
+              "topicID": "050501",
+              "title": "Understanding the importance of self-care",
+              "content": "Learning why self-care is essential for mental health responders to maintain their well-being and effectiveness.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:30"
+            },
+            {
+              "topicID": "050502",
+              "title": "Recognizing signs of burnout and compassion fatigue",
+              "content": "Learning about the symptoms and effects of burnout and compassion fatigue, and how to identify them in oneself.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:55"
+            }
+          ]
+        },
+        {
+          "title": "Self-Care Techniques for Mental Health Responders",
+          "subtopics": [
+            {
+              "topicID": "050601",
+              "title": "Practicing mindfulness and meditation",
+              "content": "Learning about the benefits of mindfulness and meditation, and how to incorporate them into one's self-care routine.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "6:12"
+            },
+            {
+              "topicID": "050602",
+              "title": "Engaging in physical activity and exercise",
+              "content": "Learning about the importance of physical activity for mental health, and how to find enjoyable ways to stay active.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "5:20"
+            },
+            {
+              "topicID": "050603",
+              "title": "Taking breaks and engaging in hobbies",
+              "content": "Learning about the benefits of taking breaks and engaging in hobbies, and how to prioritize leisure time for self-care.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "4:45"
+            }
+          ]
+        },
+        {
+          "title": "Compassion Fatigue and Burnout Prevention",
+          "subtopics": [
+            {
+              "topicID": "050701",
+              "title": "Setting boundaries and practicing self-compassion",
+              "content": "Learning how to set healthy boundaries and practice self-compassion to prevent compassion fatigue and burnout.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "5:38"
+            },
+            {
+              "topicID": "050702",
+              "title": "Building a support network",
+              "content": "Learning about the importance of building a support network and seeking help when needed to prevent burnout.",
+              "video": "https://youtu.be/ea1RJUOiNfQ",
+              "duration": "3:50"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

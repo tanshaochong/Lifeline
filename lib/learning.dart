@@ -1,33 +1,94 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'dart:math';
 import 'topic.dart';
 
+import 'package:firebase_database/firebase_database.dart';
+
 var rand = Random();
 
 class LearningPage extends StatefulWidget {
-  const LearningPage({super.key});
+  final User? user;
+  const LearningPage({super.key, required this.user});
   @override
   State<LearningPage> createState() => _LearningPageState();
 }
 
-class _LearningPageState extends State<LearningPage> {
-  late List<Category> _contentList;
+class _LearningPageState extends State<LearningPage> with AutomaticKeepAliveClientMixin {
+  late Future<List<Category>> _contentList;
+  late final User? _user = widget.user;
+  final FirebaseDatabase database = FirebaseDatabase.instance;
+  late final DatabaseReference dbRef  = database.ref().child('users').child(_user!.uid); // user data reference
 
+  late StreamSubscription _subscription;  // live listen to real time database for completion changes
+
+
+  @override
+  void initState() {
+    super.initState();
+    _contentList = _loadLearning();
+  }
+
+  // load learning content once on page init
   Future<List<Category>> _loadLearning() async {
-    final categories = await readJson();
+    final categories = await readJson(_user?.uid);
     return categories;
+  }
+
+  // load completion data
+  Future<void> loadCompletion(List<Category> contentList) async {
+    // get user completion data
+    final snapshot = await dbRef.child('courses_completion').get();
+
+    for(var category in contentList) {
+      double totalSubtopicCount = 0, totalCompletionCount = 0;
+      for(var topic in category.topics){
+        double subtopicCount = 0, subtopicCompletionCount = 0;
+        for(var subtopic in topic.subtopics){
+          subtopic.completed = snapshot.child(subtopic.topicID).value as bool;
+
+          if(subtopic.completed){
+            subtopicCompletionCount++;
+          }
+          subtopicCount++;
+        }
+        topic.subtopicProgress = subtopicCompletionCount / (subtopicCount == 0 ? 1 : subtopicCount);
+
+        totalSubtopicCount += subtopicCount;
+        totalCompletionCount += subtopicCompletionCount;
+      }
+      category.progress = totalCompletionCount / (totalSubtopicCount == 0 ? 1 : totalSubtopicCount);
+    }
+
+    // update learning completion
+    setState(() {
+      _contentList = _contentList;
+    });
+  }
+
+  @override
+  void dispose() {
+    // stop async calls to database
+    _subscription.cancel();
+    super.dispose();
   }
 
   var currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
-      future: _loadLearning(),
+      future: _contentList,
       builder: (context, snapshot) {
         if (snapshot.hasData){
-          _contentList = snapshot.data!;
+          List<Category> contentList = snapshot.data!;
+          _subscription = dbRef.onValue.listen((event) {
+            loadCompletion(contentList);
+          });
           return Column(
             children: [
               SizedBox(
@@ -41,7 +102,7 @@ class _LearningPageState extends State<LearningPage> {
                   ),
                   child: InkWell(
                     onTap: (){
-                      Navigator.of(context).push(_topicRoute(_contentList[currentIndex]));
+                      Navigator.of(context).push(_topicRoute(contentList[currentIndex], dbRef.child('courses_completion')));
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -74,7 +135,7 @@ class _LearningPageState extends State<LearningPage> {
                                     height: 4,
                                   ),
                                   Text(
-                                    _contentList[currentIndex].name,
+                                    contentList[currentIndex].name,
                                     style: const TextStyle(
                                       fontSize: 16,
                                     ),
@@ -97,7 +158,7 @@ class _LearningPageState extends State<LearningPage> {
                           const SizedBox(height: 30),
 
                           Text(
-                            "Overall Progress: ${getAverageProgress(_contentList).toStringAsFixed(0)}%",
+                            "Overall Progress: ${getAverageProgress(contentList).toStringAsFixed(0)}%",
                             style: const TextStyle(
                               fontSize: 11,
                               color: Colors.grey,
@@ -108,7 +169,7 @@ class _LearningPageState extends State<LearningPage> {
 
                           LinearProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow.shade800),
-                            value: getAverageProgress(_contentList) / 100,
+                            value: getAverageProgress(contentList) / 100,
                             backgroundColor: Colors.grey[200],
                           ),
                         ],
@@ -123,13 +184,12 @@ class _LearningPageState extends State<LearningPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: ListView.separated(
                     physics: const BouncingScrollPhysics(decelerationRate: ScrollDecelerationRate.fast, parent: AlwaysScrollableScrollPhysics()),
-                    itemCount: _contentList.length + 1,
+                    itemCount: contentList.length + 1,
                     itemBuilder: (context, index) {
-                      if (index == _contentList.length){
+                      if (index == contentList.length){
                         return const SizedBox(height: 8,);
                       }
-                      // Course course = courses[index];
-                      Category course = _contentList[index];
+                      Category course = contentList[index];
                       return Card(
                         elevation: 3,
                         shape: RoundedRectangleBorder(
@@ -176,7 +236,7 @@ class _LearningPageState extends State<LearningPage> {
                               setState(() {
                                 currentIndex = index;
                               });
-                              Navigator.of(context).push(_topicRoute(course));
+                              Navigator.of(context).push(_topicRoute(course, dbRef.child('courses_completion')));
                             },
                           ),
                         ),
@@ -202,13 +262,16 @@ class _LearningPageState extends State<LearningPage> {
       }
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 // Routing animation
 
-Route _topicRoute(Category course) {
+Route _topicRoute(Category course, DatabaseReference dbRef) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => TopicPage(title: course.name, topicList: course.topics),
+    pageBuilder: (context, animation, secondaryAnimation) => TopicPage(title: course.name, topicList: course.topics, database: dbRef),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = const Offset(1.0, 0.0);
         var end = Offset.zero;
@@ -235,7 +298,7 @@ class Category {
   double progress = 0.0;
 
   Category({required this.name, required this.description, required this.topics}){
-    progress = rand.nextDouble();
+    // progress = rand.nextDouble();
   }
 }
 
@@ -248,13 +311,14 @@ class Topic {
 }
 
 class Subtopic {
+  final String topicID;
   final String title;
   final String description;
   final String videoLink;
   final String videoDuration;
-  bool completed;
+  late bool completed;
 
-  Subtopic({required this.title, required this.description, required this.videoLink, required this.videoDuration, required this.completed});
+  Subtopic({required this.topicID, required this.title, required this.description, required this.videoLink, required this.videoDuration});
 }
 
 double getAverageProgress(List<Category> content) {
@@ -265,44 +329,31 @@ double getAverageProgress(List<Category> content) {
   return (average / content.length) * 100;
 }
 
-Future<List<Category>> readJson() async {
+Future<List<Category>> readJson(String? userId) async {
+  // load learning content from json
   final jsonContent = await rootBundle.loadString('assets/content.json');
   final data = json.decode(jsonContent);
 
   List<Category> categoryList = [];
   for(var category in data['category']) {
     List<Topic> topicList = [];
-    double totalSubtopicCount = 0, totalCompletionCount = 0;
     for(var topic in category['topics']){
       List<Subtopic> subtopicsList = [];
-      double subtopicCount = 0, subtopicCompletionCount = 0;
       for(var subtopic in topic['subtopics']){
         subtopicsList.add(
             Subtopic(
+              topicID: subtopic['topicID'],
               title: subtopic['title'],
               description: subtopic['content'],
               videoLink: subtopic['video'],
               videoDuration: subtopic['duration'],
-              completed: subtopic['completed']
             )
         );
-
-        if(subtopic['completed'] == true){
-          subtopicCompletionCount++;
-        }
-        subtopicCount++;
       }
       Topic loadedTopic = Topic(title: topic['title'], subtopics: subtopicsList);
-      loadedTopic.subtopicProgress = subtopicCompletionCount / (subtopicCount == 0 ? 1 : subtopicCount);
       topicList.add(loadedTopic);
-
-      totalSubtopicCount += subtopicCount;
-      totalCompletionCount += subtopicCompletionCount;
     }
-
     Category loadedCategory = Category(name: category['name'], description: category['description'], topics: topicList);
-    // logic for loading completion
-    // loadedCategory.progress = totalCompletionCount / (totalSubtopicCount == 0 ? 1 : totalSubtopicCount);
     categoryList.add(loadedCategory);
   }
 
