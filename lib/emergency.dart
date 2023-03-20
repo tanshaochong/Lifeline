@@ -51,6 +51,9 @@ class _EmergencyPageState extends State<EmergencyPage> {
             const ModeBanner(),
             Expanded(
               child: ListView.builder(
+                  physics: const BouncingScrollPhysics(
+                      decelerationRate: ScrollDecelerationRate.fast,
+                      parent: AlwaysScrollableScrollPhysics()),
                   itemCount: emergencyList.length,
                   itemBuilder: (context, index) {
                     return Card(
