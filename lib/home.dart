@@ -154,11 +154,17 @@ class HomeEmergencyPage extends StatelessWidget {
   }
 }
 
-class TopWidget extends StatelessWidget {
+class TopWidget extends StatefulWidget {
   const TopWidget({super.key});
 
   @override
+  State<TopWidget> createState() => _TopWidgetState();
+}
+
+class _TopWidgetState extends State<TopWidget> with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -187,6 +193,9 @@ class TopWidget extends StatelessWidget {
           ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class InstructionWidget extends StatelessWidget {
