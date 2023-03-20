@@ -52,6 +52,7 @@ dependencies:
     google_fonts: ^4.0.3
     flutter_widget_from_html: ^0.10.0
     visibility_detector: ^0.4.0+2
+    firebase_database: ^10.0.16
 
 dev_dependencies:
     flutter_test:
@@ -77,6 +78,7 @@ flutter:
     # To add assets to your application, add an assets section, like this:
     assets:
         - assets/content.json
+        - assets/users.json
         - assets/map_style.txt
         - assets/outline_emergency_black_24dp.png
         - assets/outline_trip_origin_black_24dp.png

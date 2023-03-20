@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "59989017451",
+    "firebase_url": "https://solutionchallenge2023-ed596-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "solutionchallenge2023-ed596",
     "storage_bucket": "solutionchallenge2023-ed596.appspot.com"
   },
@@ -14,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "59989017451-9m7ip70jnbs0s1q05jgu8nmr7c2cs3kh.apps.googleusercontent.com",
+          "client_id": "59989017451-b2u61koca3b78k68n6hsu955k85e6iq2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -29,6 +30,13 @@
             {
               "client_id": "59989017451-9m7ip70jnbs0s1q05jgu8nmr7c2cs3kh.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "59989017451-71rr5g9354q291kmf8umtk5veihoon3p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.solutionchallenge"
+              }
             }
           ]
         }

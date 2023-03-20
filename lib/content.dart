@@ -1,6 +1,6 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
@@ -8,24 +8,41 @@ import 'learning.dart';
 
 
 class ContentPageView extends StatefulWidget {
+  final DatabaseReference database;
   final String topicTitle;
   final List<Subtopic> subtopicList;
   final int subtopicIndex;
 
-  const ContentPageView({super.key, required this.subtopicList, required this.subtopicIndex, required this.topicTitle});
+  const ContentPageView({super.key, required this.subtopicList, required this.subtopicIndex, required this.topicTitle, required this.database});
 
   @override
   State<ContentPageView> createState() => _ContentPageView();
 }
 
 class _ContentPageView extends State<ContentPageView> {
-  late final String _topicTitle = widget.topicTitle;
-  late final List<Subtopic> _subtopicList = widget.subtopicList;
-  late int _subtopicIndex = widget.subtopicIndex;
+  late final String _topicTitle;
+  late final List<Subtopic> _subtopicList;
+  late int _subtopicIndex;
+  late final DatabaseReference dbRef;
 
   late final _controller = PageController(initialPage: _subtopicIndex);
 
   bool _isFullScreen = false;
+
+  @override
+  void initState(){
+    super.initState();
+    _topicTitle = widget.topicTitle;
+    _subtopicList = widget.subtopicList;
+    _subtopicIndex = widget.subtopicIndex;
+    dbRef = widget.database;
+
+    Subtopic subtopic = _subtopicList[_subtopicIndex];
+
+    dbRef.update({
+      subtopic.topicID: true,
+    });
+  }
 
   void updateScreenTilt(bool isFullScreen) {
     setState(() {
@@ -54,7 +71,6 @@ class _ContentPageView extends State<ContentPageView> {
         children: _subtopicList.map((subtopic) =>
             ContentPage(
               subtopic: subtopic,
-              isFullScreen: _isFullScreen,
               onScreenTilt: (newValue) => updateScreenTilt(newValue),
             )
         ).toList(),
@@ -72,6 +88,9 @@ class _ContentPageView extends State<ContentPageView> {
                   _controller.previousPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
 
                   // navigate to content page (POST completion to database)
+                  dbRef.update({
+                    _subtopicList[_subtopicIndex].topicID: true,
+                  });
                 });
               },
             ),
@@ -83,6 +102,9 @@ class _ContentPageView extends State<ContentPageView> {
                   _controller.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
 
                   // navigate to content page (POST completion to database)
+                  dbRef.update({
+                    _subtopicList[_subtopicIndex].topicID: true,
+                  });
                 });
               },
             ),
@@ -96,9 +118,8 @@ class _ContentPageView extends State<ContentPageView> {
 class ContentPage extends StatefulWidget {
   final Subtopic subtopic;
   final Function onScreenTilt;
-  final bool isFullScreen;
 
-  const ContentPage({super.key, required this.subtopic, required this.onScreenTilt, required this.isFullScreen});
+  const ContentPage({super.key, required this.subtopic, required this.onScreenTilt});
 
   @override
   State<ContentPage> createState() => _ContentPage();
@@ -106,22 +127,43 @@ class ContentPage extends StatefulWidget {
 
 class _ContentPage extends State<ContentPage> {
   late YoutubePlayerController _controller;
+  late YoutubePlayer _player;
   late Subtopic _subtopic;
   late Function _onScreenTilt;
-  late bool _isFullScreen;
 
   @override
   void initState(){
     _subtopic = widget.subtopic;
-    _isFullScreen = widget.isFullScreen;
     _onScreenTilt = widget.onScreenTilt;
+
     final videoID = YoutubePlayer.convertUrlToId(_subtopic.videoLink);
+
     _controller = YoutubePlayerController(
         initialVideoId: videoID!,
         flags: const YoutubePlayerFlags(
             autoPlay: false,
             mute: false
         )
+    );
+
+    _player = YoutubePlayer(
+      controller: _controller,
+      showVideoProgressIndicator: true,
+      onEnded: (data) {
+        Navigator.of(context).pop();
+      },
+      bottomActions: [
+        CurrentPosition(),
+        ProgressBar(
+          isExpanded: true,
+          colors: const ProgressBarColors(
+            playedColor: Colors.amber,
+            handleColor: Colors.amberAccent,
+          ),
+        ),
+        const PlaybackSpeedButton(),
+        FullScreenButton(),
+      ],
     );
     super.initState();
   }
@@ -137,48 +179,38 @@ class _ContentPage extends State<ContentPage> {
 
     return OrientationBuilder(
       builder: (context, orientation) {
-        SchedulerBinding.instance.addPostFrameCallback((_) {
-          _onScreenTilt(_controller.value.isFullScreen);
-        });
-        return YoutubePlayerBuilder(
-          player: YoutubePlayer(
-            controller: _controller,
-            showVideoProgressIndicator: true,
-            onEnded: (data) {
-              Navigator.of(context).pop();
+        if(orientation == Orientation.landscape && !_controller.value.isFullScreen){
+          _controller.toggleFullScreenMode();
+        }
+        else if(orientation == Orientation.portrait && _controller.value.isFullScreen){
+          _controller.toggleFullScreenMode();
+        }
+        try{
+          return YoutubePlayerBuilder(
+            onEnterFullScreen: () {
+              _onScreenTilt(true);
             },
-            bottomActions: [
-              CurrentPosition(),
-              ProgressBar(
-                isExpanded: true,
-                colors: const ProgressBarColors(
-                  playedColor: Colors.amber,
-                  handleColor: Colors.amberAccent,
-                ),
-              ),
-              const PlaybackSpeedButton(),
-              FullScreenButton(),
-            ],
-          ),
-          builder: (context, player){
-            // SchedulerBinding.instance.addPostFrameCallback((_) {
-            //   if(MediaQuery.of(context).orientation == Orientation.landscape){
-            //     _onScreenTilt(true);
-            //   }
-            //   else{
-            //     _onScreenTilt(false);
-            //   }
-            // });
-
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                player,
-                ContentBody(subtopic: _subtopic),
-              ],
-            );
-          },
-        );
+            onExitFullScreen: () {
+              _onScreenTilt(false);
+            },
+            player: _player,
+            builder: (context, player){
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  player,
+                  ContentBody(subtopic: _subtopic),
+                ],
+              );
+            },
+          );
+        }
+        catch (e){
+          // if we are unable to load video or any timeout errors occurred
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
       },
     );
   }

@@ -122,7 +122,7 @@ class _HomeViewState extends State<HomeView> {
                           ),
                         ),
                       ),
-                      const LearningPage(),
+                      LearningPage(user: user),
                     ]),
               )
             ],
