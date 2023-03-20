@@ -12,7 +12,7 @@ class MapWidget extends StatefulWidget {
 class _MapWidgetState extends State<MapWidget> {
   late GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  final LatLng _center = const LatLng(1.35250165199, 103.687462807);
 
   late String _mapStyle;
 
@@ -33,10 +33,49 @@ class _MapWidgetState extends State<MapWidget> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
-        ));
+      myLocationEnabled: true,
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: CameraPosition(
+        target: _center,
+        zoom: 14.0,
+      ),
+      markers: {
+        // const Marker(
+        //   markerId: MarkerId("Emergency"),
+        //   position: LatLng(1.35464682044, 103.686261177),
+        // ),
+        Marker(
+          markerId: const MarkerId("currentLocation"),
+          position: const LatLng(1.35464682044, 103.686261177),
+          onTap: () => showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                    title: const Text(
+                      'Emergency Near You',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.red),
+                    ),
+                    content: const Text(
+                        'Someone requested for emergency help near you (500 m).\n\nWould you like to respond?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'No'),
+                        child: const Text(
+                          'No',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Yes'),
+                        child: const Text(
+                          'Yes',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  )),
+        ),
+      },
+    );
   }
 }

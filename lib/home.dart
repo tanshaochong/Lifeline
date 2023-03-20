@@ -6,6 +6,8 @@ import 'learning.dart';
 import 'emergency.dart';
 import 'instructions.dart';
 import 'auth.dart';
+import 'map_widget.dart';
+import 'utils/instruction_service.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,6 +19,16 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  List<Emergency> emergencyList = [];
+
+  Future<void> _loadInstructions() async {
+    List<Emergency> emergencies =
+        await InstructionService.getInstructions('assets/instructions_homepage.json');
+
+    setState(() {
+      emergencyList = emergencies;
+    });
+  }
 
   final _controller = PageController(
     initialPage: 0,
@@ -32,6 +44,12 @@ class _HomeViewState extends State<HomeView> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInstructions();
   }
 
   @override
@@ -88,40 +106,7 @@ class _HomeViewState extends State<HomeView> {
                         decelerationRate: ScrollDecelerationRate.fast,
                         parent: AlwaysScrollableScrollPhysics()),
                     children: [
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(9, 0, 9, 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Container(),
-                              const SizedBox(
-                                height: 25,
-                              ),
-                              const TopWidget(),
-                              Row(
-                                // ignore: prefer_const_literals_to_create_immutables
-                                children: [
-                                  const AedWidget(),
-                                  const CprWidget(),
-                                ],
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  // ignore: prefer_const_literals_to_create_immutables
-                                  children: [
-                                    const Expanded(
-                                      child: EmergencyWidget(),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      HomeEmergencyPage(emergencyList: emergencyList),
                       LearningPage(user: user),
                     ]),
               )
@@ -131,47 +116,47 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-class EmergencyWidget extends StatelessWidget {
-  const EmergencyWidget({super.key});
+class HomeEmergencyPage extends StatelessWidget {
+  const HomeEmergencyPage({
+    super.key,
+    required this.emergencyList,
+  });
+
+  final List<Emergency> emergencyList;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const Emergency(isSwiped: true)));
-      },
-      child: Card(
-        elevation: 10,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        color: Colors.red,
-        margin: const EdgeInsets.all(8),
-        child: const Center(
-            child: Text(
-          'Emergency',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24.0,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const NotificationBanner(),
+          const SizedBox(
+            height: 8,
           ),
-        )),
+          const TopWidget(),
+          const SizedBox(
+            height: 8,
+          ),
+          Expanded(
+            child: InstructionWidget(emergencyList: emergencyList),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          const Expanded(
+            child: EmergencyWidget(),
+          ),
+        ],
       ),
     );
   }
 }
 
-class TopWidget extends StatefulWidget {
+class TopWidget extends StatelessWidget {
   const TopWidget({super.key});
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _TopWidgetState createState() => _TopWidgetState();
-}
-
-class _TopWidgetState extends State<TopWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -179,144 +164,160 @@ class _TopWidgetState extends State<TopWidget> {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => const MapPage()));
       },
-      child: Container(
-        height: 250,
-        margin: const EdgeInsets.all(8),
-        child: Card(
-          semanticContainer: true,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          elevation: 10,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+      child: const SizedBox(
+          height: 250,
+          // margin: const EdgeInsets.symmetric(
+          //   vertical: 8,
+          // ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(25)),
+            child: MapWidget(),
+          )
+          // Card(
+          //   semanticContainer: true,
+          //   clipBehavior: Clip.antiAliasWithSaveLayer,
+          //   elevation: 10,
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(20.0),
+          //   ),
+          //   color: Colors.white,
+          //   child: const MapWidget(),
+          //   // child: const Placeholder(),
+          // ),
           ),
-          color: Colors.white,
-          // child: const MapWidget(),
-          child: const Placeholder(),
-        ),
-      ),
     );
   }
 }
 
-class AedWidget extends StatefulWidget {
-  const AedWidget({super.key});
+class InstructionWidget extends StatelessWidget {
+  const InstructionWidget({
+    super.key,
+    required this.emergencyList,
+  });
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _AedWidgetState createState() => _AedWidgetState();
-}
+  final List<Emergency> emergencyList;
 
-class _AedWidgetState extends State<AedWidget> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: 150,
-        child: TextButton(
+    // Dynamically populate buttons
+    List<Widget> instructionWidgetList = List.generate(
+      emergencyList.length,
+      (int index) => Expanded(
+        child: OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            backgroundColor: Colors.white,
+            side: const BorderSide(
+              color: Colors.red,
+              width: 2,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
+          ),
           onPressed: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const InstructionsPage()));
+                  builder: (context) => InstructionsPage(
+                    instructions: emergencyList[index].instructions,
+                    name: emergencyList[index].name,
+                  ),
+                ));
           },
-          child: Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
-            color: Colors.white,
-            // ignore: sort_child_properties_last
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const SizedBox(width: 15),
-                const Icon(Icons.favorite,
-                    size: 40, color: Colors.red), //heart attack icon
-                const SizedBox(width: 15), //spacing between icon and text
-                Column(
-                  children: const [
-                    SizedBox(height: 35),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'AED',
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                emergencyList[index].name == 'CPR'
+                    ? Icons.favorite
+                    : Icons.offline_bolt_rounded,
+                size: 40,
+              ),
+              const SizedBox(
+                width: 8,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    emergencyList[index].name,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Emergency',
-                      style: TextStyle(fontSize: 12, color: Colors.grey),
-                    )
-                  ],
-                )
-              ],
-            ),
-            margin: const EdgeInsets.all(8),
+                  ),
+                  const Text(
+                    'View instructions',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
     );
+
+    instructionWidgetList = instructionWidgetList
+        .expand((widget) => [
+              widget,
+              const SizedBox(
+                width: 8,
+              )
+            ])
+        .toList();
+
+    if (instructionWidgetList.isNotEmpty) instructionWidgetList.removeLast();
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: instructionWidgetList,
+    );
   }
 }
 
-class CprWidget extends StatefulWidget {
-  const CprWidget({super.key});
+class EmergencyWidget extends StatelessWidget {
+  const EmergencyWidget({super.key});
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _CprWidgetState createState() => _CprWidgetState();
-}
-
-class _CprWidgetState extends State<CprWidget> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: 150,
-        child: TextButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const InstructionsPage()));
-          },
-          child: Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
-            color: Colors.white,
-            // ignore: sort_child_properties_last
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const SizedBox(width: 15),
-                const Icon(Icons.handshake,
-                    size: 40, color: Colors.red), //heart attack icon
-                const SizedBox(width: 15), //spacing between icon and text
-                Column(
-                  children: const [
-                    SizedBox(height: 35),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'CPR',
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Emergency',
-                      style: TextStyle(fontSize: 12, color: Colors.grey),
-                    )
-                  ],
-                )
-              ],
-            ),
-            margin: const EdgeInsets.all(8),
-          ),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.red,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
         ),
+      ),
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const EmergencyPage(isSwiped: true)));
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Icon(
+            Icons.emergency_rounded,
+            size: 40,
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          Text(
+            'Emergency',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 32.0,
+            ),
+          ),
+        ],
       ),
     );
   }
