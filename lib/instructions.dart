@@ -94,15 +94,13 @@ class _InstructionsPageState extends State<InstructionsPage> {
         children: [
           Container(
             // margin: const EdgeInsets.symmetric(horizontal: 12.0),
-            color: Colors.grey,
+            color: Colors.grey.shade50,
             width: double.infinity,
-            child: const Placeholder(
-              fallbackHeight: 250,
+            child: Image.network(
+              instruction.url,
+              height: 250,
+              fit: BoxFit.contain,
             ),
-            // Image.network(
-            //   urlImage['url'],
-            //   fit: BoxFit.cover,
-            // ),
           ),
           const SizedBox(
             height: 24.0,
