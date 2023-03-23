@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:solutionchallenge/login.dart';
 
 import 'package:flutter/material.dart';
@@ -22,7 +23,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+    ));
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'First Aid App',
       theme: ThemeData(
         primarySwatch: Colors.red,

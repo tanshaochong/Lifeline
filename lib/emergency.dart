@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'package:solutionchallenge/map_page.dart';
 import 'instructions.dart';
+import 'package:location/location.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import 'utils/instruction_service.dart';
+import 'dart:async';
 
 class EmergencyPage extends StatefulWidget {
   const EmergencyPage({
@@ -113,13 +117,45 @@ class _EmergencyPageState extends State<EmergencyPage> {
   }
 }
 
-class EmergencySwipeToCall extends StatelessWidget {
+class EmergencySwipeToCall extends StatefulWidget {
   const EmergencySwipeToCall({
     super.key,
     required this.isSwiped,
   });
 
   final bool isSwiped;
+
+  @override
+  State<EmergencySwipeToCall> createState() => _EmergencySwipeToCallState();
+}
+
+class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
+  Location location = Location();
+  LocationData? currentLocation;
+  StreamSubscription<LocationData>? _locationSubscription;
+
+  final FirebaseDatabase database = FirebaseDatabase.instance;
+  late final DatabaseReference dbRef =
+      database.ref().child('emergency'); // emergency data reference
+
+  @override
+  void initState() {
+    super.initState();
+
+    // location listener to listen for user movement
+    _locationSubscription =
+        location.onLocationChanged.listen((newLocation) async {
+      setState(() {
+        currentLocation = newLocation;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _locationSubscription?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +168,7 @@ class EmergencySwipeToCall extends StatelessWidget {
         color: Colors.red,
         borderRadius: BorderRadius.circular(50.0),
       ),
-      child: isSwiped
+      child: widget.isSwiped
           ? SlideAction(
               borderRadius: 50,
               elevation: 0,
@@ -166,6 +202,13 @@ class EmergencySwipeToCall extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {
+                              double? longitude = currentLocation?.longitude;
+                              double? latitude = currentLocation?.latitude;
+
+                              LatLng position = LatLng(latitude!, longitude!);
+
+                              sendEmergency(position);
+
                               Navigator.pop(context, 'Yes');
                               Navigator.push(
                                   context,
@@ -182,6 +225,17 @@ class EmergencySwipeToCall extends StatelessWidget {
             )
           : const Text("hello"),
     );
+  }
+
+  Future<void> sendEmergency(LatLng coords) async {
+    final emergencyData = {
+      'latitude': coords.latitude,
+      'longitude': coords.longitude,
+      'patient': "",
+      'responder': "",
+    };
+
+    dbRef.push().set(emergencyData);
   }
 }
 
