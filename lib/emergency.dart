@@ -12,10 +12,7 @@ import 'dart:async';
 class EmergencyPage extends StatefulWidget {
   const EmergencyPage({
     super.key,
-    required this.isSwiped,
   });
-
-  final bool isSwiped;
 
   @override
   State<EmergencyPage> createState() => _EmergencyPageState();
@@ -109,7 +106,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: EmergencySwipeToCall(isSwiped: widget.isSwiped),
+            child: EmergencySwipeToCall(),
           ),
         ),
       ]),
@@ -118,12 +115,9 @@ class _EmergencyPageState extends State<EmergencyPage> {
 }
 
 class EmergencySwipeToCall extends StatefulWidget {
-  const EmergencySwipeToCall({
-    super.key,
-    required this.isSwiped,
-  });
+  EmergencySwipeToCall({super.key, this.isSwiped = true});
 
-  final bool isSwiped;
+  bool isSwiped;
 
   @override
   State<EmergencySwipeToCall> createState() => _EmergencySwipeToCallState();
@@ -183,47 +177,61 @@ class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
                 color: Colors.white,
               ),
               sliderRotate: false,
-              onSubmit: () => showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Emergency Help',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red)),
-                        content: const Text(
-                            'Are you requesting emergency help for yourself?'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'No'),
-                            child: const Text(
-                              'No, it is for someone else',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+              onSubmit: () {
+                setState(() {
+                  widget.isSwiped = false;
+                });
+                showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                          title: const Text('Emergency Help',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red)),
+                          content: const Text(
+                              'Are you requesting emergency help for yourself?'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'No'),
+                              child: const Text(
+                                'No, it is for someone else',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              double? longitude = currentLocation?.longitude;
-                              double? latitude = currentLocation?.latitude;
+                            TextButton(
+                              onPressed: () {
+                                double? longitude = currentLocation?.longitude;
+                                double? latitude = currentLocation?.latitude;
 
-                              LatLng position = LatLng(latitude!, longitude!);
+                                LatLng position = LatLng(latitude!, longitude!);
 
-                              sendEmergency(position);
+                                sendEmergency(position);
 
-                              Navigator.pop(context, 'Yes');
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const MapPage()));
-                            },
-                            child: const Text(
-                              'Yes, it is for myself',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                                Navigator.pop(context, 'Yes');
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => const MapPage()));
+                              },
+                              child: const Text(
+                                'Yes, it is for myself',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          ),
-                        ],
-                      )),
-            )
-          : const Text("hello"),
+                          ],
+                        ));
+              })
+          : Container(
+              alignment: Alignment.center,
+              child: const Text(
+                "Emergency help has\nbeen requested",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
+              )),
     );
   }
 
@@ -246,27 +254,38 @@ class ModeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        MaterialBanner(
-            leading: const Icon(
-              Icons.health_and_safety_outlined,
-              color: Colors.red,
-            ),
-            content: const Text(
-              "Requesting help for yourself",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            actions: [
-              TextButton(
-                  onPressed: () => {},
-                  child: const Text(
-                    "Change",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ))
-            ]),
-        const Divider(thickness: 2, height: 2, color: Colors.red),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.red, width: 2),
+            borderRadius: BorderRadius.circular(16)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: MaterialBanner(
+              leading: const Icon(
+                Icons.health_and_safety_outlined,
+                color: Colors.red,
+              ),
+              content: const Text(
+                "Requesting help for yourself",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MapPage()));
+                    },
+                    child: const Text(
+                      "Change",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ))
+              ]),
+        ),
+      ),
     );
   }
 }

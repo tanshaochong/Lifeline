@@ -63,7 +63,7 @@ class _InstructionsPageState extends State<InstructionsPage> {
             const SizedBox(
               height: 24.0,
             ),
-            const EmergencySwipeToCall(isSwiped: true),
+            EmergencySwipeToCall(),
           ],
         ),
       ),

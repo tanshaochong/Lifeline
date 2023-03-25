@@ -309,10 +309,8 @@ class EmergencyWidget extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const EmergencyPage(isSwiped: true)));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const EmergencyPage()));
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

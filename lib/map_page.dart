@@ -7,6 +7,9 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:location/location.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import 'instructions.dart';
+import 'utils/instruction_service.dart';
+
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
 
@@ -214,7 +217,7 @@ class _MapPageState extends State<MapPage> {
                     const SizedBox(
                       height: 24,
                     ),
-                    Text("Additional Information",
+                    Text("Nature of Emergency",
                         style: TextStyle(color: Colors.black.withOpacity(0.3))),
                     const SizedBox(
                       height: 8,
@@ -226,49 +229,45 @@ class _MapPageState extends State<MapPage> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(16))),
                       child: const ListTile(
-                        title: Text("Age"),
-                        subtitle: Text("Middle-aged"),
+                        title: Text("Suspected Cardiac Arrest"),
+                        subtitle: Text("CPR is being administered"),
                         trailing: Icon(
-                          Icons.schedule_outlined,
+                          Icons.priority_high_outlined,
                           color: Colors.red,
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: 8,
+                      height: 16,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 1, color: Colors.black.withOpacity(0.2)),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16))),
-                      child: const ListTile(
-                        title: Text("Gender"),
-                        subtitle: Text("Male"),
-                        trailing: Icon(
-                          Icons.male_outlined,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 1, color: Colors.black.withOpacity(0.2)),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16))),
-                      child: const ListTile(
-                        title: Text("Height"),
-                        subtitle: Text("Around 1.7 m"),
-                        trailing: Icon(
-                          Icons.height_outlined,
-                          color: Colors.red,
-                        ),
-                      ),
+                    SizedBox(
+                      height: 64,
+                      child: FilledButton.tonal(
+                          style: ButtonStyle(
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                          ))),
+                          onPressed: () async {
+                            var emergencyList =
+                                await InstructionService.getInstructions(
+                                    'assets/instructions.json');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => InstructionsPage(
+                                        name: emergencyList[0].name,
+                                        instructions:
+                                            emergencyList[0].instructions,
+                                      )),
+                            );
+                          },
+                          child: const Text(
+                            "Emergency Instructions",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )),
                     ),
                   ],
                 ),
