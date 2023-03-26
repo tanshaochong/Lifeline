@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:solutionchallenge/map_page.dart';
 import 'package:solutionchallenge/profile.dart';
 import 'learning.dart';
@@ -174,7 +175,8 @@ class _TopWidgetState extends State<TopWidget>
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const MapPage()));
+            context, MaterialPageRoute(builder: (context) => const MapPage(destination: LatLng(1.3489, 103.6895)))
+        );
       },
       child: const SizedBox(
           height: 250,
@@ -335,18 +337,3 @@ class EmergencyWidget extends StatelessWidget {
     );
   }
 }
-
-// class AppBar extends StatefulWidget {
-//   const AppBar({super.key});
-
-//   @override
-//   // ignore: library_private_types_in_public_api
-//   _AppBarState createState() => _AppBarState();
-// }
-
-// class _AppBarState extends State<AppBar> {
-//   @override
-//   Widget build(BuildContext context) {
-
-//   }
-// }
