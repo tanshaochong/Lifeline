@@ -10,10 +10,12 @@ class InstructionsPage extends StatefulWidget {
     super.key,
     required this.instructions,
     required this.name,
+    this.showSwipeToCall = true,
   });
 
   final List<Instruction> instructions;
   final String name;
+  final bool showSwipeToCall;
 
   @override
   State<InstructionsPage> createState() => _InstructionsPageState();
@@ -63,7 +65,7 @@ class _InstructionsPageState extends State<InstructionsPage> {
             const SizedBox(
               height: 24.0,
             ),
-            EmergencySwipeToCall(),
+            if (widget.showSwipeToCall) EmergencySwipeToCall(),
           ],
         ),
       ),
