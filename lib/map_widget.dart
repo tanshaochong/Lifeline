@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
+import 'map_page.dart';
+
 class MapWidget extends StatefulWidget {
   const MapWidget({super.key});
 
@@ -33,24 +35,36 @@ class _MapWidgetState extends State<MapWidget> {
 
     // loads emergency markers from firebase
     _markers = loadMarkers();
+    
+    // Set up a listener to listen for changes in the "markers" node
+    _subscription = dbRef.onValue.listen((event) {
+      setState(() {
+        _markers = loadMarkers();
+      });
+    });
   }
 
   // load emergency marker data
   Future<Set<Marker>> loadMarkers() async {
+    // wait for all entries to be retrieved and added to marker set before rebuilding google map
     final snapshot = await dbRef.get();
-
-    Set<Marker> markers = {};
 
     Map<dynamic, dynamic> emergencyData = snapshot.value as Map<dynamic, dynamic>;
 
-    emergencyData.forEach((key, value) {
-      Map<dynamic, dynamic> details = value as Map<dynamic, dynamic>;
+    Set<Marker> markers = {};
+    int count = 0;
+
+    for (MapEntry entry in emergencyData.entries){
+      Map<dynamic, dynamic> details = entry.value as Map<dynamic, dynamic>;
 
       double lat = details['latitude'] as double;
       double lng = details['longitude'] as double;
 
-      var marker = Marker(
-        markerId: MarkerId(details['patient'] as String),
+      String markerID = details['patient'] as String;
+      markerID += "_$count";
+
+      Marker marker = Marker(
+        markerId: MarkerId(markerID),
         position: LatLng(lat, lng),
         onTap: () => showDialog<String>(
             context: context,
@@ -71,7 +85,13 @@ class _MapWidgetState extends State<MapWidget> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.pop(context, 'Yes'),
+                  onPressed: () {
+
+                    Navigator.pop(context, 'Yes');
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => MapPage(destination: LatLng(lat, lng)))
+                    );
+                  },
                   child: const Text(
                     'Yes',
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -81,7 +101,8 @@ class _MapWidgetState extends State<MapWidget> {
             )),
       );
       markers.add(marker);
-    });
+      count++;
+    }
 
     return markers;
   }
@@ -105,13 +126,6 @@ class _MapWidgetState extends State<MapWidget> {
       builder: (context, snapshot) {
         if(snapshot.hasData){
           Set<Marker> markers = snapshot.data!;
-
-          // Set up a listener to listen for changes in the "markers" node
-          _subscription = dbRef.onValue.listen((event) {
-            setState(() {
-              _markers = loadMarkers();
-            });
-          });
           return GoogleMap(
             myLocationEnabled: true,
             onMapCreated: _onMapCreated,

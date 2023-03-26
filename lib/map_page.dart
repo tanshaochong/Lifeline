@@ -11,18 +11,24 @@ import 'instructions.dart';
 import 'utils/instruction_service.dart';
 
 class MapPage extends StatefulWidget {
-  const MapPage({super.key});
+  final LatLng destination;
+
+  const MapPage({super.key, required this.destination});
 
   @override
   State<MapPage> createState() => _MapPageState();
 }
 
 class _MapPageState extends State<MapPage> {
+  // google map controllers and style
   late GoogleMapController mapController;
+  late String _mapStyle;
 
+  // coordinates
   final LatLng origin = const LatLng(1.3541, 103.6882);
-  final LatLng destination = const LatLng(1.3489, 103.6895);
+  late final LatLng _destination;
 
+  // location and permissions
   Location location = Location();
   late bool _serviceEnabled;
   late PermissionStatus _permissionGranted;
@@ -30,8 +36,6 @@ class _MapPageState extends State<MapPage> {
   StreamSubscription<LocationData>? _locationSubscription;
 
   List<LatLng> polylineCoordinates = [];
-
-  late String _mapStyle;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -80,9 +84,9 @@ class _MapPageState extends State<MapPage> {
     PolylinePoints polylinePoints = PolylinePoints();
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
         "AIzaSyBzCUkxMWFZ1Jz3sobOSkBoqH24T8pilcY",
-        PointLatLng(currentLocation?.latitude ?? destination.latitude,
-            currentLocation?.longitude ?? destination.longitude),
-        PointLatLng(destination.latitude, destination.longitude));
+        PointLatLng(currentLocation?.latitude ?? _destination.latitude,
+            currentLocation?.longitude ?? _destination.longitude),
+        PointLatLng(_destination.latitude, _destination.longitude));
 
     if (result.points.isNotEmpty) {
       result.points.forEach((PointLatLng point) =>
@@ -98,6 +102,7 @@ class _MapPageState extends State<MapPage> {
     location.changeSettings(distanceFilter: 5, accuracy: LocationAccuracy.high);
     // location.enableBackgroundMode(enable: true);
     getCurrentLocation();
+    _destination = widget.destination;
 
     super.initState();
 
@@ -119,8 +124,17 @@ class _MapPageState extends State<MapPage> {
         backgroundColor: Colors.red,
       ),
       body: currentLocation == null
-          ? const Center(
-              child: Text("Loading"),
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  CircularProgressIndicator(),
+                  Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text("Loading"),
+                  ),
+                ],
+              ),
             )
           : SlidingUpPanel(
               minHeight: 192,
@@ -296,7 +310,7 @@ class _MapPageState extends State<MapPage> {
                     markers: {
                       Marker(
                         markerId: const MarkerId("destination"),
-                        position: destination,
+                        position: _destination,
                       ),
                     }),
               )),
