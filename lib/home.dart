@@ -66,11 +66,12 @@ class _HomeViewState extends State<HomeView> {
           key: _scaffoldKey,
           backgroundColor: Colors.grey.shade200,
           appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.grey.shade200,
               elevation: 0,
               title: Image.asset(
                 'assets/appbaricon.png',
-                height: 50,
+                height: 35,
               ),
               actions: [
                 IconButton(
