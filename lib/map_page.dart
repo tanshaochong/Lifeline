@@ -274,6 +274,7 @@ class _MapPageState extends State<MapPage> {
                                         name: emergencyList[0].name,
                                         instructions:
                                             emergencyList[0].instructions,
+                                        showSwipeToCall: false,
                                       )),
                             );
                           },
