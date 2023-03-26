@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
-                  'assets/firstaid1.png',
+                  'assets/logo_and_slogan.png',
                   height: 275,
                 ),
                 // const Text(
@@ -167,42 +167,42 @@ class _LoginPageState extends State<LoginPage> {
                 _errorMessage(),
                 _submitButton(),
                 _loginOrRegisterButton(),
-                const SizedBox(
-                  height: 8,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: Divider(
-                        color: Colors.grey.shade400,
-                        thickness: 0.5,
-                      )),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Text(
-                          'or continue with',
-                          style: TextStyle(color: Colors.grey.shade500),
-                        ),
-                      ),
-                      Expanded(
-                          child: Divider(
-                        color: Colors.grey.shade400,
-                        thickness: 0.5,
-                      )),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _oAuth('assets/google.png'),
-                  ],
-                ),
+                // const SizedBox(
+                //   height: 8,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 25),
+                //   child: Row(
+                //     children: [
+                //       Expanded(
+                //           child: Divider(
+                //         color: Colors.grey.shade400,
+                //         thickness: 0.5,
+                //       )),
+                //       Padding(
+                //         padding: const EdgeInsets.symmetric(horizontal: 15),
+                //         child: Text(
+                //           'or continue with',
+                //           style: TextStyle(color: Colors.grey.shade500),
+                //         ),
+                //       ),
+                //       Expanded(
+                //           child: Divider(
+                //         color: Colors.grey.shade400,
+                //         thickness: 0.5,
+                //       )),
+                //     ],
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 25,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     _oAuth('assets/google.png'),
+                //   ],
+                // ),
               ],
             )));
   }

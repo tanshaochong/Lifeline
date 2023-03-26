@@ -68,11 +68,9 @@ class _HomeViewState extends State<HomeView> {
           appBar: AppBar(
               backgroundColor: Colors.grey.shade200,
               elevation: 0,
-              title: const Text(
-                'F A K I T',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+              title: Image.asset(
+                'assets/appbaricon.png',
+                height: 50,
               ),
               actions: [
                 IconButton(
@@ -175,8 +173,10 @@ class _TopWidgetState extends State<TopWidget>
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const MapPage(destination: LatLng(1.3489, 103.6895)))
-        );
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const MapPage(destination: LatLng(1.3489, 103.6895))));
       },
       child: const SizedBox(
           height: 250,
