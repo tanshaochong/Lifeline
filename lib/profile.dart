@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:solutionchallenge/login.dart';
+import 'package:solutionchallenge/login_register_page.dart';
 import 'auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -59,9 +61,9 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              CircleAvatar(
-                radius: 50.0,
-                backgroundImage: NetworkImage(profileImageUrl),
+              Image.asset(
+                'assets/appicon.png',
+                height: 275,
               ),
               const SizedBox(height: 16.0),
               Text(
@@ -82,8 +84,10 @@ class ProfilePage extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     signOut();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => login_tree()));
                   },
-                  child: ProfileButton('test'))
+                  child: ProfileButton('Logout'))
             ],
           ),
         ),
