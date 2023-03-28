@@ -1,14 +1,22 @@
 # Lifeline
 Lifeline, empowers individuals and communities with the ability to save lives through core functionalities: linking with community responders and providing quality first aid education.
-// demo link
+
+## Demo
+
+https://youtu.be/CLiAbHw80Ek
+
+[![](https://img.youtube.com/vi/CLiAbHw80Ek/default.jpg)](https://youtu.be/CLiAbHw80Ek)
 
 ## Table of Contents
 
 ## Technologies
- - Flutter
- - Google Firebase
- - Google Map Platform
- - Android SDK
+
+<div align="center">
+	<img height="48" src="https://user-images.githubusercontent.com/25181517/189716855-2c69ca7a-5149-4647-936d-780610911353.png" alt="Firebase" title="Firebase" />
+<img height="48" src="https://user-images.githubusercontent.com/25181517/117269608-b7dcfb80-ae58-11eb-8e66-6cc8753553f0.png" alt="Android" title="Android" />
+	<img height="48" src="https://user-images.githubusercontent.com/25181517/186150365-da1eccce-6201-487c-8649-45e9e99435fd.png" alt="Flutter" title="Flutter" />
+ 	<img height="48" src="https://user-images.githubusercontent.com/88138479/228287891-5694068a-6fd9-4da1-bbc3-661ce2718b9e.png" alt="Flutter" title="Google Maps Platform" />
+</div>
 
 ## UN Sustainable Development Goals & Targets
 ### SDG 3: Good Health and Well-being
@@ -38,13 +46,19 @@ even more crucial in response to emergency situations.
 
 
 ## Core Functionalities
+
 ### First Aid Guidance
+
+Lifeline provides first aid guidance to users. These first aid instructions are easily accessible within at most 2 clicks from the home page, saving valuable time in emergencies. Under each flow, clear illustrations and detailed instructions are given so that users can easily follow along.
+
 ### Community Responder
+
+Lifeline provides the capabilities for users to respond to emergency help requested by users in need.
+
+
 ### Personalised Learning
 
-Lifeline is a one-stop destination to access a wealth of first aid knowledge. It offers a personalised experience to individuals with different needs with progress tracking allowing users to learn at their own pace.
-Learning contents are categorised into topics and further divided into subtopics, using bite sized content for effective and convenient learning on-the-go. 
-Information is presented in a modernised way catering to content consumption trends.
+Lifeline is a one-stop destination to access a wealth of first aid knowledge. It offers a personalised experience to individuals with different needs with progress tracking allowing users to learn at their own pace.Learning contents are categorised into topics and further divided into subtopics, using bite sized content for effective and convenient learning on-the-go. Information is presented in a modernised way catering to content consumption trends.
 
 ## Distribution
 
