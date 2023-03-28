@@ -52,10 +52,6 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  // Widget _title() {
-  //   return const Text('FAKit');
-  // }
-
   Widget _entryField(
     String title,
     TextEditingController controller,
@@ -97,11 +93,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _submitButton() {
-    // return ElevatedButton(
-    //   onPressed:
-    //       isLogin ? signInWithEmailandPassword : createUserWithEmailandPassword,
-    //   child: Text(isLogin ? 'Login' : 'Register'),
-    // );
     return GestureDetector(
       onTap:
           isLogin ? signInWithEmailandPassword : createUserWithEmailandPassword,
@@ -152,13 +143,6 @@ class _LoginPageState extends State<LoginPage> {
                   'assets/logo_and_slogan.png',
                   height: 275,
                 ),
-                // const Text(
-                //   'FAKit',
-                //   style: TextStyle(
-                //     fontWeight: FontWeight.bold,
-                //     fontSize: 30,
-                //   ),
-                // ),
                 _entryField('email', _controllerEmail, false),
                 const SizedBox(
                   height: 15,
@@ -167,43 +151,9 @@ class _LoginPageState extends State<LoginPage> {
                 _errorMessage(),
                 _submitButton(),
                 _loginOrRegisterButton(),
-                // const SizedBox(
-                //   height: 8,
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 25),
-                //   child: Row(
-                //     children: [
-                //       Expanded(
-                //           child: Divider(
-                //         color: Colors.grey.shade400,
-                //         thickness: 0.5,
-                //       )),
-                //       Padding(
-                //         padding: const EdgeInsets.symmetric(horizontal: 15),
-                //         child: Text(
-                //           'or continue with',
-                //           style: TextStyle(color: Colors.grey.shade500),
-                //         ),
-                //       ),
-                //       Expanded(
-                //           child: Divider(
-                //         color: Colors.grey.shade400,
-                //         thickness: 0.5,
-                //       )),
-                //     ],
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 25,
-                // ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     _oAuth('assets/google.png'),
-                //   ],
-                // ),
               ],
-            )));
+            )
+        )
+    );
   }
 }

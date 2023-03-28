@@ -121,8 +121,6 @@ class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
   StreamSubscription<LocationData>? _locationSubscription;
   late Future<LocationData> _currentLocation;
 
-  late bool _isSwiped;
-
   final FirebaseDatabase database = FirebaseDatabase.instance;
   late final DatabaseReference dbRef =
       database.ref().child('emergency'); // emergency data reference
@@ -131,7 +129,6 @@ class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
   void initState() {
     super.initState();
 
-    _isSwiped = false;
     _currentLocation = _getLocation();
 
     // location listener to listen for user movement
@@ -161,90 +158,87 @@ class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
       builder: (BuildContext context, AsyncSnapshot<LocationData> snapshot) {
         if (snapshot.hasData) {
           final locationData = snapshot.data;
-          return Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              height: 75,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(50.0),
-              ),
-              child: widget.isSwiped
-                  ? SlideAction(
-                  borderRadius: 50,
-                  elevation: 0,
-                  animationDuration: const Duration(milliseconds: 0),
-                  innerColor: Colors.white,
-                  outerColor: Colors.red,
-                  sliderButtonIcon: const Icon(Icons.call),
-                  text: "Swipe to request\n emergency help",
-                  textStyle: const TextStyle(
+          return Container(
+            padding: const EdgeInsets.all(8),
+            height: 75,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            child: widget.isSwiped
+                ? SlideAction(
+                borderRadius: 50,
+                elevation: 0,
+                animationDuration: const Duration(milliseconds: 0),
+                innerColor: Colors.white,
+                outerColor: Colors.red,
+                sliderButtonIcon: const Icon(Icons.call),
+                text: "Swipe to request\n emergency help",
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                sliderRotate: false,
+                onSubmit: () {
+                  setState(() {
+                    widget.isSwiped = false;
+                  });
+                  showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Emergency Help',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red)
+                        ),
+                        content: const Text(
+                            'Are you requesting emergency help for yourself?'
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'No'),
+                            child: const Text(
+                              'No, it is for someone else',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              double? longitude = locationData?.longitude;
+                              double? latitude = locationData?.latitude;
+
+                              LatLng position = LatLng(latitude!, longitude!);
+
+                              sendEmergency(position);
+
+                              Navigator.pop(context, 'Yes');
+                            },
+                            child: const Text(
+                              'Yes, it is for myself',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ));
+                })
+                : Container(
+                alignment: Alignment.center,
+                child: const Text(
+                  "Emergency help has\nbeen requested",
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
-                  sliderRotate: false,
-                  onSubmit: () {
-                    setState(() {
-                      widget.isSwiped = false;
-                    });
-                    showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Emergency Help',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.red)
-                          ),
-                          content: const Text(
-                              'Are you requesting emergency help for yourself?'
-                          ),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, 'No'),
-                              child: const Text(
-                                'No, it is for someone else',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                double? longitude = locationData?.longitude;
-                                double? latitude = locationData?.latitude;
-
-                                LatLng position = LatLng(latitude!, longitude!);
-
-                                sendEmergency(position);
-
-                                Navigator.pop(context, 'Yes');
-                              },
-                              child: const Text(
-                                'Yes, it is for myself',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
-                        ));
-                  })
-                  : Container(
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Emergency help has\nbeen requested",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  )),
-            ),
+                  textAlign: TextAlign.center,
+                )),
           );
         }
         else{
           return const Padding(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 49),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 29),
             child: CircularProgressIndicator(),
           );
         }

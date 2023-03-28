@@ -7,7 +7,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'utils/routing.dart';
 
 class MapWidget extends StatefulWidget {
-  const MapWidget({super.key});
+  final Function(bool) onEmergency;
+  const MapWidget({super.key, required this.onEmergency});
 
   @override
   State<MapWidget> createState() => _MapWidgetState();
@@ -47,10 +48,17 @@ class _MapWidgetState extends State<MapWidget> {
   Future<Set<Marker>> loadMarkers() async {
     // wait for all entries to be retrieved and added to marker set before rebuilding google map
     final snapshot = await dbRef.get();
+    Set<Marker> markers = {};
+
+    if(!snapshot.exists){
+      setState(() {
+        widget.onEmergency(false);
+      });
+      return markers;
+    }
 
     Map<dynamic, dynamic> emergencyData = snapshot.value as Map<dynamic, dynamic>;
 
-    Set<Marker> markers = {};
     int count = 0;
 
     for (MapEntry entry in emergencyData.entries){
@@ -98,6 +106,12 @@ class _MapWidgetState extends State<MapWidget> {
       );
       markers.add(marker);
       count++;
+    }
+
+    if(count != 0){
+      setState(() {
+        widget.onEmergency(true);
+      });
     }
 
     return markers;
