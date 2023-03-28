@@ -10,7 +10,7 @@ class InstructionsPage extends StatefulWidget {
     super.key,
     required this.instructions,
     required this.name,
-    this.showSwipeToCall = true,
+    required this.showSwipeToCall,
   });
 
   final List<Instruction> instructions;

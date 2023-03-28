@@ -12,9 +12,9 @@ import 'package:solutionchallenge/content.dart';
 
 class RouteUtil {
   // routing to emergency instructions page
-  static Route instructionRoute(List<Instruction> instructions, String name) {
+  static Route instructionRoute(List<Instruction> instructions, String name, bool swipeToCall) {
     return PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => InstructionsPage(instructions: instructions, name: name),
+        pageBuilder: (context, animation, secondaryAnimation) => InstructionsPage(instructions: instructions, name: name, showSwipeToCall: swipeToCall),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           var curve = Curves.easeOutCubic;
           Offset begin = const Offset(0, 1.0);
