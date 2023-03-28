@@ -70,4 +70,10 @@ Lifeline's current release is built for Android devices. Alpha build has been te
 
 [v0.1.0-alpha release APK](https://github.com/ackselz/Lifeline/releases/tag/v0.1.0-alpha)
 
+### User Login Details
+As of alpha release, only one account is supported on Lifeline. Ensure log in using this account.
+
+> Email: dev@gmail.com
+> Password: googlesolutions
+
 ## License
