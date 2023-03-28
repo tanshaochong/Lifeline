@@ -7,6 +7,13 @@ Lifeline, empowers individuals and communities with the ability to save lives th
 > Youtube Video Link: https://youtu.be/CLiAbHw80Ek
 
 ## Table of Contents
+  <ol>
+    <li><a href="#technologies">Technologies</a></li>
+    <li><a href="#un-sustainable-development-goals-and-targets">UN Sustainable Development Goals And Targets</a></li>
+    <li><a href="#core-functionalities">Core Functionalities</a></li>
+    <li><a href="#distribution">Distribution</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
 
 ## Technologies
 
@@ -20,7 +27,7 @@ Lifeline, empowers individuals and communities with the ability to save lives th
 </div>
 
 
-## UN Sustainable Development Goals & Targets
+## UN Sustainable Development Goals And Targets
 ### SDG 3: Good Health and Well-being
 
 > 3.2 - End all preventable deaths under 5 y/o
@@ -70,10 +77,22 @@ Lifeline's current release is built for Android devices. Alpha build has been te
 
 [v0.1.0-alpha release APK](https://github.com/ackselz/Lifeline/releases/tag/v0.1.0-alpha)
 
+### Running locally
+1. Clone the repository
+```sh
+git clone https://github.com/ackselz/Lifeline.git
+```
+
+2. Run
+```sh
+flutter run
+```
+
 ### User Login Details
 As of alpha release, only one account is supported on Lifeline. Ensure log in using this account.
 
 > Email: dev@gmail.com
+>
 > Password: googlesolutions
 
 ## License
