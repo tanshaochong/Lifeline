@@ -1,13 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:solutionchallenge/login.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'profile.dart';
-
-// ...
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,5 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// "AIzaSyBzCUkxMWFZ1Jz3sobOSkBoqH24T8pilcY"

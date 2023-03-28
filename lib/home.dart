@@ -121,7 +121,7 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-class HomeEmergencyPage extends StatelessWidget {
+class HomeEmergencyPage extends StatefulWidget {
   const HomeEmergencyPage({
     super.key,
     required this.emergencyList,
@@ -130,22 +130,41 @@ class HomeEmergencyPage extends StatelessWidget {
   final List<Emergency> emergencyList;
 
   @override
+  State<HomeEmergencyPage> createState() => _HomeEmergencyPageState();
+}
+
+class _HomeEmergencyPageState extends State<HomeEmergencyPage> {
+  bool _hasEmergency = false;
+
+  bool _onEmergencyPing(bool newValue) {
+    setState(() {
+      _hasEmergency = newValue;
+    });
+
+    return newValue;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const NotificationBanner(),
+          _hasEmergency ? const NotificationBanner() : Container(),
           const SizedBox(
             height: 8,
           ),
-          const TopWidget(),
+          TopWidget(onEmergency: (newValue){
+            setState(() {
+              _onEmergencyPing(newValue);
+            });
+          }),
           const SizedBox(
             height: 8,
           ),
           Expanded(
-            child: InstructionWidget(emergencyList: emergencyList),
+            child: InstructionWidget(emergencyList: widget.emergencyList),
           ),
           const SizedBox(
             height: 8,
@@ -160,14 +179,15 @@ class HomeEmergencyPage extends StatelessWidget {
 }
 
 class TopWidget extends StatefulWidget {
-  const TopWidget({super.key});
+  final Function(bool) onEmergency;
+
+  const TopWidget({super.key, required this.onEmergency});
 
   @override
   State<TopWidget> createState() => _TopWidgetState();
 }
 
-class _TopWidgetState extends State<TopWidget>
-    with AutomaticKeepAliveClientMixin {
+class _TopWidgetState extends State<TopWidget> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -175,11 +195,17 @@ class _TopWidgetState extends State<TopWidget>
       onTap: () {
         Navigator.of(context).push(RouteUtil.mapRoute(const LatLng(1.3489, 103.6895)));
       },
-      child: const SizedBox(
+      child: SizedBox(
           height: 250,
           child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-            child: MapWidget(),
+            borderRadius: const BorderRadius.all(Radius.circular(25)),
+            child: MapWidget(
+                onEmergency: (newValue){
+                  setState(() {
+                    widget.onEmergency(newValue);
+                  });
+                }
+            ),
           )
         ),
     );

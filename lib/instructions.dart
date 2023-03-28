@@ -201,8 +201,6 @@ class _InstructionsPageState extends State<InstructionsPage> {
       );
 
   void previous() => controller.previousPage();
-  // controller.previousPage(duration: const Duration(milliseconds: 250));
 
   void next() => controller.nextPage();
-  // controller.nextPage(duration: const Duration(milliseconds: 250));
 }
