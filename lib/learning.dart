@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'dart:math';
-import 'topic.dart';
+import 'utils/routing.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 
@@ -102,7 +102,7 @@ class _LearningPageState extends State<LearningPage> with AutomaticKeepAliveClie
                   ),
                   child: InkWell(
                     onTap: (){
-                      Navigator.of(context).push(_topicRoute(contentList[currentIndex], dbRef.child('courses_completion')));
+                      Navigator.of(context).push(RouteUtil.topicRoute(contentList[currentIndex], dbRef.child('courses_completion')));
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -236,7 +236,7 @@ class _LearningPageState extends State<LearningPage> with AutomaticKeepAliveClie
                               setState(() {
                                 currentIndex = index;
                               });
-                              Navigator.of(context).push(_topicRoute(course, dbRef.child('courses_completion')));
+                              Navigator.of(context).push(RouteUtil.topicRoute(course, dbRef.child('courses_completion')));
                             },
                           ),
                         ),
@@ -266,28 +266,6 @@ class _LearningPageState extends State<LearningPage> with AutomaticKeepAliveClie
   @override
   bool get wantKeepAlive => true;
 }
-
-// Routing animation
-
-Route _topicRoute(Category course, DatabaseReference dbRef) {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => TopicPage(title: course.name, topicList: course.topics, database: dbRef),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = const Offset(1.0, 0.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
-
-        var tween = Tween(begin: begin, end: end).chain(
-            CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      }
-  );
-}
-
 
 // Helper Functions and Classes
 

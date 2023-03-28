@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:slide_to_act/slide_to_act.dart';
-import 'package:solutionchallenge/map_page.dart';
-import 'instructions.dart';
+import 'dart:async';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'auth.dart';
 
+import 'utils/routing.dart';
 import 'utils/instruction_service.dart';
-import 'dart:async';
+
 
 class EmergencyPage extends StatefulWidget {
   const EmergencyPage({
@@ -50,7 +50,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
         Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            const ModeBanner(),
+            // const ModeBanner(),
             Expanded(
               child: ListView.builder(
                   physics: const BouncingScrollPhysics(
@@ -65,15 +65,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                       color: Colors.grey.shade50,
                       child: ListTile(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => InstructionsPage(
-                                      name: emergencyList[index].name,
-                                      instructions:
-                                          emergencyList[index].instructions,
-                                    )),
-                          );
+                          Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[index].instructions, emergencyList[index].name));
                         },
                         leading: Icon(
                           Icons.healing,
@@ -139,7 +131,6 @@ class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
   void initState() {
     super.initState();
 
-    // TODO maintain state
     _isSwiped = false;
     _currentLocation = _getLocation();
 
@@ -170,86 +161,92 @@ class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
       builder: (BuildContext context, AsyncSnapshot<LocationData> snapshot) {
         if (snapshot.hasData) {
           final locationData = snapshot.data;
-          return Container(
-            padding: const EdgeInsets.all(8),
-            height: 75,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-            child: widget.isSwiped
-                ? SlideAction(
-                borderRadius: 50,
-                elevation: 0,
-                animationDuration: const Duration(milliseconds: 0),
-                innerColor: Colors.white,
-                outerColor: Colors.red,
-                sliderButtonIcon: const Icon(Icons.call),
-                text: "Swipe to request\n emergency help",
-                textStyle: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-                sliderRotate: false,
-                onSubmit: () {
-                  setState(() {
-                    widget.isSwiped = false;
-                  });
-                  showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Emergency Help',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red)
-                        ),
-                        content: const Text(
-                            'Are you requesting emergency help for yourself?'
-                        ),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'No'),
-                            child: const Text(
-                              'No, it is for someone else',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              double? longitude = locationData?.longitude;
-                              double? latitude = locationData?.latitude;
-
-                              LatLng position = LatLng(latitude!, longitude!);
-
-                              sendEmergency(position);
-
-                              Navigator.pop(context, 'Yes');
-                            },
-                            child: const Text(
-                              'Yes, it is for myself',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ));
-                })
-                : Container(
-                alignment: Alignment.center,
-                child: const Text(
-                  "Emergency help has\nbeen requested",
-                  style: TextStyle(
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              height: 75,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+              child: widget.isSwiped
+                  ? SlideAction(
+                  borderRadius: 50,
+                  elevation: 0,
+                  animationDuration: const Duration(milliseconds: 0),
+                  innerColor: Colors.white,
+                  outerColor: Colors.red,
+                  sliderButtonIcon: const Icon(Icons.call),
+                  text: "Swipe to request\n emergency help",
+                  textStyle: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
-                  textAlign: TextAlign.center,
-                )),
+                  sliderRotate: false,
+                  onSubmit: () {
+                    setState(() {
+                      widget.isSwiped = false;
+                    });
+                    showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: const Text('Emergency Help',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red)
+                          ),
+                          content: const Text(
+                              'Are you requesting emergency help for yourself?'
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'No'),
+                              child: const Text(
+                                'No, it is for someone else',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                double? longitude = locationData?.longitude;
+                                double? latitude = locationData?.latitude;
+
+                                LatLng position = LatLng(latitude!, longitude!);
+
+                                sendEmergency(position);
+
+                                Navigator.pop(context, 'Yes');
+                              },
+                              child: const Text(
+                                'Yes, it is for myself',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ));
+                  })
+                  : Container(
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Emergency help has\nbeen requested",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  )),
+            ),
           );
         }
         else{
-          return const CircularProgressIndicator();
+          return const Padding(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 49),
+            child: CircularProgressIndicator(),
+          );
         }
       }
     );
@@ -267,10 +264,17 @@ class _EmergencySwipeToCallState extends State<EmergencySwipeToCall> {
   }
 }
 
-class ModeBanner extends StatelessWidget {
+class ModeBanner extends StatefulWidget {
   const ModeBanner({
     super.key,
   });
+
+  @override
+  State<ModeBanner> createState() => _ModeBannerState();
+}
+
+class _ModeBannerState extends State<ModeBanner> {
+  bool mode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -287,17 +291,19 @@ class ModeBanner extends StatelessWidget {
                 Icons.health_and_safety_outlined,
                 color: Colors.red,
               ),
-              content: const Text(
+              content: mode
+                  ? const Text(
                 "Requesting help for yourself",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+                style: TextStyle(fontWeight: FontWeight.bold),)
+                  : const Text(
+                "Requesting help for someone",
+                style: TextStyle(fontWeight: FontWeight.bold),),
               actions: [
                 TextButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MapPage(destination: LatLng(1.3489, 103.6895))));
+                      setState(() {
+                        mode = !mode;
+                      });
                     },
                     child: const Text(
                       "Change",
@@ -335,10 +341,7 @@ class NotificationBanner extends StatelessWidget {
             actions: [
               TextButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MapPage(destination: LatLng(1.3489, 103.6895))));
+                    Navigator.of(context).push(RouteUtil.mapRoute(const LatLng(1.3489, 103.6895)));
                   },
                   child: const Text(
                     "Respond",

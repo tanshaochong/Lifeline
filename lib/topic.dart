@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'learning.dart';
-import 'content.dart';
+
+import 'utils/routing.dart';
 
 class TopicPage extends StatefulWidget {
   final DatabaseReference database;
@@ -100,7 +101,7 @@ class _TopicPage extends State<TopicPage> {
                                     ),
                                     onTap: () {
                                       // navigate to content page (POST completion to database)
-                                      Navigator.of(context).push(_openContentRoute(topic.title, topic.subtopics, topic.subtopics.indexOf(subtopic), _dbRef));
+                                      Navigator.of(context).push(RouteUtil.contentRoute(topic.title, topic.subtopics, topic.subtopics.indexOf(subtopic), _dbRef));
                                     },
                                   );
                                 }).toList(),
@@ -130,25 +131,4 @@ class _TopicPage extends State<TopicPage> {
     topicListStream.drain();
     super.dispose();
   }
-}
-
-// routing
-
-Route _openContentRoute(String title, List<Subtopic> subtopicList, int subtopicIndex, DatabaseReference dbRef) {
-  return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => ContentPageView(topicTitle: title, subtopicList: subtopicList, subtopicIndex: subtopicIndex, database: dbRef),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var curve = Curves.easeOutCubic;
-        Offset begin = const Offset(0, 1.0);
-        Offset end = Offset.zero;
-
-        var tween = Tween(begin: begin, end: end).chain(
-            CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      }
-  );
 }

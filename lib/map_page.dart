@@ -7,8 +7,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:location/location.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import 'instructions.dart';
 import 'utils/instruction_service.dart';
+import 'utils/routing.dart';
 
 class MapPage extends StatefulWidget {
   final LatLng destination;
@@ -267,16 +267,7 @@ class _MapPageState extends State<MapPage> {
                             var emergencyList =
                                 await InstructionService.getInstructions(
                                     'assets/instructions.json');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => InstructionsPage(
-                                        name: emergencyList[0].name,
-                                        instructions:
-                                            emergencyList[0].instructions,
-                                        showSwipeToCall: false,
-                                      )),
-                            );
+                            Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[0].instructions, emergencyList[0].name));
                           },
                           child: const Text(
                             "Emergency Instructions",

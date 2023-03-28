@@ -37,6 +37,12 @@ class _InstructionsPageState extends State<InstructionsPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.clear, color: Colors.grey,),
+        ),
         iconTheme: const IconThemeData(
           color: Colors.black,
         ),
