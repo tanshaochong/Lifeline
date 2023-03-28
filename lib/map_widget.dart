@@ -4,8 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
-
-import 'map_page.dart';
+import 'utils/routing.dart';
 
 class MapWidget extends StatefulWidget {
   const MapWidget({super.key});
@@ -86,11 +85,8 @@ class _MapWidgetState extends State<MapWidget> {
                 ),
                 TextButton(
                   onPressed: () {
-
                     Navigator.pop(context, 'Yes');
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => MapPage(destination: LatLng(lat, lng)))
-                    );
+                    Navigator.of(context).push(RouteUtil.mapRoute(LatLng(lat, lng)));
                   },
                   child: const Text(
                     'Yes',

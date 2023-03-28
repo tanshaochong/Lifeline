@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:solutionchallenge/map_page.dart';
 import 'package:solutionchallenge/profile.dart';
 import 'learning.dart';
 import 'emergency.dart';
-import 'instructions.dart';
 import 'auth.dart';
 import 'map_widget.dart';
 import 'utils/instruction_service.dart';
+import 'utils/routing.dart';
 import 'package:flutter/services.dart';
+
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -173,33 +173,15 @@ class _TopWidgetState extends State<TopWidget>
     super.build(context);
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    const MapPage(destination: LatLng(1.3489, 103.6895))));
+        Navigator.of(context).push(RouteUtil.mapRoute(const LatLng(1.3489, 103.6895)));
       },
       child: const SizedBox(
           height: 250,
-          // margin: const EdgeInsets.symmetric(
-          //   vertical: 8,
-          // ),
           child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(25)),
             child: MapWidget(),
           )
-          // Card(
-          //   semanticContainer: true,
-          //   clipBehavior: Clip.antiAliasWithSaveLayer,
-          //   elevation: 10,
-          //   shape: RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.circular(20.0),
-          //   ),
-          //   color: Colors.white,
-          //   child: const MapWidget(),
-          //   // child: const Placeholder(),
-          // ),
-          ),
+        ),
     );
   }
 
@@ -233,14 +215,7 @@ class InstructionWidget extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => InstructionsPage(
-                    instructions: emergencyList[index].instructions,
-                    name: emergencyList[index].name,
-                  ),
-                ));
+            Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[index].instructions, emergencyList[index].name));
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -312,8 +287,7 @@ class EmergencyWidget extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const EmergencyPage()));
+        Navigator.of(context).push(RouteUtil.emergencyRoute());
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
