@@ -267,7 +267,7 @@ class _MapPageState extends State<MapPage> {
                             var emergencyList =
                                 await InstructionService.getInstructions(
                                     'assets/instructions.json');
-                            Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[0].instructions, emergencyList[0].name));
+                            Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[0].instructions, emergencyList[0].name, false));
                           },
                           child: const Text(
                             "Emergency Instructions",

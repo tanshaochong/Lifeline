@@ -241,7 +241,7 @@ class InstructionWidget extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[index].instructions, emergencyList[index].name));
+            Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[index].instructions, emergencyList[index].name, true));
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

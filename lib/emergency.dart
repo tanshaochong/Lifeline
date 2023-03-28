@@ -65,7 +65,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                       color: Colors.grey.shade50,
                       child: ListTile(
                         onTap: () {
-                          Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[index].instructions, emergencyList[index].name));
+                          Navigator.of(context).push(RouteUtil.instructionRoute(emergencyList[index].instructions, emergencyList[index].name, true));
                         },
                         leading: Icon(
                           Icons.healing,
