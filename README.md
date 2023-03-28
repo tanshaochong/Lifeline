@@ -1,22 +1,24 @@
 # Lifeline
 Lifeline, empowers individuals and communities with the ability to save lives through core functionalities: linking with community responders and providing quality first aid education.
 
-## Demo
+## Demo Video
+![maxresdefault](https://user-images.githubusercontent.com/63765620/228293309-03d00704-d9ea-4674-8b1c-b9f28049d392.jpg)
 
-https://youtu.be/CLiAbHw80Ek
-
-[![](https://img.youtube.com/vi/CLiAbHw80Ek/default.jpg)](https://youtu.be/CLiAbHw80Ek)
+> Youtube Video Link: https://youtu.be/CLiAbHw80Ek
 
 ## Table of Contents
 
 ## Technologies
 
 <div align="center">
-	<img height="48" src="https://user-images.githubusercontent.com/25181517/189716855-2c69ca7a-5149-4647-936d-780610911353.png" alt="Firebase" title="Firebase" />
-<img height="48" src="https://user-images.githubusercontent.com/25181517/117269608-b7dcfb80-ae58-11eb-8e66-6cc8753553f0.png" alt="Android" title="Android" />
-	<img height="48" src="https://user-images.githubusercontent.com/25181517/186150365-da1eccce-6201-487c-8649-45e9e99435fd.png" alt="Flutter" title="Flutter" />
- 	<img height="48" src="https://user-images.githubusercontent.com/88138479/228287891-5694068a-6fd9-4da1-bbc3-661ce2718b9e.png" alt="Flutter" title="Google Maps Platform" />
+	<img height="60" src="https://user-images.githubusercontent.com/25181517/189716855-2c69ca7a-5149-4647-936d-780610911353.png" alt="Firebase" title="Firebase" />
+	<img height="60" src="https://user-images.githubusercontent.com/63765620/228299869-36a40db1-c608-45cb-8fd4-fbe45425ecb2.png" alt="Android" title="Android" />
+	<img height="60" src="https://user-images.githubusercontent.com/25181517/186150365-da1eccce-6201-487c-8649-45e9e99435fd.png" alt="Flutter" title="Flutter" />
+ 	<img height="60" src="https://user-images.githubusercontent.com/63765620/228297319-699b5cee-0fc4-4c1f-972c-5a945ca30af9.png" alt="Flutter" title="Google Maps Platform" />
+	<img height="60" src="https://user-images.githubusercontent.com/63765620/228300098-4aa01eeb-003c-48f2-acfb-e1d17883b1ad.png" alt="Flutter" title="Dart" />
+	<img height="58" src="https://user-images.githubusercontent.com/63765620/228302531-4822866b-d460-4741-9185-958f17fce9f7.png" alt="Flutter" title="Dart" />
 </div>
+
 
 ## UN Sustainable Development Goals & Targets
 ### SDG 3: Good Health and Well-being
