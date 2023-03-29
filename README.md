@@ -1,6 +1,12 @@
 # Lifeline
 Lifeline, empowers individuals and communities with the ability to save lives through core functionalities: linking with community responders and providing quality first aid education.
 
+## Overview
+Given that a staggering ```59% of deaths``` from injuries could have been prevented if adequate first aid had been administered before the arrival of an ambulance, we set out to ```inculcate first aid knowledge``` and ```increase public confidence``` in administering first aid with Lifeline. Lifeline aims to shorten the time period between onset of emergency and arrival of services by ```crowdsourcing``` first-aid responders, while increasing the awareness and preparedness of the public through ```quality knowledge```.
+
+######  British Red Cross First Aid [^1]
+[^1]: [#DontStopAt999 Campaign](https://www.redcross.org.uk/first-aid/dont-stop-at-999)
+
 ## Demo Video
 ![maxresdefault](https://user-images.githubusercontent.com/63765620/228293309-03d00704-d9ea-4674-8b1c-b9f28049d392.jpg)
 
@@ -29,6 +35,7 @@ Lifeline, empowers individuals and communities with the ability to save lives th
 
 ## UN Sustainable Development Goals And Targets
 ### SDG 3: Good Health and Well-being
+![health](https://user-images.githubusercontent.com/63765620/228413156-ab24326d-a560-44bf-a506-529c435ab41b.png)
 
 > 3.2 - End all preventable deaths under 5 y/o
 > 
@@ -44,8 +51,9 @@ Lifeline, empowers individuals and communities with the ability to save lives th
 - 1 in 5 individuals involved in road accidents die due to delayed first-aid, and 2/3 of deaths occur within 25 min after trauma.
 - Half the world's population lack access to essential health services. In LDCs, shortage of skilled health workers is a major barrier to providing adequate emergency response.
 
-
 ### SDG 4: Quality Education
+![edu](https://user-images.githubusercontent.com/63765620/228413247-fbceaa34-1927-42fb-b28d-5c348731d86d.png)
+
 > 4.7 - Education for sustainable development and global citizenship
 
 - A survey by the British Red Cross found only 5% of adults have the knowledge and confidence to administer first aid in emergency situations. 
@@ -73,7 +81,7 @@ Lifeline is a one-stop destination to access a wealth of first aid knowledge. It
 
 ## Distribution
 
-Lifeline's current release is built for Android devices. Alpha build has been tested on Google Pixel 4 and 5 and Samsung Galaxy S10.
+Lifeline's current release is built for Android devices. Alpha build has been tested on Google Pixel 4, Pixel 5 and Samsung Galaxy S10.
 
 [v0.1.0-alpha release APK](https://github.com/ackselz/Lifeline/releases/tag/v0.1.0-alpha)
 
@@ -89,10 +97,24 @@ flutter run
 ```
 
 ### User Login Details
-As of alpha release, only one account is supported on Lifeline. Ensure log in using this account.
+As of alpha release, only one account is supported on Lifeline. Ensure log in using this account. 
+
+*Location services can be simulated through tweaking settings of the android emulator or mobile device.*
 
 > Email: dev@gmail.com
 >
 > Password: googlesolutions
 
 ## License
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+Source code distributed under the GNU GPL v3 license. Credits of youtube videos and images used goes to respective owners of the resources.
+All videos and images are used are for demo purposes only and are not intended for commercial use.
+
+Developed by:
+
+- [Tan Shao Chong](https://github.com/ackselz)
+- [Lau Quan Feng Ryan](https://github.com/RyanLauQF)
+- [Xu Jialu](https://github.com/3nityR)
+- [Zhou Ziheng](https://github.com/zorridge)
