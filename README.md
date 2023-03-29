@@ -65,16 +65,19 @@ even more crucial in response to emergency situations.
 ## Core Functionalities
 
 ### First Aid Guidance
+<img width="1230" alt="First Aid Guidance" src="https://user-images.githubusercontent.com/88138479/228447164-6ff879eb-eda1-4ef2-9072-fba28854fb6f.png">
 
 Lifeline provides first aid guidance to users. These first aid instructions are easily accessible within at most 2 clicks from the home page, saving valuable time in emergencies. Under each flow, clear illustrations and detailed instructions are given so that users can easily follow along.
 
 
 ### Community Responder
+<img width="1230" alt="Community Responder" src="https://user-images.githubusercontent.com/88138479/228447333-53b4b969-fb51-43ee-9a20-4490fed43dea.png">
 
 Lifeline provides the capabilities for users to respond to emergency help requested by users in need.
 
 
 ### Personalised Learning
+<img width="1230" alt="Personalised Learning" src="https://user-images.githubusercontent.com/88138479/228447444-a441fab1-e572-45e0-b8b6-8c0bf654119d.png">
 
 Lifeline is a one-stop destination to access a wealth of first aid knowledge. It offers a personalised experience to individuals with different needs with progress tracking allowing users to learn at their own pace.Learning contents are categorised into topics and further divided into subtopics, using bite sized content for effective and convenient learning on-the-go. Information is presented in a modernised way catering to content consumption trends.
 
