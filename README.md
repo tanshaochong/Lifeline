@@ -99,14 +99,19 @@ git clone https://github.com/ackselz/Lifeline.git
 flutter run
 ```
 
-### User Login Details
-As of alpha release, only one account is supported on Lifeline. Ensure log in using this account. 
+### User Details
 
-*Location services can be simulated through tweaking settings of the android emulator or mobile device.*
+The following user account was used in the demo video. You may create your own accounts via the ```registration``` feature
+which syncs emergency reporting and user learning progression with firebase.
 
-> Email: dev@gmail.com
->
-> Password: googlesolutions
+*Location services can be simulated through tweaking settings of the android emulator or mobile device. As of alpha release, resolving of emergencies have yet to be implemented.*
+
+```text
+Demo User Login Details
+
+Email: dev@gmail.com
+Password: googlesolutions
+```
 
 ## License
 
