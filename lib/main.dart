@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+<<<<<<< HEAD
+=======
+
+// ...
+>>>>>>> 027d713f8500f4ecbbf6029f97f687d288ebfb87
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,4 +57,9 @@ class Palette {
       900: Color(0xffffffff), //100%
     },
   );
+<<<<<<< HEAD
 }
+=======
+} // you can define define
+// "AIzaSyBzCUkxMWFZ1Jz3sobOSkBoqH24T8pilcY"
+>>>>>>> 027d713f8500f4ecbbf6029f97f687d288ebfb87

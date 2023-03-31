@@ -98,14 +98,22 @@ class _LearningPageState extends State<LearningPage>
                 SizedBox(
                   height: 200,
                   child: Card(
+<<<<<<< HEAD
                     color: Colors.red.shade50,
+=======
+                    color: Colors.blue.shade50,
+>>>>>>> 027d713f8500f4ecbbf6029f97f687d288ebfb87
                     margin: const EdgeInsets.fromLTRB(20, 16, 20, 10),
                     elevation: 3,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: InkWell(
                       onTap: () {
+<<<<<<< HEAD
                         Navigator.of(context).push(RouteUtil.topicRoute(
+=======
+                        Navigator.of(context).push(_topicRoute(
+>>>>>>> 027d713f8500f4ecbbf6029f97f687d288ebfb87
                             contentList[currentIndex],
                             dbRef.child('courses_completion')));
                       },
@@ -196,6 +204,7 @@ class _LearningPageState extends State<LearningPage>
                         }
                         Category course = contentList[index];
                         return Card(
+<<<<<<< HEAD
                             elevation: 3,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
@@ -241,6 +250,53 @@ class _LearningPageState extends State<LearningPage>
                                 },
                               ),
                             ));
+=======
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          child: SizedBox(
+                            height: 110,
+                            child: ListTile(
+                              title: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    course.name,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    course.description,
+                                    style: const TextStyle(
+                                        fontSize: 12, color: Colors.grey),
+                                  ),
+                                  const SizedBox(height: 20),
+                                  LinearProgressIndicator(
+                                    minHeight: 3,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.yellow.shade600),
+                                    value: course.progress,
+                                    backgroundColor: Colors.grey[200],
+                                  ),
+                                ],
+                              ),
+                              trailing: const Icon(Icons.more_horiz),
+                              onTap: () {
+                                // Navigate to course details page
+                                setState(() {
+                                  currentIndex = index;
+                                });
+                                Navigator.of(context).push(_topicRoute(
+                                    course, dbRef.child('courses_completion')));
+                              },
+                            ),
+                          ),
+                        );
+>>>>>>> 027d713f8500f4ecbbf6029f97f687d288ebfb87
                       },
                       separatorBuilder: (context, index) {
                         return const SizedBox(
@@ -265,6 +321,30 @@ class _LearningPageState extends State<LearningPage>
   bool get wantKeepAlive => true;
 }
 
+<<<<<<< HEAD
+=======
+// Routing animation
+
+Route _topicRoute(Category course, DatabaseReference dbRef) {
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => TopicPage(
+          title: course.name, topicList: course.topics, database: dbRef),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = const Offset(1.0, 0.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      });
+}
+
+>>>>>>> 027d713f8500f4ecbbf6029f97f687d288ebfb87
 // Helper Functions and Classes
 
 class Category {
